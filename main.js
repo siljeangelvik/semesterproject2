@@ -1,4 +1,6 @@
 import './style.css';
+import './public/css/style.css';
+import './public/css/ganttchart.css';
 
 // REMOVED BECAUSE I DON'T WANT TO USE JAVASCRIPT
 /*
