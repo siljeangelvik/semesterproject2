@@ -1,4 +1,4 @@
-import './public/css/style.css';
+import 'public/css/style.css';
 
 // REMOVED BECAUSE I DON'T WANT TO USE JAVASCRIPT
 /*
