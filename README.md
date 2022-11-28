@@ -90,7 +90,7 @@ I removed `”type”: “module”` from the `package.json`.
 Command: `npm run dev` now runs **successfully**.    
 And `Tailwind` now runs **successfully** with `Vite` ✅  
 
-<img src="public/images/removing_type-module.png" width="750" alt="removing-type-module">
+<img src="public/removing_type-module.png" width="750" alt="removing-type-module">
 
 
 ### 🔻 Git Remote Repo
@@ -101,7 +101,7 @@ I had to add a new accessToken on GitHub,
 as well as setting the correct URL to the remote repo.   
 Now, `push` to `remote` repo runs **successfully** ✅   
 
-<img src="public/images/git-init-from-https-ssh.png" width="750" alt="git-init-from-https-ssh">
+<img src="public/git-init-from-https-ssh.png" width="750" alt="git-init-from-https-ssh">
 
 ---
 
