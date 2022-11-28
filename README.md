@@ -3,13 +3,13 @@
 semesterproject2
 
 ### Resources
-**GitHub Repo:** semesterproject2   
+**GitHub Repo:** [semesterproject2](https://github.com/siljeangelvik/semesterproject2)   
 **GitHub Pages:** semesterproject2   
 **Hosted Demo:** netlify   
-**Gantt Chart:**   
+**Kanban:** trello  
 **Figma:** design   
-**Figma:** prototype    
-**Kanban:** trello
+**Figma:** prototype  
+**Gantt Chart:** overview
 
 ---
 
@@ -68,6 +68,7 @@ Sets the new remote:
 Push the changes in your local repository to GitHub:     
 `git push -u origin main`
 
+-
 
 ## 🔻 Obstacles
 
@@ -92,10 +93,10 @@ Now, `push` to `remote` repo runs **successfully** ✅
 <img src="public/git-init-from-https-ssh.png" width="750" alt="git-init-from-https-ssh">
 
 
----       
+---   
+
 
 ## 🔹 Resources
-
 **Remote Project Name:** semesterproject2  
 **Local Project Name:** documents/Repos/School/semester-vite/vite-tailwind
 
