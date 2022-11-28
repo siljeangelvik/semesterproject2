@@ -43,54 +43,49 @@ The company CTO has set the following technical restrictions:
 * ~~Must use an approved `CSS Framework`~~  Tailwind ✅
 * ~~Must be hosted on an approved `Static Host`~~ Netlify ✅
 * Must use an approved `Design Application` Figma
-* Must use an approved `Planning Application` Trello
+* ~~Must use an approved `Planning Application`~~ Trello & Gantt Chart ✅
 
 ### Required links
 
 The Product Owner has requested links to the following:
 
-    A Gantt chart for project timing
-    A design prototype
-    A style guide
-    A kanban project board
-    A repository link
-    A hosted application demo link
+* ~~A Gantt chart for project timing~~
+* A design prototype
+* A style guide
+* ~~A kanban project board~~
+* ~~A repository link~~
+* ~~A hosted application demo link~~
 
 ## Approved resources
 
 This list covers libraries and services that have been vetted by the company and approved for use.
 ### CSS processors
-
-    SASS/SCSS
-    PostCSS
+* ~~SASS/SCSS~~
+* PostCSS ✅
 
 ### CSS frameworks
-
-    Bootstrap (>5)
-    Tailwind (>3)
-    MUI (>5)
+* ~~Bootstrap (>5)~~ 
+* Tailwind (>3) ✅
+* ~~MUI (>5)~~
 
 ### Hosting services
-
-    GitHub Pages
-    Netlify
+* ~~GitHub Pages~~
+* Netlify ✅
 
 ### Design applications
-
-    Adobe XD
-    Figma
-    Sketch
+* ~~Adobe XD~~ 
+* Figma 
+* ~~Sketch~~
 
 ### Planning applications
-
-    Trello
-    GitHub Projects
+* Trello ✅ 
+* ~~GitHub Projects~~
 
 ## Delivery
 
-Include the required links in the Moodle delivery window using this [template format.](https://noroff-content.gitlab.io/feu/semester-project-2/delivery-template.html)
+~~Include the required links in the Moodle delivery window using this [template format.](https://noroff-content.gitlab.io/feu/semester-project-2/delivery-template.html)~~
 
 All final changes must be merged into the default branch `main` or `master`.   
 Other branches will not be checked.
 
-Ensure that the `readme.md` file describes your project thoroughly, including how to setup and run the project locally and any special instructions for testers.
+~~Ensure that the `readme.md` file describes your project thoroughly, including how to setup and run the project locally and any special instructions for testers.~~
