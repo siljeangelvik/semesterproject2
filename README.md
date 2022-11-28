@@ -16,8 +16,8 @@ semesterproject2
 ## 🔸 Getting Started
 
 ### 🔸 Installed Tailwind with Vite 
-Video: [Install Tailwind with Vite](https://www.youtube.com/watch?v=c0UnSx06BCU)
 
+Video: [Install Tailwind with Vite](https://www.youtube.com/watch?v=c0UnSx06BCU)
 
 Create a **Vite** project:   
 `npm create vite@latest`
@@ -92,9 +92,7 @@ Now, `push` to `remote` repo runs **successfully** ✅
 
 <img src="public/images/git-init-from-https-ssh.png" width="750" alt="git-init-from-https-ssh">
 
-
----   
-
+---
 
 ## 🔹 Resources
 **Remote Project Name:** semesterproject2  
@@ -110,5 +108,9 @@ GitHub: [Managing Remote Repositories](https://docs.github.com/en/get-started/ge
 
 ### 🔹 Tools
 Video: [Install Tailwind with Vite](https://www.youtube.com/watch?v=c0UnSx06BCU)  
-Emojipedia: [Emojis](https://emojipedia.org/)  
+Emojipedia: [Emojis](https://emojipedia.org/)    
+
+**Tailwind Forms:**  
+Codepen: [Tailwind Form](https://codepen.io/novenine/pen/xxKPrrG)  
+Codepen: [Tailwind Form](https://codepen.io/WILL_Wu/full/RwZLqMY)  
 
