@@ -4,9 +4,8 @@ semesterproject2
 
 ### Resources
 **GitHub Repo:** [semesterproject2](https://github.com/siljeangelvik/semesterproject2)   
-**GitHub Pages:** semesterproject2   
-**Hosted Demo:** netlify   
-**Kanban:** trello  
+**Hosted Demo:** [netlify](https://silje-semesterproject2.netlify.app/)   
+**Kanban:** [trello](https://trello.com/b/BqgXk4Ij/semester-project-2)  
 **Figma:** design   
 **Figma:** prototype  
 **Gantt Chart:** overview
