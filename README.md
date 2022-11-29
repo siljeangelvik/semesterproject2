@@ -49,6 +49,9 @@ Initialising Tailwind and creating **tailwind.config.cjs** _(change to **js**)_:
 
 * * **Add a div with a tailwind class to `index.html`**
 
+Run the CLI tool to scan your template files for classes and build your CSS.  
+`npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch`  
+
 Serve website to check if Tailwind installed successfully:  
 `npm run dev`
 
@@ -90,7 +93,7 @@ I removed `”type”: “module”` from the `package.json`.
 Command: `npm run dev` now runs **successfully**.    
 And `Tailwind` now runs **successfully** with `Vite` ✅  
 
-<img src="public/removing_type-module.png" width="750" alt="removing-type-module">
+<img src="public/assets/removing_type-module.png" width="750" alt="removing-type-module">
 
 
 ### 🔻 Git Remote Repo
@@ -101,7 +104,7 @@ I had to add a new accessToken on GitHub,
 as well as setting the correct URL to the remote repo.   
 Now, `push` to `remote` repo runs **successfully** ✅   
 
-<img src="public/git-init-from-https-ssh.png" width="750" alt="git-init-from-https-ssh">
+<img src="public/assets/git-init-from-https-ssh.png" width="750" alt="git-init-from-https-ssh">
 
 ---
 

@@ -1,11 +1,16 @@
 {
   "name": "vite-tailwind",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "vite src",
+    "build": "vite build src",
+    "preview": "vite preview src",
+    "serve": "npm run build & npm run tailwind & vite preview",
+    "tailwind": "npx tailwindcss -i ./src/css/input.css -o ./dist/css/output.css --watch",
+    "tailwind:build": "npx tailwindcss -i ./src/css/input.css -o ./dist/css/output.css",
+    "serve:all": "npm run build & npm run tailwind & npm run dev",
+    "clean:build": "vite build src --emptyOutDir"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",
@@ -13,5 +18,8 @@
     "sass": "^1.56.1",
     "tailwindcss": "^3.2.4",
     "vite": "^3.2.3"
+  },
+  "dependencies": {
+    "glob": "^8.0.3"
   }
 }
