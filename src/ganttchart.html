@@ -6,27 +6,38 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Gantt Chart</title>
-    <link href="/dist/css/output.css" rel="stylesheet">
+    <link href="/src/css/ganttchart.css" rel="stylesheet">
 </head>
 <body>
 <div class="font-sans antialiased bg-grey-lightest">
+    <div class="bg-red-400">
+        <h1 class="text-2xl font-bold">Semester Project 2: Gantt Chart</h1>
+        <p class="text-center"><em>Week 46 is not knowingly and purposely not added to the Gantt chart.</em></p>
+    </div>
+
     <!-- Top Nav -->
-    <div class="w-full bg-green fixed shadow z-1 sm:invisible  md:visible">
+    <div class="w-full bg-green shadow z-1">
         <div class="container mx-auto">
             <div class="w-full flex justify-between items-center py-4 px-8">
                 <!-- Brand -->
-                <div class="text-center text-grey font-bold">Gantt Chart</div>
+                <div class="text-center text-grey font-bold">Your Company</div>
                 <!-- Navigation -->
                 <div class="items-center sm:flex">
-                    <a href="../index.html" class="text-gray-500 hover:text-green-lightest no-underline mx-2 px-2 py-2">Sign In</a>
-                    <a href="../register.html" class="text-gray-500 hover:text-green-lightest no-underline mx-2 px-2 py-2">Sign Up</a>
+                    <a href="../index.html" class="text-gray-500 hover:text-green-lightest no-underline mx-2 px-2 py-2">Listings</a>
+                    <a href="login.html" class="text-gray-500 hover:text-green-lightest no-underline mx-2 px-2 py-2">Sign
+                        In</a>
+                    <a href="register.html" class="text-gray-500 hover:text-green-lightest no-underline mx-2 px-2 py-2">Sign
+                        Up</a>
+                    <a href="ganttchart.html"
+                       class="text-gray-500 hover:text-green-lightest no-underline mx-2 px-2 py-2">Gantt Chart</a>
+                    <a href="bootstrap-login.html"
+                       class="text-gray-500 hover:text-green-lightest no-underline mx-2 px-2 py-2">Login</a>
+                    <a href="bootstrap-register.html"
+                       class="text-gray-500 hover:text-green-lightest no-underline mx-2 px-2 py-2">Register</a>
                 </div>
             </div>
         </div>
     </div>
-
-    <h1 class="text-3xl font-bold">Semester Project 2</h1>
-    <p class="text-center"><em>Week 46 is not knowingly and purposely not added to the Gantt chart.</em></p>
 
     <!-- Content -->
     <div id="ganttChart" class="w-full bg-grey-lightest" style="padding-top: 4rem;">
@@ -55,9 +66,13 @@
                     <li>sun</li>
                 </ul>
                 <ul class="chart-bars">
-                    <li data-duration="tue-tue" data-color="#b03532">Read <a href="https://noroff-content.gitlab.io/feu/semester-project-2/brief.html">Brief</a></li>
-                    <li data-duration="tue-wed" data-color="#b03532">Read Docs of <a href="https://noroff-content.gitlab.io/feu/semester-project-2/brief.html#approved-resources">Approved Resources</a></li>
-                    <li data-duration="tue-wed½" data-color="#b03532">Make <a href="/public">GanttChart</a>,<a href="#week47"> Week 47</a></li>
+                    <li data-duration="tue-tue" data-color="#b03532">Read <a
+                            href="https://noroff-content.gitlab.io/feu/semester-project-2/brief.html">Brief</a></li>
+                    <li data-duration="tue-wed" data-color="#b03532">Read Docs of <a
+                            href="https://noroff-content.gitlab.io/feu/semester-project-2/brief.html#approved-resources">Approved
+                        Resources</a></li>
+                    <li data-duration="tue-wed½" data-color="#b03532">Make <a href="/public">GanttChart</a>,<a
+                            href="#week47"> Week 47</a></li>
                     <li data-duration="wed-wed" data-color="#33a8a5">Trello board</li>
                     <li data-duration="wed½-thu½" data-color="#30997a">StyleTile Figma</li>
                     <li data-duration="thu-fri½" data-color="#30997a">Design Figma</li>
@@ -90,7 +105,8 @@
                     <li>sun</li>
                 </ul>
                 <ul class="chart-bars">
-                    <li data-duration="mon-mon" data-color="#b03532">Make <a href="/public">GanttChart</a>,<a href="#week48"> Week 48</a></li>
+                    <li data-duration="mon-mon" data-color="#b03532">Make <a href="/public">GanttChart</a>,<a
+                            href="#week48"> Week 48</a></li>
                     <li data-duration="mon-thu½" data-color="#b03532">User Stories</li>
                     <li data-duration="tue-fri½" data-color="#33a8a5">User Experience</li>
                     <li data-duration="wed-sat½" data-color="#30997a">Best Practices</li>
@@ -123,7 +139,8 @@
                     <li>sun</li>
                 </ul>
                 <ul class="chart-bars">
-                    <li data-duration="mon-mon" data-color="#b03532">Make <a href="/public">GanttChart</a>,<a href="#week49"> Week 49</a></li>
+                    <li data-duration="mon-mon" data-color="#b03532">Make <a href="/public">GanttChart</a>,<a
+                            href="#week49"> Week 49</a></li>
                     <li data-duration="tue½-wed" data-color="#b03532">Setup Gantt Chart</li>
                     <li data-duration="wed-wed" data-color="#33a8a5">Planning with Trello</li>
                     <li data-duration="thu-fri" data-color="#30997a">Design in Figma</li>
@@ -146,8 +163,8 @@
     </footer>
 </div>
 
-<script type="module" src="../js/ganttchart.js"></script>
-<script type="module" src="../main.js"></script>
+<script type="module" src="js/ganttchart.js"></script>
+<script type="module" src="main.js"></script>
 </body>
 </html>
 

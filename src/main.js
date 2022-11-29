@@ -1,32 +1,27 @@
+// --- BASE --- //
+export const API_BASE_URL = 'https://api.noroff.dev';
+
+// IMPORT
 import './css/input.css';
 import './css/ganttchart.css';
 
-// REMOVED BECAUSE I DON'T WANT TO USE JAVASCRIPT
-/*
-import javascriptLogo from './public/images/javascript.svg';
-import viteLogo from './public/images/vite.svg';
-import { setupCounter } from './public/js/counter';
-*/
+// LISTINGS
+export const listUrl = `${API_BASE_URL}/api/v1/auction/listings`;
+export const listData = document.getElementById("listData");
+export const loginMessage = document.getElementById("loginMessage");
 
-// REMOVED BECAUSE I DONT WANT TO USE JAVASCRIPT
-/*
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// REGISTER & LOGIN //
+export const returnMessage = document.querySelector('.error');
 
-setupCounter(document.querySelector('#counter'))
-*/
+// REGISTER
+export const registerUrl = `${API_BASE_URL}/api/v1/auction/auth/register`;
+export const registerUsername = document.getElementById("username");
+export const registerEmail = document.getElementById("email");
+export const registerPassword = document.getElementById("password");
+export const registerButton = document.getElementById("registerButton");
+
+// LOGIN
+export const loginUrl = `${API_BASE_URL}/api/v1/auction/auth/login`;
+export const loginEmail = document.getElementById("email");
+export const loginPassword = document.getElementById("password");
+export const loginButton = document.getElementById("loginButton");
