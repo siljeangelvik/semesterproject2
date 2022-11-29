@@ -1,4 +1,4 @@
-import {listUrl, returnMessage, loginMessage, listData} from "../main";
+import {listUrl, returnMessage, loginMessage, listData} from "./main";
 
 async function userAccess(listUrl) {
     // console.log(userData);
@@ -24,7 +24,7 @@ async function userAccess(listUrl) {
     }
 }
 
-
+/*
 function listData(listings) {
     console.log(listings);
 
@@ -41,5 +41,5 @@ function listData(listings) {
                 </div>`;
     })
 }
-
+*/
 console.log(loginMessage.innerHTML = `Hello, ${localStorage.getItem(name)}`);

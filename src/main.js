@@ -2,8 +2,8 @@
 export const API_BASE_URL = 'https://api.noroff.dev';
 
 // IMPORT
-import './css/input.css';
-import './css/ganttchart.css';
+import './input.css';
+import './ganttchart/ganttchart.css';
 
 // LISTINGS
 export const listUrl = `${API_BASE_URL}/api/v1/auction/listings`;
