@@ -42,7 +42,7 @@ function register() {
     if (isValidUserName(validUsername) && isValidEmail(validEmail) && isValidPassword(validPassword)) {
         console.log("Logged In");
         registerUser(registerUrl, userDetails);
-        // window.location="login.html"
+        // window.location="index.html"
     }
 }
 
@@ -66,7 +66,7 @@ async function registerUser(registerUrl, userData) {
         const json = await response.json();
         console.log(json);
         if (response.status === 200) {
-            window.location = '../login.html';
+            window.location = '../login/index.html';
         } else {
             returnMessage.innerHTML = json.error();
         }

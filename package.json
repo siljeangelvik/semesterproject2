@@ -1,19 +1,29 @@
 {
   "name": "vite-tailwind",
   "private": false,
+  "description": "auction application client",
   "version": "0.0.0",
+  "keywords": [
+    "auction",
+    "app",
+    "client",
+    "javascript",
+    "vite",
+    "tailwind"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --port 8080",
     "serve": "vite serve",
     "Serve": "npm run build & npm run tailwind & vite preview",
-    "tailwind": "npx tailwindcss -i src/css/input.css -o ../dist/css/output.css",
-    "tailwind:watch": "npx tailwindcss -i src/css/input.css -o ./dist/css/output.css --watch",
+    "tailwind": "npx tailwindcss -i src/input.css -o dist/css/output.css",
+    "tailwind:watch": "npx tailwindcss -i src/input.css -o dist/css/output.css --watch",
     "serve:all": "npm run build & npm run tailwind & npm run dev",
     "clean:build": "vite build src --emptyOutDir"
   },
   "devDependencies": {
+    "@types/node": "^18.11.9",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.19",
     "sass": "^1.56.1",
@@ -22,5 +32,11 @@
   },
   "dependencies": {
     "glob": "^8.0.3"
+  },
+  "author": "Silje Angelvik",
+  "license": "ISC",
+  "homepage": "https://github.com/siljeangelvik/semesterproject2#readme",
+  "bugs": {
+    "url": "https://github.com/siljeangelvik/semesterproject2/issues"
   }
 }

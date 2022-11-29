@@ -23,3 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+
+bootstrap-login.html
+bootstrap-register.html

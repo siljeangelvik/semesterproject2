@@ -3,7 +3,7 @@
 semesterproject2
 
 ### Resources  
-**Gantt Chart:** [Timing](https://silje-semesterproject2.netlify.app/ganttchart.html)    
+**Gantt Chart:** [Timing](https://silje-semesterproject2.netlify.app/ganttchart/index.html)    
 **Figma:** [Prototype](https://www.figma.com/file/Ulp9wwN9k2owtTji6ksOHh/Semester-Project-2?node-id=0%3A1&t=3VUv4I30clEazuf8-1)        
 **Figma:** Style Guide  
 **Kanban Board:** [Trello](https://trello.com/b/BqgXk4Ij/semester-project-2)    
@@ -122,6 +122,7 @@ GitHub: [Managing Remote Repositories](https://docs.github.com/en/get-started/ge
 
 ### 🔹 Tools
 Video: [Install Tailwind with Vite](https://www.youtube.com/watch?v=c0UnSx06BCU)  
+Video: [Setup Multiple Page Vite](https://www.youtube.com/watch?v=STeKBm67l6M)  
 Emojipedia: [Emojis](https://emojipedia.org/)    
 Adobe: [Color Wheel](https://color.adobe.com/create/color-wheel)  
 Codepen: [Tailwind Form](https://codepen.io/novenine/pen/xxKPrrG)   
