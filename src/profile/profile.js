@@ -1,11 +1,9 @@
-import {profileAvatar, profileUsername, profileEmail, profileCredits, profileUser} from "../main";
+import { profileUsername, profileUsernameTop, profileAvatar, profileCredits, profileEmail } from "../main";
 
 // update profile avatar
-const loadFile = function (event) {
-    profileAvatar.src = URL.createObjectURL(event.target.files[0]);
-};
+const loadFile = (event) => profileAvatar.src = URL.createObjectURL(event.target.files[0]);
 
-profileUser.innerHTML = localStorage.getItem('username');
-profileUsername.innerHTML = localStorage.getItem('username');
+profileUsernameTop.innerHTML = localStorage.getItem('username');
+//profileUsername.innerHTML = localStorage.getItem('username');
 profileEmail.innerHTML = localStorage.getItem('email');
 profileCredits.innerHTML = localStorage.getItem('credits');

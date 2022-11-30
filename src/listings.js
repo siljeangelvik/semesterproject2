@@ -1,6 +1,5 @@
 /* @formatter:off */
-import { listUrl, listData, listingsTitle, listingsDescription, listingsMedia, listingsTags, listingsBids, listingsBidButton, helloUsername } from "./main";
-
+import { listUrl, listData, helloUsername } from "./main";
 helloUsername.innerHTML = localStorage.getItem('username');
 
 function listingData(listings) {
@@ -9,8 +8,8 @@ function listingData(listings) {
         console.log(listing);
         let newItemCard = `
         <!-- Single Card -->
-    <div class="mb-4 border rounded bg-white text-grey-darker">
-        <div class="appearance-none py-4 px-4">                   
+    <div class="mb-4 border rounded bg-white text-grey-darker listingItem">
+        <div class="appearance-none py-4 px-4 item">                   
             <!-- Heading -->
             <div class="w-full flex justify-between py-2">
                 <!-- Listing Title -->
@@ -36,8 +35,7 @@ function listingData(listings) {
                 
             </div>
         </div>
-    </div>                        
-        `;
+    </div> `;
         listData.innerHTML += newItemCard;
     })
 }
@@ -46,12 +44,89 @@ fetch(listUrl)
     .then(response => response.json())
     .then(parsedData => {
         parsedData.length = 10;
+
+        console.log(parsedData.length);
+        console.log('listedItems: ' + parsedData.length);
         console.log(parsedData.length);
         console.log("Data: ", parsedData);
         listingData(parsedData);
-        // let bidCount = parsedData.data;
     })
     .catch((error) => {
         console.log("Something went wrong: " + error.message);
         listData.innerHTML = "Something went wrong";
     })
+
+
+/*
+ Array.from( iterations ).forEach(iteration => iteration.classList.add('hidden'));
+        for (let i = 10; i < parsedData.length; i++) {
+            iterations[i].classList.add('hidden');
+        }
+
+
+function hideListings(){
+    let items = document.querySelectorAll('.listingItems');
+    Array.from( items ).forEach(item => item.classList.add('hidden'));
+    for(let i = 0; i < buttons.length; i++){
+        buttons[i].classList.add('hidden');
+        console.log('i: ' + i);
+    }
+}
+
+let loadMore = document.getElementById("loadMore");
+
+function listMoreItems(items) {
+    items.forEach(function (item, index) {
+        if (index > maxItems - 1) {
+            item.classList.add('invisible');
+            console.log(item, maxItems);
+        }
+    });
+
+    loadMore.addEventListener("click", function () {
+        [].forEach.call(document.querySelectorAll("." + items.classList('invisible')), function (
+            item,
+            index
+        ) {
+            if (index < loadItems) {
+                item.classList.remove('invisible');
+            }
+
+            console.log(items.classList.value);
+            if (document.querySelectorAll("." + item.classList('invisible')).length === 0) {
+                loadMore.style.display = "none";
+            }
+        });
+    });
+}
+
+
+
+
+/*
+
+
+        console.log('Listings length: ' + data.length)
+        items.forEach(function (item, index) {
+            console.log(item.innerText, index);
+            if (index > maxItems - 1) {
+                item.classList.add('invisible');
+                console.log('maxItems: ' + maxItems);
+            }
+        })
+        loadMore.addEventListener("click", function () {
+            [].forEach.call(document.querySelectorAll("." + items.classList('invisible')), function (
+                item,
+                index
+            ) {
+                if (index < loadItems) {
+                    item.classList.remove('invisible');
+                }
+
+                console.log(items.classList.value);
+                if (document.querySelectorAll("." + item.classList('invisible')).length === 0) {
+                    loadMore.style.display = "none";
+                }
+            });
+        });
+ */

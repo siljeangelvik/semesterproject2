@@ -24,8 +24,7 @@ dist-ssr
 *.sw?
 .env
 
-
 bootstrap-login.html
 bootstrap-register.html
 
-src/handler.js
+./testing-things.js

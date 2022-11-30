@@ -1,20 +1,10 @@
 /* @formatter:off */
-import {loginUrl, loginEmail, loginPassword, loginButton, returnMessage } from "../main";
-
-const isValidEmail = registerEmail => {
-    const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
-    return emailRegex.test(String(registerEmail));
-};
-const isValidPassword = loginPassword => {
-    let passwordRegex = /^[a-z0-9_æøå]{8,25}$/i;
-    return passwordRegex.test(String(loginPassword));
-};
+import {loginUrl, returnMessage, loginButton, validEmail, validPassword, validUsername } from "../main";
 
 function login() {
-    let validEmail = loginEmail.value.trim();
-    let validPassword = loginPassword.value.trim();
 
     const userDetails = {
+        "username": validUsername,
         "email": validEmail,
         "password": validPassword
     }
@@ -30,8 +20,8 @@ function login() {
         return false;
     }
     if (isValidEmail(validEmail) && isValidPassword(validPassword)) {
-        console.log("Logged In");
-        loginUser(loginUrl, userDetails).then(() => window.location = '../index.html');
+        console.log("Successful login");
+        loginUser(loginUrl, userDetails);
     }
 }
 
@@ -58,11 +48,11 @@ async function loginUser(loginUrl, userData) {
             console.log("OK");
             localStorage.setItem("username", json.username);
             localStorage.setItem("email", json.email);
-            localStorage.setItem("credits", json.credits);
             localStorage.setItem("accessToken", json.accessToken);
-            localStorage.setItem("avatar", json.avatar);
+            localStorage.setItem("credits", json.credits);
             window.location = "../index.html";
-        } else {
+        }
+        else {
             returnMessage.innerHTML = json.error();
         }
     } catch (error) {

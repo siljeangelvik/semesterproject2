@@ -4,10 +4,9 @@
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="/assets/vite.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Login to Vite App</title>
+    <title>Your Account</title>
     <!-- Google Material Icons -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
 </head>
 <body>
 <div class="font-sans antialiased bg-grey-lightest">
@@ -38,7 +37,7 @@
 
         <!-- Heading -->
         <div class="mt-12">
-            <h2 class="text-2xl text-center">Hello, <span id="profileUser" class="font-bold"></span></h2>
+            <h2 class="text-2xl text-center">Hello, <span id="profileUsernameTop" class="profileUsername font-bold"></span></h2>
         </div>
 
         <!-- Search -->
@@ -80,7 +79,7 @@
                 <!-- profileUsername -->
                 <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
                     <span class="text-md md:text-xl font-bold">Username: </span>
-                    <span id="profileUsername"></span>
+                    <span id="profileUsername" class="profileUsername"></span>
                 </div>
 
                 <!-- ProfileEmail -->
@@ -91,7 +90,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Bottom Navbar Mobile -->
     <nav class="fixed bottom-0 inset-x-0 bg-violet-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
@@ -142,8 +140,6 @@
 </div>
 
 <script type="module" src="../main.js"></script>
-<script type="module" src="../search.js"></script>
-<script type="module" src="../logout.js"></script>
 <script type="module" src="./profile.js"></script>
 </body>
 </html>
