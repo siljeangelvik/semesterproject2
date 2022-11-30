@@ -1,5 +1,6 @@
 import {loginUrl, loginEmail, loginPassword, loginButton, returnMessage } from "../main";
 
+/* @formatter:off */
 const isValidEmail = registerEmail => {
     const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
     return emailRegex.test(String(registerEmail));
@@ -8,6 +9,7 @@ const isValidPassword = loginPassword => {
     let passwordRegex = /^[a-z0-9_æøå]{8,25}$/i;
     return passwordRegex.test(String(loginPassword));
 };
+/* @formatter:on */
 
 function login() {
     let validEmail = loginEmail.value.trim();
@@ -18,6 +20,7 @@ function login() {
         "password": validPassword
     }
 
+    /* @formatter:off */
     if (!isValidEmail(validEmail)) {
         console.log("wrong email");
         returnMessage.innerHTML = `Invalid email`;
@@ -32,6 +35,7 @@ function login() {
         console.log("Logged In");
         loginUser(loginUrl, userDetails);
     }
+    /* @formatter:on */
 }
 
 loginButton.addEventListener("click", function(e){

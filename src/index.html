@@ -11,42 +11,67 @@
 <div class="font-sans antialiased bg-grey-lightest">
 
     <!-- Top Nav -->
-    <div class="w-full bg-green shadow z-1 bg-yellow-400">
+    <div class="w-full shadow z-1 bg-yellow-500">
         <div class="container mx-auto">
             <div class="w-full flex justify-between items-center py-4 px-8">
                 <!-- Brand -->
                 <div class="text-center font-bold">Asta Vendita</div>
                 <!-- Navigation -->
                 <div class="items-center sm:flex">
-                    <a href="./index.html" class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Listings</a>
-                    <a href="login/index.html" class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Sign In</a>
-                    <a href="register/index.html" class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Sign Up</a>
-                    <a href="ganttchart/index.html" class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Gantt Chart</a>
+                    <a href="./index.html"
+                       class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Listings</a>
+                    <a href="login/index.html" class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Sign
+                        In</a>
+                    <a href="register/index.html" class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Sign
+                        Up</a>
+                    <a href="ganttchart/index.html" class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Gantt
+                        Chart</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Content -->
-    <div class="w-full bg-grey-lightest" style="padding-top: 4rem;">
-        <div class="container mx-auto py-8">
-            <div>
-                <h1 id="loginMessage" class="text-4xl text-center"></h1>
-                <h2 class="text-2xl text-center">Listings</h2>
-            </div>
+    <div class="w-full bg-grey-lightest" style="padding-top: 2rem;">
+        <!-- Heading -->
+        <div>
+            <h1 id="loginMessage" class="text-4xl text-center"></h1>
+            <h2 class="text-2xl text-center"><span class="font-bold">Asta Vendita:</span> Auction Listings</h2>
+        </div>
 
-            <div id="listData"></div>
+        <!-- Search -->
+        <div class="w-full bg-grey-lightest">
+            <div class="container mx-auto py-8">
+                <div class="w-5/6 lg:w-1/2 mx-auto rounded">
+                    <div class="mb-4">
+                        <label class="block text-grey-darker text-sm font-bold mb-2" for="search"></label>
+                        <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="search"
+                               type="search" placeholder="Search for items">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Content Cards Container -->
+        <div class="w-full bg-grey-lightest">
+            <div class="container mx-auto py-8">
+                <!-- Listing All Cards -->
+                <div id="listData" class="w-5/6 lg:w-1/2 mx-auto">
+                    <!-- Single Card -->
+                </div>
+            </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="w-full bg-grey-lighter py-8">
-        <div class="container mx-auto text-center px-8">
-            <p class="text-grey-dark mb-2 text-sm">This is a product of <span class="font-bold">Angelvik</span></p>
-        </div>
-    </footer>
 </div>
 
+<!-- Footer -->
+<footer class="w-full bg-grey-lighter py-8">
+    <div class="container mx-auto text-center px-8">
+        <p class="text-grey-dark mb-2 text-sm">This is a product of <span
+                class="font-bold">Angelvik</span></p>
+    </div>
+</footer>
 <script type="module" src="listings.js"></script>
 <script type="module" src="main.js"></script>
 </body>
