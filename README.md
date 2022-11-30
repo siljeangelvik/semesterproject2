@@ -127,4 +127,5 @@ Video: [Setup Multiple Page Vite](https://www.youtube.com/watch?v=STeKBm67l6M)
 Emojipedia: [Emojis](https://emojipedia.org/)    
 Adobe: [Color Wheel](https://color.adobe.com/create/color-wheel)  
 Codepen: [Tailwind Form](https://codepen.io/novenine/pen/xxKPrrG)   
-
+Codepen: [Click to Open Search Input](https://codepen.io/matthieuSolente/pen/azVaNM?editors=0110)  
+Google: [Material Icons](https://fonts.google.com/icons)  
