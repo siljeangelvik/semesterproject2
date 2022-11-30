@@ -5,9 +5,10 @@
     <link rel="icon" type="image/svg+xml" href="/assets/vite.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Register to Vite App</title>
+    <!-- Google Material Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
 </head>
 <body>
-
 <div class="font-sans antialiased bg-grey-lightest">
 
     <!-- Top Nav -->
@@ -15,9 +16,9 @@
         <div class="container mx-auto">
             <div class="w-full flex justify-between items-center py-4 px-8">
                 <!-- Brand -->
-                <div class="text-center font-bold">Asta Vendita</div>
+                <div class="text-center font-bold lg:w-full"><a href="../index.html">Asta Vendita</a></div>
                 <!-- Navigation -->
-                <div class="items-center sm:flex">
+                <div class="items-center invisible md:visible">
                     <a href="../index.html" class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Listings</a>
                     <a href="../login/index.html" class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Sign In</a>
                     <a href="./index.html" class="text-gray-700 hover:text-black no-underline mx-2 px-2 py-2">Sign Up</a>
@@ -69,6 +70,40 @@
         </div>
     </div>
 
+    <!-- Bottom Navbar Mobile -->
+    <nav class="fixed bottom-0 inset-x-0 bg-green-500 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
+
+        <a href="../index.html" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black transition duration-300">
+    <span class="material-symbols-outlined">
+      home
+    </span>
+        </a>
+
+        <button id="focusButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black transition duration-300">
+        <span class="material-symbols-outlined">
+      search
+    </span>
+        </button>
+
+        <button id="addListingButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
+    <span class="material-symbols-outlined">
+      add_circle
+    </span>
+        </button>
+
+        <a href="#" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
+    <span class="material-symbols-outlined">
+      person
+    </span>
+        </a>
+
+        <button id="logoutButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
+    <span class="material-symbols-outlined">
+      logout
+    </span>
+        </button>
+    </nav>
+
     <!-- Footer -->
     <footer class="w-full bg-grey-lighter py-8">
         <div class="container mx-auto text-center px-8">
@@ -76,6 +111,7 @@
         </div>
     </footer>
 </div>
+
 <script type="module" src="../main.js"></script>
 <script type="module" src="./register.js"></script>
 </body>

@@ -119,6 +119,7 @@ Tailwind: [Getting Started](https://tailwindcss.com/docs/installation)
 GitHub: [Docs](https://docs.github.com/en/rest/overview/permissions-required-for-fine-grained-personal-access-tokens)   
 GitHub: [Adding local project to Git Repo](https://gist.github.com/alexpchin/102854243cd066f8b88e)  
 GitHub: [Managing Remote Repositories](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-https-to-ssh)  
+Dev.to: [Host Free GitHub Pages](https://dev.to/github/how-to-host-your-first-site-for-free-on-github-pages-45ob)  
 
 ### 🔹 Tools
 Video: [Install Tailwind with Vite](https://www.youtube.com/watch?v=c0UnSx06BCU)  

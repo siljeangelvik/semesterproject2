@@ -29,7 +29,7 @@ function listingData(listings) {
                 <p id="listingsTags" class="w-full py-2">${listing.tags}</p>
                 <!-- Listing Bid Button -->
                 <div class="flex justify-between">
-                     <button id="listingBidButton" class="bg-yellow-500 hover:bg-green-500 text-white font-bold py-2 px-4 rounded" type="submit">Bid</button>
+                     <button id="listingBidButton" class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded" type="submit">Bid</button>
                 </div>
                 
             </div>
@@ -43,6 +43,8 @@ function listingData(listings) {
 fetch(listUrl)
     .then(response => response.json())
     .then(parsedData => {
+        parsedData.length = 10;
+        console.log(parsedData.length);
         console.log("Data: ", parsedData);
         listingData(parsedData);
         // let bidCount = parsedData.data;

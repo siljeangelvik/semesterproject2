@@ -9,6 +9,8 @@ import './ganttchart/ganttchart.css';
 // LISTINGS
 export const listUrl = `${API_BASE_URL}/api/v1/auction/listings`;
 export const listData = document.getElementById("listData");
+
+
 //export const loginMessage = document.getElementById("loginMessage");
 export const listingsTitle = document.getElementById("listingsTitle");
 export const listingsMedia = document.getElementById("listingsMedia");
