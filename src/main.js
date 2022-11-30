@@ -42,6 +42,8 @@ export const loginButton = document.getElementById("loginButton");
 
 
 //
+
+/* @formatter:off */
 /*
 document.querySelector("#topNav").innerHTML = `
  <!-- Top Nav -->
