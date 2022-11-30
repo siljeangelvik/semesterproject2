@@ -1,5 +1,7 @@
 /* @formatter:off */
-import { listUrl, listData, listingsTitle, listingsDescription, listingsMedia, listingsTags, listingsBids, listingsBidButton } from "./main";
+import { listUrl, listData, listingsTitle, listingsDescription, listingsMedia, listingsTags, listingsBids, listingsBidButton, helloUsername } from "./main";
+
+helloUsername.innerHTML = localStorage.getItem('username');
 
 function listingData(listings) {
     listData.innerHTML = '';

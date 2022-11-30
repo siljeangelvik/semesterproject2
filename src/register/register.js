@@ -1,3 +1,4 @@
+/* @formatter:off */
 import { registerUrl, registerUsername, registerEmail, registerPassword, registerButton, returnMessage } from "../main";
 
 const isValidUserName = registerUsername => {
@@ -67,6 +68,7 @@ async function registerUser(registerUrl, userData) {
         console.log(json);
         if (response.status === 200) {
             window.location = '../login/index.html';
+            window.alert('You successfully registered a new user');
         } else {
             returnMessage.innerHTML = json.error();
         }

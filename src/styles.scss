@@ -1,0 +1,42 @@
+/* @formatter:off */
+ @mixin object-center {display: flex;justify-content: center;align-items: center;}
+
+$circleSize: 155px;
+$radius: 100px;
+$shadow: 0 0 10px 0 rgba(255,255,255,.35);
+$fontColor: rgb(250,250,250);
+
+.profile-pic {
+  color: transparent;
+  @include object-center;
+
+  .profile-pic-input {display: none;}
+
+  .profile-avatar {
+    position: absolute;
+    object-fit: cover;
+    width: $circleSize;
+    height: $circleSize;
+    box-shadow: $shadow;
+    border-radius: $radius;
+    z-index: 0;
+  }
+
+  .-label {cursor: pointer;height: $circleSize;width: $circleSize;}
+
+  &:hover {
+    .-label {
+      @include object-center;
+      background-color: rgba(0,0,0,.8);
+      z-index: 10000;
+      color: $fontColor;
+      transition: background-color .2s ease-in-out;
+      border-radius: $radius;
+      margin-bottom: 0;
+    }
+  }
+
+  .profile-pic span {display: inline-flex;padding: .2em;height: 2em;}
+}
+
+// .profilePage {@include object-center;}

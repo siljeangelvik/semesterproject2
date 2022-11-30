@@ -27,3 +27,5 @@ dist-ssr
 
 bootstrap-login.html
 bootstrap-register.html
+
+src/handler.js

@@ -1,6 +1,6 @@
+/* @formatter:off */
 import {loginUrl, loginEmail, loginPassword, loginButton, returnMessage } from "../main";
 
-/* @formatter:off */
 const isValidEmail = registerEmail => {
     const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
     return emailRegex.test(String(registerEmail));
@@ -9,7 +9,6 @@ const isValidPassword = loginPassword => {
     let passwordRegex = /^[a-z0-9_æøå]{8,25}$/i;
     return passwordRegex.test(String(loginPassword));
 };
-/* @formatter:on */
 
 function login() {
     let validEmail = loginEmail.value.trim();
@@ -20,7 +19,6 @@ function login() {
         "password": validPassword
     }
 
-    /* @formatter:off */
     if (!isValidEmail(validEmail)) {
         console.log("wrong email");
         returnMessage.innerHTML = `Invalid email`;
@@ -33,9 +31,8 @@ function login() {
     }
     if (isValidEmail(validEmail) && isValidPassword(validPassword)) {
         console.log("Logged In");
-        loginUser(loginUrl, userDetails);
+        loginUser(loginUrl, userDetails).then(() => window.location = '../index.html');
     }
-    /* @formatter:on */
 }
 
 loginButton.addEventListener("click", function(e){
@@ -59,10 +56,11 @@ async function loginUser(loginUrl, userData) {
         console.log(json);
         if (response.status === 200) {
             console.log("OK");
-            localStorage.setItem("username", json.name)
-            localStorage.setItem("email", json.email)
-            localStorage.setItem("credits", json.credits)
-            localStorage.setItem("accessToken", json.accessToken)
+            localStorage.setItem("username", json.username);
+            localStorage.setItem("email", json.email);
+            localStorage.setItem("credits", json.credits);
+            localStorage.setItem("accessToken", json.accessToken);
+            localStorage.setItem("avatar", json.avatar);
             window.location = "../index.html";
         } else {
             returnMessage.innerHTML = json.error();
@@ -71,3 +69,4 @@ async function loginUser(loginUrl, userData) {
         console.log(error);
     }
 }
+
