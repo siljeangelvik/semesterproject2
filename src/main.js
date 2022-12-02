@@ -1,67 +1,39 @@
-// --- BASE --- //
-export const API_BASE_URL = 'https://api.noroff.dev';
-export { setupCounter } from "./counter";
-
-// IMPORT
-import './input.css';
+import './css/input.css';
 import './ganttchart/ganttchart.css';
-import './styles.scss';
+import './css/styles.scss'
 
-// LISTINGS
-export const listUrl = `${API_BASE_URL}/api/v1/auction/listings`;
-export const listData = document.getElementById("listData");
-export const listingsTitle = document.getElementById("listingsTitle");
-export const listingsMedia = document.getElementById("listingsMedia");
-export const listingsDescription = document.getElementById("listingsDescription");
-export const listingsTags = document.getElementById("listingsTags");
-export const listingsBids = document.getElementById("listingsBids");
-export const listingsBidButton = document.getElementById("listingBidButton");
+// MEDIA
+export const API_BASE_URL = 'https://api.noroff.dev/api/v1';
+// export javascriptLogo from '../../public/assets/javascript.svg';
 
-// REGISTER   /   LOGIN   /   LOGOUT
-export const registerUrl = `${API_BASE_URL}/api/v1/auction/auth/register`;
-export const loginUrl = `${API_BASE_URL}/api/v1/auction/auth/login`;
-export const returnMessage = document.querySelector('.error');
-export const loginButton = document.getElementById("loginButton");
-export const registerButton = document.getElementById("registerButton");
-export const logoutButton = document.getElementById('logoutButton');
-export const helloUsername = document.getElementById("helloUsername");
-// export const loginMessage = document.getElementById("loginMessage");
+// PAGES / VIEWS
+export { setupCounter } from './counter';
 
-//
-
-
-
-export const isValidUserName = username => {
-    let usernameRegex = /^[a-z0-9_æøå]{2,25}$/i;
-    return usernameRegex.test(String(username));
-};
-export const isValidEmail = email => {
-    const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
-    return emailRegex.test(String(email));
-};
-export const isValidPassword = password => {
-    let passwordRegex = /^[a-z0-9_æøå]{8,25}$/i;
-    return passwordRegex.test(String(password));
-};
-
-export let validUsername = password.value.trim();
-export let validEmail = email.value.trim();
-export let validPassword = password.value.trim();
-
-//
-
-
-export const loginEmail = document.getElementById("email");
-export const loginPassword = document.getElementById("password");
-
-export const registerUsername = document.getElementById("username");
-export const registerEmail = document.getElementById("email");
-export const registerPassword = document.getElementById("password");
-
-export const profileUsernameTop = document.getElementById("profileUsernameTop");
+// PROFILE
+export const profileButton = document.getElementById("profileButton"); // onclick check if localStorage has content or === null..
 export const profileUsername = document.getElementById("profileUsername");
-// export const profileUsernames = document.querySelectorAll('.profileUsername');
 export const profileAvatar = document.getElementById("profileAvatar");
 export const profileCredits = document.getElementById("profileCredits");
 export const profileEmail = document.getElementById("profileEmail");
 
+// ROOT HTML / LISTINGS
+export const listUrl = `${API_BASE_URL}/api/v1/auction/listings`;
+// export const listOutput = document.getElementById("listOutput");
+//export const createListingButton = document.getElementById("createListingButton"); // onclick check if localStorage has content or === null..
+//export const updateBidButton = document.getElementById("updateBidButton"); // onclick check if localStorage has content or === null..
+
+// REGISTER & LOGIN
+export const loginUrl = `${API_BASE_URL}/api/v1/auction/auth/login`;
+export const registerUrl = `${API_BASE_URL}/api/v1/auction/auth/register`;
+
+// LOCAL STORAGE
+//export const checkLocalStorage = document.querySelectorAll('.checkLocalStorage');
+
+// function onClick search-icon = focus search-input-field
+document.getElementById("focusButton").addEventListener("click", () => {
+    document.getElementById("myTextField").focus();
+});
+
+// welcome message to logged in user
+//export const helloUsername = document.getElementById("helloUsername");
+//helloUsername.innerHTML = localStorage.getItem("username");

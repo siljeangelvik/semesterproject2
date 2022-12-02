@@ -1,12 +1,35 @@
 /* @formatter:off */
-import { registerUrl, returnMessage, registerButton } from "../main";
+import { registerUrl } from "../main";
 
+const returnMessage = document.querySelectorAll(".error");
+export const username = document.getElementById("username");
+export const email = document.getElementById("email");
+export const password = document.getElementById("password");
+export const formSubmitButton = document.getElementById("formSubmit");
+
+
+const isValidUserName = username => {
+    let usernameRegex = /^[a-z0-9_æøå]{2,25}$/i;
+    return usernameRegex.test(String(username));
+};
+const isValidEmail = email => {
+    const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
+    return emailRegex.test(String(email));
+};
+const isValidPassword = password => {
+    let passwordRegex = /^[a-z0-9_æøå]{8,25}$/i;
+    return passwordRegex.test(String(password));
+};
 
 function register() {
-    const userDetails = {
-        "username": validUsername,
-        "email": validEmail,
-        "password": validPassword
+    let validUsername = username.value.trim();
+    let validEmail = email.value.trim();
+    let validPassword = password.value.trim();
+
+    const registerDetails = {
+        "username": username,
+        "email": email,
+        "password": password
     }
 
     if (!isValidUserName(validUsername)) {
@@ -26,13 +49,13 @@ function register() {
     }
     if (isValidUserName(validUsername) && isValidEmail(validEmail) && isValidPassword(validPassword)) {
         console.log("Registered User");
-        registerUser(registerUrl, userDetails);
+        registerUser(registerUrl, registerDetails);
         window.alert("You successfully registered a new account!");
-        window.location="../login/index.html";
+        // window.location="../login/index.html";
     }
 }
 
-registerButton.addEventListener("click", function(e){
+formSubmitButton.addEventListener("click", function(e){
     e.preventDefault();
     register();
 });
@@ -53,11 +76,11 @@ async function registerUser(registerUrl, userData) {
         console.log(json);
         if (response.status === 200) {
             // localStorage.setItem('credits', json.credits);
-            localStorage.setItem('accessToken', json.accessToken);
+            localStorage.setItem('accessToken', json.getToken());
             window.location = '../login/index.html';
             window.alert('You successfully registered a new user');
         } else {
-            returnMessage.innerHTML = json.error();
+            returnMessage.innerHTML = "Something is wrong";
         }
     } catch (error) {
         console.log(error);

@@ -82,6 +82,10 @@ Sets the new remote:
 Push the changes in your local repository to GitHub:     
 `git push -u origin main`
 
+### 🔸 Added Plugin for Dynamic Import
+Read more about package: [Here](https://www.npmjs.com/package/vite-plugin-dynamic-import)  
+`npm i vite-plugin-dynamic-import -D`  
+
 -
 
 ## 🔻 Obstacles
@@ -120,6 +124,7 @@ GitHub: [Docs](https://docs.github.com/en/rest/overview/permissions-required-for
 GitHub: [Adding local project to Git Repo](https://gist.github.com/alexpchin/102854243cd066f8b88e)  
 GitHub: [Managing Remote Repositories](https://docs.github.com/en/get-started/getting-started-with-git/managing-remote-repositories#switching-remote-urls-from-https-to-ssh)  
 Dev.to: [Host Free GitHub Pages](https://dev.to/github/how-to-host-your-first-site-for-free-on-github-pages-45ob)  
+Stackoverflow: [Loop through Object Array and Access Properties](https://stackoverflow.com/questions/16626735/how-to-loop-through-an-array-containing-objects-and-access-their-properties)  
 
 ### 🔹 Tools
 Video: [Install Tailwind with Vite](https://www.youtube.com/watch?v=c0UnSx06BCU)  
@@ -130,3 +135,10 @@ Codepen: [Tailwind Form](https://codepen.io/novenine/pen/xxKPrrG)
 Codepen: [Load More Content](https://codepen.io/huladesign/pen/NWqENmM)   
 Codepen: [Click to Open Search Input](https://codepen.io/matthieuSolente/pen/azVaNM?editors=0110)  
 Google: [Material Icons](https://fonts.google.com/icons)  
+
+
+---
+
+sort by:   
+recent =         "created": "2022-11-29T13:30:58.651Z"
+highest bids =         "amount": 50,
