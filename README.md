@@ -130,12 +130,14 @@ Stackoverflow: [Loop through Object Array and Access Properties](https://stackov
 Video: [Install Tailwind with Vite](https://www.youtube.com/watch?v=c0UnSx06BCU)  
 Video: [Setup Multiple Page Vite](https://www.youtube.com/watch?v=STeKBm67l6M)  
 Emojipedia: [Emojis](https://emojipedia.org/)    
+FreeCodeCamp: [CRUD](https://www.freecodecamp.org/news/learn-crud-operations-in-javascript-by-building-todo-app/)  
 Adobe: [Color Wheel](https://color.adobe.com/create/color-wheel)  
 Codepen: [Tailwind Form](https://codepen.io/novenine/pen/xxKPrrG)   
 Codepen: [LoadMore](https://codepen.io/tutsplus/pen/XWERxrv)
 Codepen: [Load More Content](https://codepen.io/huladesign/pen/NWqENmM)   
 Codepen: [Click to Open Search Input](https://codepen.io/matthieuSolente/pen/azVaNM?editors=0110) 
 Codepen: [Functioning Modal](https://codepen.io/f7deat/pen/JjROpPv)  
+Tailwind: [JavaScript Regular Modal](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/javascript/modals/regular)  
 Google: [Material Icons](https://fonts.google.com/icons)  
 
 

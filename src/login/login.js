@@ -1,5 +1,6 @@
 /* @formatter:off */
-import { loginUrl } from "../main";
+import { API_BASE_URL } from "../main";
+let loginURL = `${API_BASE_URL}/social/auth/login`;
 const returnMessage = document.querySelector(".error");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -14,9 +15,11 @@ const isValidPassword = password => {
     return passwordRegex.test(String(password));
 };
 
+
 function login() {
     let validEmail = email.value.trim();
     let validPassword = password.value.trim();
+    console.log(validEmail + validPassword);
 
     const loginDetails = {
         "email": validEmail,
@@ -35,17 +38,14 @@ function login() {
     }
     if (isValidEmail(validEmail) && isValidPassword(validPassword)) {
         console.log("Successful login");
-        loginUser(loginUrl, loginDetails);
-      //  window.location = '../index.html';
+        loginUser(loginURL, loginDetails);
+        console.log(loginDetails);
+        //  window.location = '../index.html';
     }
 }
 
-loginButton.addEventListener("click", function(e){
-    e.preventDefault();
-    login();
-});
 
-async function loginUser(loginUrl, userData) {
+async function loginUser(loginURL, userData) {
     console.log('USERDATA:' +  userData);
     try {
         const postData = {
@@ -55,22 +55,28 @@ async function loginUser(loginUrl, userData) {
             },
             body: JSON.stringify(userData),
         };
-        const response = await fetch(loginUrl, postData);
+
+        const response = await fetch(loginURL, postData);
         console.log(`response = ${response}`);
         const json = await response.json();
         console.log(json);
         if (response.status === 200) {
             console.log("OK");
-            localStorage.setItem("username", json.username);
-            localStorage.setItem("email", json.email);
-            localStorage.setItem("password", json.password);
-          //  localStorage.setItem("avatar", json.avatar);
-            window.location = '../login/index.html';
-        }
-        else {
-            returnMessage.innerHTML = json.error;
+            console.log(response.status);
+            localStorage.getItem("email");
+            localStorage.getItem("password");
+            // localStorage.setItem("avatar", json.avatar);
+            // window.location = '../login/index.html';
+        } else {
+            console.log("SOMETHING IS WRONG")
         }
     } catch (error) {
         console.log(error);
     }
 }
+
+// loginButton onclick = run login function
+loginButton.addEventListener("click", function(e){
+    e.preventDefault();
+    login();
+});

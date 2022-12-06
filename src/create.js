@@ -67,7 +67,7 @@ let inputTags = document.getElementById("createTags");
 let inputDescription = document.getElementById("createDescription");
 
 let msg = document.getElementById("msg");
-let createdListings = document.getElementById("createdListings");
+let cardContainer = document.getElementById("card-container");
 
 
 form.addEventListener("submit", (e) => {
@@ -103,7 +103,7 @@ let acceptData = () => {
 };
 
 const createPost = () => {
-    createdListings.innerHTML += `
+    cardContainer.innerHTML += `
 <div class="w-5/6 lg:w-1/2 mx-auto rounded">
     <div class="mb-4 bg-white text-grey-darker">
         <div class="appearance-none border rounded w-full py-2 px-3">
@@ -140,5 +140,5 @@ const createPost = () => {
     </div>
 </div>
   `;
-    input.value = "";
+    //   input.value = "";
 };
