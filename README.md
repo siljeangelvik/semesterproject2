@@ -139,7 +139,7 @@ Codepen: [Click to Open Search Input](https://codepen.io/matthieuSolente/pen/azV
 Codepen: [Functioning Modal](https://codepen.io/f7deat/pen/JjROpPv)  
 Tailwind: [JavaScript Regular Modal](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/javascript/modals/regular)  
 Google: [Material Icons](https://fonts.google.com/icons)  
-
+Medium: [node.js](https://medium.com/@sarthakmittal1461/to-build-login-sign-up-and-logout-restful-apis-with-node-js-using-jwt-authentication-f3d7287acca2)
 
 ---
 
