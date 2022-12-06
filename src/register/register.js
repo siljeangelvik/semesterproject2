@@ -1,12 +1,11 @@
 /* @formatter:off */
 import { registerUrl } from "../main";
 
-const returnMessage = document.querySelectorAll(".error");
-export const username = document.getElementById("username");
-export const email = document.getElementById("email");
-export const password = document.getElementById("password");
-export const formSubmitButton = document.getElementById("formSubmit");
-
+let returnMessage = document.querySelector(".error");
+const username = document.getElementById("username");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+const registerButton = document.getElementById("registerButton");
 
 const isValidUserName = username => {
     let usernameRegex = /^[a-z0-9_æøå]{2,25}$/i;
@@ -27,9 +26,9 @@ function register() {
     let validPassword = password.value.trim();
 
     const registerDetails = {
-        "username": username,
-        "email": email,
-        "password": password
+        "username": validUsername,
+        "email": validEmail,
+        "password": validPassword
     }
 
     if (!isValidUserName(validUsername)) {
@@ -48,14 +47,14 @@ function register() {
         return false;
     }
     if (isValidUserName(validUsername) && isValidEmail(validEmail) && isValidPassword(validPassword)) {
-        console.log("Registered User");
+        console.log("User registered: " + registerDetails);
         registerUser(registerUrl, registerDetails);
         window.alert("You successfully registered a new account!");
         // window.location="../login/index.html";
     }
 }
 
-formSubmitButton.addEventListener("click", function(e){
+registerButton.addEventListener("click", function(e){
     e.preventDefault();
     register();
 });
@@ -79,6 +78,10 @@ async function registerUser(registerUrl, userData) {
             localStorage.setItem('accessToken', json.getToken());
             window.location = '../login/index.html';
             window.alert('You successfully registered a new user');
+        }
+        if (response.status === 404 || response.status === 403) {
+            returnMessage.innerHTML = '404 or 403, User Exist?!';
+            setTimeout(window.location = "../login/index.html", 7000);
         } else {
             returnMessage.innerHTML = "Something is wrong";
         }

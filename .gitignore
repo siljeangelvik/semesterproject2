@@ -28,3 +28,5 @@ bootstrap-login.html
 bootstrap-register.html
 
 ./testing-things.js
+.src/create
+.src/test

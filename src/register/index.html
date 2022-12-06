@@ -53,10 +53,10 @@
                                type="password" placeholder="Your secure password">
                         <p class="text-grey text-xs mt-1">At least 6 characters</p>
                     </div>
-                    <div class="error"></div>
+                    <div class="error text-red-600 font-bold"></div>
                     <!-- BUTTON SUBMIT -->
                     <div class="flex items-center justify-between mt-8">
-                        <button id="formSubmit"
+                        <button id="registerButton"
                                 class="bg-green-500 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full"
                                 type="submit">
                             Sign Up
@@ -73,29 +73,31 @@
     <!-- Bottom Navbar Mobile -->
     <nav class="fixed bottom-0 inset-x-0 bg-green-500 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
 
-        <a href="../index.html" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black transition duration-300">
+        <a href="../index.html"
+           class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black transition duration-300">
     <span class="material-symbols-outlined">
       home
     </span>
         </a>
 
-        <button id="focusButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black transition duration-300">
+        <a id="focusButton" href="../index.html#backToTop"
+           class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black transition duration-300">
         <span class="material-symbols-outlined">
       search
     </span>
-        </button>
+        </a>
 
-        <button id="addListingButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
+        <button id="modalButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
     <span class="material-symbols-outlined">
       add_circle
     </span>
         </button>
 
-        <a href="#" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
+        <button class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
     <span class="material-symbols-outlined">
       person
     </span>
-        </a>
+        </button>
 
         <button id="logoutButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
     <span class="material-symbols-outlined">
@@ -104,15 +106,20 @@
         </button>
     </nav>
 
+    <!-- MODAL -->
+    <div id="modal" class="fixed z-10 overflow-y-auto top-0 w-full left-0 bg-grey-lightest bg-orange-400 hidden"></div>
+
     <!-- Footer -->
-    <footer class="w-full bg-grey-lighter py-8">
+    <footer class="invisible lg:visible w-full bg-grey-lighter py-8">
         <div class="container mx-auto text-center px-8">
-            <p class="text-grey-dark mb-2 text-sm">This is a product of <span class="font-bold">Angelvik</span></p>
+            <p class="text-grey-dark mb-2 text-sm">This is a product of <span
+                    class="font-bold">Angelvik</span></p>
         </div>
     </footer>
 </div>
 
 <script type="module" src="../main.js"></script>
 <script type="module" src="./register.js"></script>
+
 </body>
 </html>

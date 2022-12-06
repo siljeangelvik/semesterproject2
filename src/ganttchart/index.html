@@ -148,45 +148,49 @@
     </div>
 
     <!-- Bottom Navbar Mobile -->
-    <nav class="fixed bottom-0 inset-x-0 bg-red-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
+    <nav class="fixed bottom-0 inset-x-0 bg-orange-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
 
-        <a href="../index.html" class="w-full block py-5 px-3 text-center hover:bg-red-500 hover:text-black transition duration-300">
+        <a href="../index.html"
+           class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black transition duration-300">
     <span class="material-symbols-outlined">
       home
     </span>
         </a>
 
-        <button id="focusButton" class="w-full block py-5 px-3 text-center hover:bg-red-500 hover:text-black transition duration-300">
+        <a id="focusButton" href="../index.html#backToTop"
+           class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black transition duration-300">
         <span class="material-symbols-outlined">
       search
     </span>
-        </button>
+        </a>
 
-        <button id="addListingButton" class="w-full block py-5 px-3 text-center hover:bg-red-500 hover:text-black">
+        <button id="modalButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
     <span class="material-symbols-outlined">
       add_circle
     </span>
         </button>
 
-        <a href="../profile/index.html" id="userProfileLink"  class="w-full block py-5 px-3 text-center hover:bg-red-500 hover:text-black">
+        <button class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
     <span class="material-symbols-outlined">
       person
     </span>
-        </a>
+        </button>
 
-        <button id="logoutButton" class="w-full block py-5 px-3 text-center hover:bg-red-500 hover:text-black">
+        <button id="logoutButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
     <span class="material-symbols-outlined">
       logout
     </span>
         </button>
     </nav>
 
+    <!-- MODAL -->
+    <div id="modal" class="fixed z-10 overflow-y-auto top-0 w-full left-0 bg-grey-lightest bg-orange-400 hidden"></div>
+
     <!-- Footer -->
-    <footer class="w-full bg-grey-lighter py-8">
+    <footer class="invisible lg:visible w-full bg-grey-lighter py-8">
         <div class="container mx-auto text-center px-8">
-            <p class="text-grey-dark mb-2 text-sm">
-                <small>Made with <span>❤</span> by <a href="https://webdesign.tutsplus.com/tutorials/build-a-simple-gantt-chart-with-css-and-javascript--cms-33813" target="_blank">George Martsoukos</a></small>
-            </p>
+            <p class="text-grey-dark mb-2 text-sm">This is a product of <span
+                    class="font-bold">Angelvik</span></p>
         </div>
     </footer>
 </div>

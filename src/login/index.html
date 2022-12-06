@@ -33,7 +33,7 @@
         <div class="container mx-auto py-8">
             <div class="w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
                 <div class="py-4 px-8 text-black text-xl border-b border-grey-lighter">Sign in to your account</div>
-                <div class="py-4 px-8">
+                <form id="loginForm" class="py-4 px-8">
                     <div class="mb-4">
                         <label class="block text-grey-darker text-sm font-bold mb-2" for="email">Email Address</label>
                         <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email"
@@ -44,17 +44,17 @@
                         <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="password"
                                type="password" placeholder="Your secure password">
                     </div>
-                    <div class="error"></div>
+                    <div class="error text-red-600 font-bold"></div>
 
                     <!-- BUTTON SUBMIT -->
                     <div class="flex items-center justify-between mt-8">
-                        <button id="formSubmit"
+                        <button id="loginButton"
                                 class="bg-blue-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full"
                                 type="submit">
                             Sign In
                         </button>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="text-center my-4">
                 <p class="text-grey-dark mb-2 text-sm">I don't have an account. <a href="../register/index.html" class="font-bold">Sign up</a></p>
@@ -65,29 +65,31 @@
     <!-- Bottom Navbar Mobile -->
     <nav class="fixed bottom-0 inset-x-0 bg-blue-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
 
-        <a href="../index.html" class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black transition duration-300">
+        <a href="../index.html"
+           class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black transition duration-300">
     <span class="material-symbols-outlined">
       home
     </span>
         </a>
 
-        <button id="focusButton" class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black transition duration-300">
+        <a id="focusButton" href="../index.html#backToTop"
+           class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black transition duration-300">
         <span class="material-symbols-outlined">
       search
     </span>
-        </button>
+        </a>
 
-        <button id="addListingButton" class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black">
+        <button id="modalButton" class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black">
     <span class="material-symbols-outlined">
       add_circle
     </span>
         </button>
 
-        <a href="#" class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black">
+        <button class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black">
     <span class="material-symbols-outlined">
       person
     </span>
-        </a>
+        </button>
 
         <button id="logoutButton" class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black">
     <span class="material-symbols-outlined">
@@ -96,10 +98,14 @@
         </button>
     </nav>
 
+    <!-- MODAL -->
+    <div id="modal" class="fixed z-10 overflow-y-auto top-0 w-full left-0 bg-grey-lightest bg-orange-400 hidden"></div>
+
     <!-- Footer -->
-    <footer class="w-full bg-grey-lighter py-8">
+    <footer class="invisible lg:visible w-full bg-grey-lighter py-8">
         <div class="container mx-auto text-center px-8">
-            <p class="text-grey-dark mb-2 text-sm">This is a product of <span class="font-bold">Angelvik</span></p>
+            <p class="text-grey-dark mb-2 text-sm">This is a product of <span
+                    class="font-bold">Angelvik</span></p>
         </div>
     </footer>
 </div>

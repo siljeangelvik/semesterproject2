@@ -132,8 +132,10 @@ Video: [Setup Multiple Page Vite](https://www.youtube.com/watch?v=STeKBm67l6M)
 Emojipedia: [Emojis](https://emojipedia.org/)    
 Adobe: [Color Wheel](https://color.adobe.com/create/color-wheel)  
 Codepen: [Tailwind Form](https://codepen.io/novenine/pen/xxKPrrG)   
+Codepen: [LoadMore](https://codepen.io/tutsplus/pen/XWERxrv)
 Codepen: [Load More Content](https://codepen.io/huladesign/pen/NWqENmM)   
-Codepen: [Click to Open Search Input](https://codepen.io/matthieuSolente/pen/azVaNM?editors=0110)  
+Codepen: [Click to Open Search Input](https://codepen.io/matthieuSolente/pen/azVaNM?editors=0110) 
+Codepen: [Functioning Modal](https://codepen.io/f7deat/pen/JjROpPv)  
 Google: [Material Icons](https://fonts.google.com/icons)  
 
 

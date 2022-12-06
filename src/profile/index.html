@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Your Account</title>
     <!-- Google Material Icons -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
 </head>
 <body>
 <div class="font-sans antialiased bg-grey-lightest">
@@ -37,7 +38,7 @@
 
         <!-- Heading -->
         <div class="mt-12">
-            <h2 class="text-2xl text-center">Hello, <span id="profileUsernameTop" class="profileUsername font-bold"></span></h2>
+            <h2 class="text-2xl text-center">Your account <span id="profileUsernameTop" class="profileUsername font-bold"></span></h2>
         </div>
 
         <!-- Search -->
@@ -66,69 +67,83 @@
                             <span>Change Image</span>
                         </label>
                         <input id="file" type="file" onchange="loadFile();" class="profile-pic-input"/>
-                        <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="profileAvatar" width="200" alt="profile-avatar" class="profile-avatar"/>
+                        <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg"
+                             id="profileAvatar" width="200" alt="profile-avatar" class="profile-avatar"/>
                     </div>
                 </div>
 
                 <!-- profileCredits -->
                 <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
-                    <span class="text-md md:text-xl font-bold">Credits: </span>
+                    <span class="font-bold">Credits: </span>
                     <span id="profileCredits"></span>
                 </div>
 
                 <!-- profileUsername -->
                 <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
-                    <span class="text-md md:text-xl font-bold">Username: </span>
+                    <span class="font-bold">Username: </span>
                     <span id="profileUsername" class="profileUsername"></span>
                 </div>
 
                 <!-- ProfileEmail -->
                 <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
-                    <span class="text-md md:text-xl font-bold">Email: </span>
+                    <span class="font-bold">Email: </span>
                     <span id="profileEmail"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Self-made Listings -->
+        <div class="w-full bg-grey-lightest">
+            <div class="container mx-auto py-8">
+                <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
+
+                    <!-- Single Card -->
+                    <h3 class="text-xl font-bold">Your posts here</h3>
+                    <div id="posts"></div>
                 </div>
             </div>
         </div>
     </div>
 
+
     <!-- Bottom Navbar Mobile -->
     <nav class="fixed bottom-0 inset-x-0 bg-violet-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
 
-        <a href="index.html"
+        <a href="../index.html"
            class="w-full block py-5 px-3 text-center hover:bg-violet-500 hover:text-black transition duration-300">
     <span class="material-symbols-outlined">
       home
     </span>
         </a>
 
-        <button id="focusButton"
-                class="w-full block py-5 px-3 text-center hover:bg-violet-500 hover:text-black transition duration-300">
+        <a id="focusButton" href="../index.html#backToTop"
+           class="w-full block py-5 px-3 text-center hover:bg-violet-500 hover:text-black transition duration-300">
         <span class="material-symbols-outlined">
       search
     </span>
-        </button>
+        </a>
 
-        <button id="addListingButton"
-                class="w-full block py-5 px-3 text-center hover:bg-violet-500 hover:text-black">
+        <button id="modalButton" class="w-full block py-5 px-3 text-center hover:bg-violet-500 hover:text-black">
     <span class="material-symbols-outlined">
       add_circle
     </span>
         </button>
 
-        <a href="./index.html" id="userProfileLink"
-           class="w-full block py-5 px-3 text-center hover:bg-violet-500 hover:text-black">
+        <button class="w-full block py-5 px-3 text-center hover:bg-violet-500 hover:text-black">
     <span class="material-symbols-outlined">
       person
     </span>
-        </a>
+        </button>
 
-        <button id="logoutButton"
-                class="w-full block py-5 px-3 text-center hover:bg-yellow-400 hover:text-black">
+        <button id="logoutButton" class="w-full block py-5 px-3 text-center hover:bg-violet-500 hover:text-black">
     <span class="material-symbols-outlined">
       logout
     </span>
         </button>
     </nav>
+
+    <!-- MODAL -->
+    <div id="modal" class="fixed z-10 overflow-y-auto top-0 w-full left-0 bg-grey-lightest bg-orange-400 hidden"></div>
 
     <!-- Footer -->
     <footer class="invisible lg:visible w-full bg-grey-lighter py-8">
@@ -141,5 +156,7 @@
 
 <script type="module" src="../main.js"></script>
 <script type="module" src="./profile.js"></script>
+<script type="module" src="../create.js"></script>
+
 </body>
 </html>

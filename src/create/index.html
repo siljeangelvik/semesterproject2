@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TESTING</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+</head>
+<body>
+
+<div class="font-sans antialiased bg-grey-lightest">
+
+    <!-- Top Nav -->
+    <div class="absolute top-0 inset-x-0 w-full shadow z-1 bg-orange-400">
+        <div class="container mx-auto">
+            <div class="w-full flex justify-between items-center py-4 px-8">
+                <!-- Brand -->
+                <div class="text-center font-bold"><a href="../index.html">Asta</a></div>
+                <!-- Navigation -->
+                <div class="items-center invisible md:visible">
+                    <a href="../index.html"
+                       class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Listings</a>
+                    <a href="../login/index.html" class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign
+                        In</a>
+                    <a href="../register/index.html" class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign
+                        Up</a>
+                    <a href="../profile/index.html" class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Account</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Listing -->
+    <div class="w-full bg-grey-lightest" style="padding-top: 4rem;">
+        <div id="createPost" class="container mx-auto py-8">
+            <div class="w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
+                <div class="py-4 px-8 text-black text-xl border-b border-grey-lighter">Create a listing</div>
+                <form id="createForm" class="py-4 px-8">
+                    <div class="flex justify-between gap-0.5">
+                        <div class="mb-4">
+                            <label class="block text-grey-darker text-sm font-bold mb-2" for="createTitle">Title</label>
+                            <input id="createTitle"
+                                   class="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                                   type="text" placeholder="Title">
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-grey-darker text-sm font-bold mb-2" for="createMedia">Media</label>
+                            <input id="createMedia" type="text" placeholder="Media"
+                                   class="appearance-none border rounded w-full py-2 px-3 text-grey-darker">
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-grey-darker text-sm font-bold mb-2" for="createTags">Tags</label>
+                        <input id="createTags" type="text" placeholder="Tags"
+                               class="appearance-none border rounded w-full py-2 px-3 text-grey-darker">
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="block text-grey-darker text-sm font-bold mb-2" for="posts">Description</label>
+                        <textarea id="createDescription" name="posts" cols="30" rows="3"
+                                  class="appearance-none border rounded w-full py-2 px-3 text-grey-darker"></textarea>
+                    </div>
+
+                    <div id="msg"></div>
+
+                    <!-- BUTTON SUBMIT -->
+                    <div class="flex items-center justify-between mt-8">
+                        <button id="createSubmit"
+                                class="bg-orange-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full"
+                                type="reset">
+                            Add
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Listings -->
+    <div class="w-full bg-grey-lightest">
+        <div id="card-container" class="right container mx-auto py-8">
+            <!-- Single Card -->
+            <h3>Your posts here</h3>
+            <div id="posts">
+                hello
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Bottom Navbar Mobile -->
+<nav class="fixed bottom-0 inset-x-0 bg-orange-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
+
+    <a href="../index.html"
+       class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black transition duration-300">
+    <span class="material-symbols-outlined">
+      home
+    </span>
+    </a>
+
+    <a id="focusButton" href="../index.html#backToTop"
+       class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black transition duration-300">
+        <span class="material-symbols-outlined">
+      search
+    </span>
+    </a>
+
+    <button id="modalButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
+    <span class="material-symbols-outlined">
+      add_circle
+    </span>
+    </button>
+
+    <button class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
+    <span class="material-symbols-outlined">
+      person
+    </span>
+    </button>
+
+    <button id="logoutButton" class="w-full block py-5 px-3 text-center hover:bg-green-600 hover:text-black">
+    <span class="material-symbols-outlined">
+      logout
+    </span>
+    </button>
+</nav>
+
+<!-- MODAL -->
+<div id="modal" class="fixed z-10 overflow-y-auto top-0 w-full left-0 bg-grey-lightest bg-orange-400 hidden"></div>
+
+<!-- Footer -->
+<footer class="invisible lg:visible w-full bg-grey-lighter py-8">
+    <div class="container mx-auto text-center px-8">
+        <p class="text-grey-dark mb-2 text-sm">This is a product of <span
+                class="font-bold">Angelvik</span></p>
+    </div>
+</footer>
+
+<script type="module" src="../main.js"></script>
+<script type="module" src="./create.js"></script>
+
+</body>
+</html>

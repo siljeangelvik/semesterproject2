@@ -37,11 +37,12 @@
 
         <!-- Heading -->
         <div class="mt-12">
-            <h2 class="text-2xl text-center"><strong>Asta</strong> Auction Application<span id="profileUsernameTop" class="profileUsername font-bold"></span></h2>
+            <h2 class="text-2xl text-center"><strong>Asta</strong> Auction Application<span id="profileUsernameTop" class="profileUsername font-bold"></span>
+            </h2>
         </div>
 
         <!-- Search -->
-        <div class="w-full bg-grey-lightest">
+        <div id="backToTop" class="w-full bg-grey-lightest">
             <div class="container mx-auto py-8">
                 <div class="w-5/6 lg:w-1/2 mx-auto rounded">
                     <div class="mb-4">
@@ -55,82 +56,85 @@
 
         <!-- Content Cards Container -->
         <div class="w-full bg-grey-lightest">
-            <div class="container mx-auto py-8" >
-
-                <!-- Listing All Cards -->
-                <button id="outputDataButton" class="bg-yellow-500 border px-3 py-1 mt-4 rounded-full font-bold text-white">
-                    All listings
-                </button>
+            <div id="card-container" class="container mx-auto py-8">
                 <!-- Single Card -->
-                <div id="outputData"></div>
-
-            </div>
-            <!-- Button Load More -->
-            <div class="container mx-auto py-8">
-                <div class="flex items-center justify-between mt-8">
-                    <div class="text-xs">.</div>
-                    <button id="fetchDataButton"
-                            class="bg-yellow-500 border px-3 py-1 mt-4 rounded-full font-bold text-white">
-                        Load more
-                    </button>
-                    <!-- Display Amount of Listings -->
-                    <span class="text-sm">Showing
-            <span id="card-count" class=" text-md font-bold"></span> of
-            <span id="card-total" class=" text-md font-bold"></span> cards
-                    </span>
-                </div>
             </div>
         </div>
 
-        <!-- Mobile Navbar Bottom -->
-        <nav class="fixed bottom-0 inset-x-0 bg-yellow-500 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
+        <!-- Button Load More -->
+        <div class="w-full bg-grey-lightest">
+            <div class="container mx-auto py-4">
+                <div class="w-5/6 lg:w-1/2 mx-auto rounded">
+                <div class="flex items-center justify-between mt-8">
+                    <!-- amount of listings -->
+                    <span class="text-sm">.
+            <span id="card-count" class=" text-md font-bold"></span>
+            <span id="card-total" class=" text-md font-bold"></span>
+                    </span>
+                    <!-- button load more -->
+                    <button id="load-more"
+                            class="bg-yellow-500 hover:bg-yellow-600 border px-3 py-1 mt-4 rounded-full font-bold text-white">
+                        Load more
+                    </button>
+                    <!-- back top -->
+                    <a href="#backToTop" class="text-xs">Back to top</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <a href="index.html"
-               class="w-full block py-5 px-3 text-center hover:bg-yellow-400 hover:text-black transition duration-300">
+    <!-- Bottom Navbar Mobile -->
+    <nav class="fixed bottom-0 inset-x-0 bg-yellow-500 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
+
+        <a href="./index.html"
+           class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-300">
     <span class="material-symbols-outlined">
       home
     </span>
-            </a>
+        </a>
 
-            <button id="focusButton"
-                    class="w-full block py-5 px-3 text-center hover:bg-yellow-400 hover:text-black transition duration-300">
+        <a id="focusButton" href="./index.html#backToTop"
+           class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-300">
         <span class="material-symbols-outlined">
       search
     </span>
-            </button>
+        </a>
 
-            <button id="addListingButton"
-                    class="w-full block py-5 px-3 text-center hover:bg-yellow-400 hover:text-black">
+        <button id="modalButton" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
     <span class="material-symbols-outlined">
       add_circle
     </span>
-            </button>
+        </button>
 
-            <a href="profile/index.html" id="userProfileLink"
-               class="w-full block py-5 px-3 text-center hover:bg-yellow-400 hover:text-black">
+        <button class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
     <span class="material-symbols-outlined">
       person
     </span>
-            </a>
+        </button>
 
-            <button id="logoutButton"
-                    class="w-full block py-5 px-3 text-center hover:bg-yellow-400 hover:text-black">
+        <button id="logoutButton" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
     <span class="material-symbols-outlined">
       logout
     </span>
-            </button>
-        </nav>
+        </button>
+    </nav>
 
-        <!-- Footer -->
-        <footer class="invisible lg:visible w-full bg-grey-lighter py-8">
-            <div class="container mx-auto text-center px-8">
-                <p class="text-grey-dark mb-2 text-sm">This is a product of <span
-                        class="font-bold">Angelvik</span></p>
-            </div>
-        </footer>
-    </div>
+    <!-- MODAL -->
+    <div id="modal" class="fixed z-10 overflow-y-auto top-0 w-full left-0 bg-grey-lightest bg-orange-400 hidden"></div>
+
+    <!-- Footer -->
+    <footer class="invisible lg:visible w-full bg-grey-lighter py-8">
+        <div class="container mx-auto text-center px-8">
+            <p class="text-grey-dark mb-2 text-sm">This is a product of <span
+                    class="font-bold">Angelvik</span></p>
+        </div>
+    </footer>
 </div>
-    <script type="module" src="listings.js"></script>
-    <script type="module" src="main.js"></script>
+
+<script type="module" src="listings.js"></script>
+<script type="module" src="main.js"></script>
+<script type="module" src="./create.js"></script>
+
 </body>
 </html>
