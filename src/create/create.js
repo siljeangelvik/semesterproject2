@@ -48,14 +48,8 @@ modal.innerHTML = `
   </div>
 `;
 
-let modalButton = document.getElementById("modalButton");
-modalButton.addEventListener('click', (e) => {
-    modal.classList.remove('hidden');
-    console.log('Modal Opened');
-})
-
 let modalExit = document.getElementById("modalExit");
-modalExit.addEventListener('click', (e) => {
+modalExit.addEventListener('click', () => {
     modal.classList.add('hidden');
 })
 

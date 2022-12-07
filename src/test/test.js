@@ -1,105 +1,81 @@
-/* @formatter:on */
-console.log('TEST.JS');
-import {listingsUrl} from "../main";
+/* @formatter:off */
+import { loginUrl } from "../main";
+import { loginButton } from "../login/login";
+const returnMessage = document.querySelector(".error");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
-const cardContainer = document.getElementById("cardContainer");
-const loadMoreButton = document.getElementById("load-more");
+const isValidEmail = email => {
+    const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
+    return emailRegex.test(String(email));
+};
+const isValidPassword = password => {
+    let passwordRegex = /^[a-z0-9_æøå]{8,25}$/i;
+    return passwordRegex.test(String(password));
+};
 
-// gets data from API and sets the content of #result div
-fetch(listingsUrl)
-    .then(response => response.json())
-    .then(parsedData => {
-        console.log(parsedData);
-        listOutArray(parsedData);
-    })
-    .catch((error) => cardContainer.innerHTML = "Something's wrong!" + error)
-    .finally(() => document.getElementById("loader").remove());
+// validate input and create object from input value
+function login() {
+    let validEmail = email.value.trim();
+    let validPassword = password.value.trim();
 
+    const loginDetails = {
+        "email": validEmail,
+        "password": validPassword,
+    }
 
-// listing out all items from array
-function listOutArray(listings) {
-    console.log(listings);
-    listings.forEach((listing) => {
-        cardContainer.innerHTML += `
-    <div class="card-item w-5/6 lg:w-1/2 mx-auto rounded">
-        <div class="mb-4 bg-white text-grey-darker">
-            <div class="appearance-none border rounded w-full py-2 px-3">
-                <!-- Heading -->
-                <div class="w-full flex justify-between py-2 border-b">
-                    <!-- Listing Title -->
-                    <h2 class="text-2xl font-bold py-2">${listing.title}</h2>
-                    <!-- Listing Bids -->
-                    <p class="font-bold py-4">Bids:
-                   <button id="cardAmountBids" class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-2 rounded-full" type="submit">${listing["_count"].bids}</button>
-                  </p>
-                </div>
-                <!-- Listing Image -->
-                <img id="cardMedia"
-                    src="${listing.media}"
-                    alt="listing-media-image" class="w-full text-center py-4 px-1">
-                     <!-- Listing Time -->
-                <p id="cardTime" class="py-2 border-t">${listing.time}</p>
-                <!-- Listing Description -->
-                <p id="cardDescription" class="py-2 border-t">${listing.description}</p>
-                <!-- Listing Bids & Bid Button -->
-                <div class="w-full flex justify-between py-4">
-                    <!-- Listing Tags -->
-                    <p id="cardTags" class="w-full py-2 flex justify-between text-sm font-bold font-mono">${listing.tags}</p>
-                    <!-- Listing Bid Button -->
-                    <div class="flex justify-between">
-                        <button id="cardBidButton" class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded" type="submit">Bid</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`;
-    })
-    listOutArrayChunk();
-}
-
-// listing out chunks of 10 items from array
-function listOutArrayChunk (listings) {
-    listings = cardContainer.children;
-    console.log('ALL POSTS = ' + listings.length);
-    console.log(listings);
-    // This is the number of posts you want displayed
-    let numberOfListingsToShow = 2;
-    for (let i = 0; i < listings.length; i++) {
-        console.log(numberOfListingsToShow);
-        if(i > numberOfListingsToShow - 1) {
-            listings[i].style.display = "none";
-        }
+    if (!isValidEmail(validEmail)) {
+        console.log("wrong email");
+        returnMessage.innerHTML = `Invalid email`;
+        return false;
+    }
+    if (!isValidPassword(validPassword)) {
+        console.log("wrong pass");
+        returnMessage.innerHTML = `Invalid password`;
+        return false;
+    }
+    if (isValidEmail(validEmail) && isValidPassword(validPassword)) {
+        loginUser(loginUrl, loginDetails);
+        console.log(`Successful login\n\n ${loginDetails}`);
     }
 }
 
-// button load more items from array
-loadMoreButton.addEventListener('click', (e) => {
+// send input values using POST method and save in localStorage
+async function loginUser(loginUrl, userData) {
+    console.log('USERDATA:' +  userData);
+    try {
+        const postData = {
+            method: "POST",
+            headers: {
+                "content-Type": "application/json",
+            },
+            body: JSON.stringify(userData),
+        };
+
+        const response = await fetch(loginUrl, postData);
+        // console.log(`response = ${response}`);
+        const json = await response.json();
+        // console.log(json);
+        if (!response.ok) {
+            console.log(json.errors[0].message);
+            returnMessage.innerHTML = `${json.errors[0].message}`;
+            throw new Error();
+        }
+        console.log("OK");
+        console.log(response.status);
+        localStorage.setItem("name", json.name);
+        localStorage.setItem("email", json.email);
+        localStorage.setItem("credits", json.credits);
+        localStorage.setItem("accessToken", json.accessToken);
+        window.location = '../index.html';
+
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// loginButton onclick = run login validation function
+loginButton.addEventListener("click", function(e){
     e.preventDefault();
-    console.log("LOAD MORE BUTTON HAS BEEN CLICKED");
-    listOutArrayChunk();
-})
-
-
-
-
-///////////
-/////////
-
-
-/*
-
-let listings = cardContainer.children;
-console.log('ALL POSTS = ' + listings.length);
-console.log(listings);
-
-document.addEventListener("DOMContentLoaded", loadMoreButton.onclick(() => {
-    // This is the number of posts you want displayed
-    let numberOfListingsToShow = 10;
-    for (let i = 0; i < listings.length; i++) {
-
-        if(i > numberOfListingsToShow - 1) {
-            listings[i].style.display = "none";
-        }
-    }
-}));
- */
+    login();
+});

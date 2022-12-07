@@ -1,11 +1,14 @@
-let modal = document.getElementById("modal");
+
+// menu create listing -
+const modal = document.getElementById("modal");
+const modalButton = document.getElementById("modalButton");
 modal.innerHTML = `
   <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
     <div class="fixed inset-0 transition-opacity">
       <div class="absolute inset-0 bg-gray-900 opacity-75" />
     </div>
     <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-    <form id="form" class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+    <form id="form" class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" aria-labelledby="modal-headline">
 
           <div class="bg-orange-400 py-4 px-8 text-black text-xl border-b border-grey-lighter">Create a listing</div>
 
@@ -48,14 +51,18 @@ modal.innerHTML = `
   </div>
 `;
 
-let modalButton = document.getElementById("modalButton");
-modalButton.addEventListener('click', (e) => {
+modalButton.addEventListener('click', () => {
+    if (!localStorage.getItem("accessToken")) {
+        window.alert("You need to be logged in to add a listing");
+        window.location = '../login/index.html';
+    }
     modal.classList.remove('hidden');
     console.log('Modal Opened');
 })
 
+
 let modalExit = document.getElementById("modalExit");
-modalExit.addEventListener('click', (e) => {
+modalExit.addEventListener('click', () => {
     modal.classList.add('hidden');
 })
 
@@ -102,6 +109,8 @@ let acceptData = () => {
     createPost();
 };
 
+// send acceptData to API using POST method
+
 const createPost = () => {
     cardContainer.innerHTML += `
 <div class="w-5/6 lg:w-1/2 mx-auto rounded">
@@ -140,5 +149,5 @@ const createPost = () => {
     </div>
 </div>
   `;
- //   input.value = "";
+    //   input.value = "";
 };

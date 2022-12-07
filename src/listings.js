@@ -8,7 +8,7 @@ const loadMoreButton = document.getElementById("load-more");
 fetch(listingsUrl)
     .then(response => response.json())
     .then(parsedData => {
-       // console.log(parsedData);
+        // console.log(parsedData);
         listOutArray(parsedData);
     })
     .catch((error) => cardContainer.innerHTML = "Something's wrong!" + error)
@@ -28,8 +28,8 @@ function listOutArray(listings) {
                     <!-- Listing Title -->
                     <h2 class="text-2xl font-bold py-2">${listing.title}</h2>
                     <!-- Listing Bids -->
-                    <p class="font-bold py-4">Bids:
-                   <button id="cardAmountBids" class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-2 rounded-full" type="submit">${listing["_count"].bids}</button>
+                    <p id="cardBids" class="font-bold pt-3 font-bold px-2 rounded">Bids:
+                   <span id="cardAmountBids" class="visible px-2 bg-yellow-400 text-white rounded-full">${listing["_count"].bids}</span>
                   </p>
                 </div>
                 <!-- Listing Image -->
@@ -57,14 +57,14 @@ function listOutArray(listings) {
 }
 
 // listing out chunks of 10 items from array
-function listOutArrayChunk (listings) {
+function listOutArrayChunk(listings) {
     listings = cardContainer.children;
     console.log('LISTINGS:\n\nALL POSTS = ' + listings.length);
     // console.log(listings);
     // This is the number of posts you want displayed
     let numberOfListingsToShow = 2;
     for (let i = 0; i < listings.length; i++) {
-        if(i > numberOfListingsToShow - 1) {
+        if (i > numberOfListingsToShow - 1) {
             listings[i].style.display = "none";
         }
     }
@@ -75,4 +75,17 @@ loadMoreButton.addEventListener('click', (e) => {
     e.preventDefault();
     console.log("LOAD MORE BUTTON HAS BEEN CLICKED");
     listOutArrayChunk();
-})
+});
+
+// listing bids - if you're logged in, display the amount of bids
+/*
+const cardAmountBids = document.getElementById("cardAmountBids");
+if (!localStorage.getItem("name")) {
+    cardAmountBids.innerHTML = " ";
+    cardAmountBids.style.display = 'none';
+    cardAmountBids.classList.add('hidden');
+    cardAmountBids.classList.add('invisible');
+    cardAmountBids.classList.remove('visible');
+    window.location.reload();
+}
+*/
