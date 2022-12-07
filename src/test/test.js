@@ -1,82 +1,105 @@
-/* @formatter:off */
-import { API_BASE_URL } from "../main";
-let loginURL = `${API_BASE_URL}/social/auth/login`;
-const returnMessage = document.querySelector(".error");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
-const loginButton = document.getElementById("loginButton");
+/* @formatter:on */
+console.log('TEST.JS');
+import {listingsUrl} from "../main";
 
-const isValidEmail = email => {
-    const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
-    return emailRegex.test(String(email));
-};
-const isValidPassword = password => {
-    let passwordRegex = /^[a-z0-9_æøå]{8,25}$/i;
-    return passwordRegex.test(String(password));
-};
+const cardContainer = document.getElementById("cardContainer");
+const loadMoreButton = document.getElementById("load-more");
+
+// gets data from API and sets the content of #result div
+fetch(listingsUrl)
+    .then(response => response.json())
+    .then(parsedData => {
+        console.log(parsedData);
+        listOutArray(parsedData);
+    })
+    .catch((error) => cardContainer.innerHTML = "Something's wrong!" + error)
+    .finally(() => document.getElementById("loader").remove());
 
 
-function login() {
-    let validEmail = email.value.trim();
-    let validPassword = password.value.trim();
-    console.log(validEmail + validPassword);
-
-    const loginDetails = {
-        "email": validEmail,
-        "password": validPassword
-    }
-
-    if (!isValidEmail(validEmail)) {
-        console.log("wrong email");
-        returnMessage.innerHTML = `Invalid email`;
-        return false;
-    }
-    if (!isValidPassword(validPassword)) {
-        console.log("wrong pass");
-        returnMessage.innerHTML = `Invalid password`;
-        return false;
-    }
-    if (isValidEmail(validEmail) && isValidPassword(validPassword)) {
-        console.log("Successful login");
-        loginUser(loginURL, loginDetails);
-        console.log(loginDetails);
-        //  window.location = '../index.html';
-    }
+// listing out all items from array
+function listOutArray(listings) {
+    console.log(listings);
+    listings.forEach((listing) => {
+        cardContainer.innerHTML += `
+    <div class="card-item w-5/6 lg:w-1/2 mx-auto rounded">
+        <div class="mb-4 bg-white text-grey-darker">
+            <div class="appearance-none border rounded w-full py-2 px-3">
+                <!-- Heading -->
+                <div class="w-full flex justify-between py-2 border-b">
+                    <!-- Listing Title -->
+                    <h2 class="text-2xl font-bold py-2">${listing.title}</h2>
+                    <!-- Listing Bids -->
+                    <p class="font-bold py-4">Bids:
+                   <button id="cardAmountBids" class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-2 rounded-full" type="submit">${listing["_count"].bids}</button>
+                  </p>
+                </div>
+                <!-- Listing Image -->
+                <img id="cardMedia"
+                    src="${listing.media}"
+                    alt="listing-media-image" class="w-full text-center py-4 px-1">
+                     <!-- Listing Time -->
+                <p id="cardTime" class="py-2 border-t">${listing.time}</p>
+                <!-- Listing Description -->
+                <p id="cardDescription" class="py-2 border-t">${listing.description}</p>
+                <!-- Listing Bids & Bid Button -->
+                <div class="w-full flex justify-between py-4">
+                    <!-- Listing Tags -->
+                    <p id="cardTags" class="w-full py-2 flex justify-between text-sm font-bold font-mono">${listing.tags}</p>
+                    <!-- Listing Bid Button -->
+                    <div class="flex justify-between">
+                        <button id="cardBidButton" class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold py-2 px-4 rounded" type="submit">Bid</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+    })
+    listOutArrayChunk();
 }
 
-
-async function loginUser(loginURL, userData) {
-    console.log('USERDATA:' +  userData);
-    try {
-        const postData = {
-            method: "POST",
-            headers: {
-                "content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-        };
-
-        const response = await fetch(loginURL, postData);
-        console.log(`response = ${response}`);
-        const json = await response.json();
-        console.log(json);
-        if (response.status === 200) {
-            console.log("OK");
-            console.log(response.status);
-            localStorage.getItem("email");
-            localStorage.getItem("password");
-            // localStorage.setItem("avatar", json.avatar);
-            // window.location = '../login/index.html';
-        } else {
-            console.log("SOMETHING IS WRONG")
+// listing out chunks of 10 items from array
+function listOutArrayChunk (listings) {
+    listings = cardContainer.children;
+    console.log('ALL POSTS = ' + listings.length);
+    console.log(listings);
+    // This is the number of posts you want displayed
+    let numberOfListingsToShow = 2;
+    for (let i = 0; i < listings.length; i++) {
+        console.log(numberOfListingsToShow);
+        if(i > numberOfListingsToShow - 1) {
+            listings[i].style.display = "none";
         }
-    } catch (error) {
-        console.log(error);
     }
 }
 
-// loginButton onclick = run login function
-loginButton.addEventListener("click", function(e){
+// button load more items from array
+loadMoreButton.addEventListener('click', (e) => {
     e.preventDefault();
-    login();
-});
+    console.log("LOAD MORE BUTTON HAS BEEN CLICKED");
+    listOutArrayChunk();
+})
+
+
+
+
+///////////
+/////////
+
+
+/*
+
+let listings = cardContainer.children;
+console.log('ALL POSTS = ' + listings.length);
+console.log(listings);
+
+document.addEventListener("DOMContentLoaded", loadMoreButton.onclick(() => {
+    // This is the number of posts you want displayed
+    let numberOfListingsToShow = 10;
+    for (let i = 0; i < listings.length; i++) {
+
+        if(i > numberOfListingsToShow - 1) {
+            listings[i].style.display = "none";
+        }
+    }
+}));
+ */

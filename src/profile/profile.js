@@ -3,7 +3,7 @@ import { profileButton, profileUsername, profileAvatar, profileCredits, profileE
 // update profile avatar
 export const loadFile = (event) => profileAvatar.src = URL.createObjectURL(event.target.files[0]);
 
-profileUsername.innerHTML = localStorage.getItem('username');
+profileUsername.innerHTML = localStorage.getItem('name');
 profileEmail.innerHTML = localStorage.getItem('email');
 profileCredits.innerHTML = localStorage.getItem('credits');
 

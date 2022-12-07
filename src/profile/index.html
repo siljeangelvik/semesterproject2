@@ -37,12 +37,13 @@
     <div class="w-full bg-grey-lightest" style="padding-top: 2rem;">
 
         <!-- Heading -->
-        <div class="mt-12">
-            <h2 class="text-2xl text-center">Your account <span id="profileUsernameTop" class="profileUsername font-bold"></span></h2>
+        <div class="mt-12 text-center">
+            <h1 id="logoutHidden" class="text-2xl">Hi, <span id="welcomeUser" class="font-bold"></span>.</h1>
+            <h2 class="text-xl"><strong>Asta</strong> Profile Account</h2>
         </div>
 
         <!-- Search -->
-        <div class="w-full bg-grey-lightest">
+        <div class="hidden w-full bg-grey-lightest">
             <div class="container mx-auto py-8">
                 <div class="w-5/6 lg:w-1/2 mx-auto rounded">
                     <div class="mb-4">
@@ -57,54 +58,57 @@
         <!-- Content Cards Container -->
         <div class="w-full bg-grey-lightest">
             <div class="container mx-auto py-8">
-
-
-                <!-- profileAvatar -->
-                <div class="w-5/6 lg:w-1/2 mx-auto">
-                    <div class="profile-pic">
-                        <label class="-label" for="file">
-                            <span class="glyphicon glyphicon-camera"></span>
-                            <span>Change Image</span>
-                        </label>
-                        <input id="file" type="file" onchange="loadFile();" class="profile-pic-input"/>
-                        <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg"
-                             id="profileAvatar" width="200" alt="profile-avatar" class="profile-avatar"/>
+                <div class="appearance-none border rounded w-full py-2 px-3 bg-white py-8">
+                    <!-- profileAvatar -->
+                    <div class="w-5/6 lg:w-1/2 mx-auto">
+                        <div class="profile-pic">
+                            <label class="-label" for="file">
+                                <span class="glyphicon glyphicon-camera"></span>
+                                <span>Change Image</span>
+                            </label>
+                            <input id="file" type="file" onchange="loadFile();" class="profile-pic-input"/>
+                            <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg"
+                                 id="profileAvatar" width="200" alt="profile-avatar" class="profile-avatar"/>
+                        </div>
                     </div>
-                </div>
 
-                <!-- profileCredits -->
-                <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
-                    <span class="font-bold">Credits: </span>
-                    <span id="profileCredits"></span>
-                </div>
+                    <!-- profileCredits -->
+                    <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
+                        <span class="font-bold">Credits: </span>
+                        <span id="profileCredits"></span>
+                    </div>
 
-                <!-- profileUsername -->
-                <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
-                    <span class="font-bold">Username: </span>
-                    <span id="profileUsername" class="profileUsername"></span>
-                </div>
+                    <!-- profileUsername -->
+                    <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
+                        <span class="font-bold">Username: </span>
+                        <span id="profileUsername" class="profileUsername"></span>
+                    </div>
 
-                <!-- ProfileEmail -->
-                <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
-                    <span class="font-bold">Email: </span>
-                    <span id="profileEmail"></span>
+                    <!-- ProfileEmail -->
+                    <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
+                        <span class="font-bold">Email: </span>
+                        <span id="profileEmail"></span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Self-made Listings -->
+        <!-- Posts -->
         <div class="w-full bg-grey-lightest">
             <div class="container mx-auto py-8">
-                <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
-
-                    <!-- Single Card -->
-                    <h3 class="text-xl font-bold">Your posts here</h3>
-                    <div id="posts"></div>
+                <div class="appearance-none w-full py-2 px-3">
+                    <!-- Posts Heading -->
+                    <div class="w-5/6 lg:w-1/2 mx-auto flex justify-between">
+                        <h3 class="w-full text-left text-xl font-bold text-left">Your posts here</h3>
+                    </div>
+                    <!-- Posts -->
+                    <div class="w-5/6 lg:w-1/2 mx-auto flex justify-between">
+                        <div id="profileCards"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!-- Bottom Navbar Mobile -->
     <nav class="fixed bottom-0 inset-x-0 bg-violet-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
@@ -157,6 +161,7 @@
 <script type="module" src="../main.js"></script>
 <script type="module" src="./profile.js"></script>
 <script type="module" src="../create.js"></script>
+<script type="module" src="../logout.js"></script>
 
 </body>
 </html>

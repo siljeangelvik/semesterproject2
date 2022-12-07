@@ -140,5 +140,5 @@ const createPost = () => {
     </div>
 </div>
   `;
-    //   input.value = "";
+ //   input.value = "";
 };

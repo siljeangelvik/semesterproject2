@@ -1,10 +1,9 @@
 /* @formatter:off */
-import { API_BASE_URL } from "../main";
-let loginURL = `${API_BASE_URL}/social/auth/login`;
+import { loginUrl } from "../main";
 const returnMessage = document.querySelector(".error");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-const loginButton = document.getElementById("loginButton");
+export const loginButton = document.getElementById("loginButton");
 
 const isValidEmail = email => {
     const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
@@ -15,15 +14,14 @@ const isValidPassword = password => {
     return passwordRegex.test(String(password));
 };
 
-
+// validate input and create object from input value
 function login() {
     let validEmail = email.value.trim();
     let validPassword = password.value.trim();
-    console.log(validEmail + validPassword);
 
     const loginDetails = {
         "email": validEmail,
-        "password": validPassword
+        "password": validPassword,
     }
 
     if (!isValidEmail(validEmail)) {
@@ -38,14 +36,14 @@ function login() {
     }
     if (isValidEmail(validEmail) && isValidPassword(validPassword)) {
         console.log("Successful login");
-        loginUser(loginURL, loginDetails);
+        loginUser(loginUrl, loginDetails);
         console.log(loginDetails);
-        //  window.location = '../index.html';
+       // window.location = '../index.html';
     }
 }
 
-
-async function loginUser(loginURL, userData) {
+// send input values using POST method and save in localStorage
+async function loginUser(loginUrl, userData) {
     console.log('USERDATA:' +  userData);
     try {
         const postData = {
@@ -56,26 +54,29 @@ async function loginUser(loginURL, userData) {
             body: JSON.stringify(userData),
         };
 
-        const response = await fetch(loginURL, postData);
-        console.log(`response = ${response}`);
+        const response = await fetch(loginUrl, postData);
+        // console.log(`response = ${response}`);
         const json = await response.json();
-        console.log(json);
-        if (response.status === 200) {
-            console.log("OK");
-            console.log(response.status);
-            localStorage.getItem("email");
-            localStorage.getItem("password");
-            // localStorage.setItem("avatar", json.avatar);
-            // window.location = '../login/index.html';
-        } else {
-            console.log("SOMETHING IS WRONG")
+        // console.log(json);
+        if (!response.ok) {
+            console.log(json.errors[0].message);
+            returnMessage.innerHTML = `${json.errors[0].message}`;
+            throw new Error();
         }
+        console.log("OK");
+        console.log(response.status);
+        localStorage.setItem("name", json.name);
+        localStorage.setItem("email", json.email);
+        localStorage.setItem("credits", json.credits);
+        localStorage.setItem("accessToken", json.accessToken);
+        window.location = '../index.html';
+
     } catch (error) {
         console.log(error);
     }
 }
 
-// loginButton onclick = run login function
+// loginButton onclick = run login validation function
 loginButton.addEventListener("click", function(e){
     e.preventDefault();
     login();

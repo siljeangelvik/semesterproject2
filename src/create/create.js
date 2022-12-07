@@ -5,7 +5,7 @@ modal.innerHTML = `
       <div class="absolute inset-0 bg-gray-900 opacity-75" />
     </div>
     <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
-    <form id="form" class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+    <form id="form" class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" aria-labelledby="modal-headline">
 
           <div class="bg-orange-400 py-4 px-8 text-black text-xl border-b border-grey-lighter">Create a listing</div>
 
@@ -101,6 +101,8 @@ let acceptData = () => {
 
     createPost();
 };
+
+// send acceptData to API using POST method
 
 const createPost = () => {
     cardContainer.innerHTML += `

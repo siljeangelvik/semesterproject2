@@ -4,10 +4,9 @@
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="/assets/vite.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Login to Vite App</title>
+    <title>Welcome to Vite App</title>
     <!-- Google Material Icons -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
 </head>
 <body>
 <div class="font-sans antialiased bg-grey-lightest">
@@ -36,10 +35,9 @@
     <div class="w-full bg-grey-lightest" style="padding-top: 2rem;">
 
         <!-- Heading -->
-        <div class="mt-12">
-            <h2 class="text-2xl text-center"><strong>Asta</strong> Auction Application<span id="profileUsernameTop"
-                                                                                            class="profileUsername font-bold"></span>
-            </h2>
+        <div class="mt-12 text-center">
+            <h1 id="logoutHidden" class="text-2xl">Welcome, <span id="welcomeUser" class="font-bold"></span>!</h1>
+            <h2 class="text-xl"><strong>Asta</strong> Auction Application</h2>
         </div>
 
         <!-- Search -->
@@ -58,9 +56,13 @@
 
         <!-- Content Cards Container -->
         <div class="w-full bg-grey-lightest">
-            <div class="container mx-auto py-8">
-                <div class="w-5/6 lg:w-1/2 mx-auto pt-8 flex justify-between">
-                    <div id="card-container posts" class="container mx-auto py-8">
+            <div class="container mx-auto py-2">
+                <div id="cardContainer" class="container mx-auto py-2">
+                </div>
+                <!-- Loader -->
+                <div id="loader" class="flex justify-center items-center">
+                    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                        <span class="visually-hidden font-bold">(</span>
                     </div>
                 </div>
             </div>
@@ -112,13 +114,14 @@
     </span>
             </button>
 
-            <button class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
+            <button id="profilePageButton" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
     <span class="material-symbols-outlined">
       person
     </span>
             </button>
 
-            <button id="logoutButton" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
+            <button id="logoutButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    class="loggedIn w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-150 ease-in-out">
     <span class="material-symbols-outlined">
       logout
     </span>
@@ -126,8 +129,7 @@
         </nav>
 
         <!-- MODAL -->
-        <div id="modal"
-             class="fixed z-10 overflow-y-auto top-0 w-full left-0 bg-grey-lightest bg-orange-400 hidden"></div>
+        <div id="modal" class="fixed z-10 overflow-y-auto top-0 w-full left-0 bg-grey-lightest bg-orange-400 hidden"></div>
     </div>
     <!-- Footer -->
     <footer class="invisible lg:visible w-full bg-grey-lighter py-8">
@@ -138,9 +140,11 @@
     </footer>
 </div>
 
-<script type="module" src="listings.js"></script>
-<script type="module" src="main.js"></script>
+<script type="module" src="./main.js"></script>
+<script type="module" src="./listings.js"></script>
 <script type="module" src="./create.js"></script>
+<script type="module" src="./logout.js"></script>
+<script type="module" src="./logged-in.js"></script>
 
 </body>
 </html>
