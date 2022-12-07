@@ -1,81 +1,42 @@
-/* @formatter:off */
-import { loginUrl } from "../main";
-import { loginButton } from "../login/login";
-const returnMessage = document.querySelector(".error");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
+// GET retrieve all to-do’s
+fetch(`https://jsonplaceholder.typicode.com/todos`)
+    .then(response => response.json())
+    .then(json => console.log(json))
+// will return all resources
 
-const isValidEmail = email => {
-    const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
-    return emailRegex.test(String(email));
-};
-const isValidPassword = password => {
-    let passwordRegex = /^[a-z0-9_æøå]{8,25}$/i;
-    return passwordRegex.test(String(password));
-};
 
-// validate input and create object from input value
-function login() {
-    let validEmail = email.value.trim();
-    let validPassword = password.value.trim();
-
-    const loginDetails = {
-        "email": validEmail,
-        "password": validPassword,
-    }
-
-    if (!isValidEmail(validEmail)) {
-        console.log("wrong email");
-        returnMessage.innerHTML = `Invalid email`;
-        return false;
-    }
-    if (!isValidPassword(validPassword)) {
-        console.log("wrong pass");
-        returnMessage.innerHTML = `Invalid password`;
-        return false;
-    }
-    if (isValidEmail(validEmail) && isValidPassword(validPassword)) {
-        loginUser(loginUrl, loginDetails);
-        console.log(`Successful login\n\n ${loginDetails}`);
-    }
+// GET retrieves the to-do with specific URI (in this case id = 5)
+fetch(`https://jsonplaceholder.typicode.com/todos/5`)
+    .then(response => response.json())
+    .then(json => console.log(json))
+/* will return this specific resource:
+{
+“userId”: 1,
+“id”: 5,
+“title”: “laboriosam mollitia et enim quasi adipisci quia provident illum”,
+“completed”: false
 }
+ */
 
-// send input values using POST method and save in localStorage
-async function loginUser(loginUrl, userData) {
-    console.log('USERDATA:' +  userData);
-    try {
-        const postData = {
-            method: "POST",
-            headers: {
-                "content-Type": "application/json",
-            },
-            body: JSON.stringify(userData),
-        };
 
-        const response = await fetch(loginUrl, postData);
-        // console.log(`response = ${response}`);
-        const json = await response.json();
-        // console.log(json);
-        if (!response.ok) {
-            console.log(json.errors[0].message);
-            returnMessage.innerHTML = `${json.errors[0].message}`;
-            throw new Error();
-        }
-        console.log("OK");
-        console.log(response.status);
-        localStorage.setItem("name", json.name);
-        localStorage.setItem("email", json.email);
-        localStorage.setItem("credits", json.credits);
-        localStorage.setItem("accessToken", json.accessToken);
-        window.location = '../index.html';
-
-    } catch (error) {
-        console.log(error);
-    }
+// POST adds a random id to the object sent
+fetch(`https://jsonplaceholder.typicode.com/todos`, {
+    method: "POST",
+    body: JSON.stringify({
+        userId: 1,
+        title: "clean room",
+        completed: false
+    }),
+    headers: {
+"Content-type": "application/json charset=UTF-8"
 }
+})
+    .then(response => response.json())
+    .then(json => console.log(json))
 
-// loginButton onclick = run login validation function
-loginButton.addEventListener("click", function(e){
-    e.preventDefault();
-    login();
-});
+/* will return
+{“userId”: 1,
+“title”: “clean room”,
+“completed”: false,
+“id”: 201}
+ */

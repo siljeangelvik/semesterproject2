@@ -1,3 +1,4 @@
+import {createUrl} from "./main";
 
 // menu create listing -
 const modal = document.getElementById("modal");
@@ -60,7 +61,6 @@ modalButton.addEventListener('click', () => {
     console.log('Modal Opened');
 })
 
-
 let modalExit = document.getElementById("modalExit");
 modalExit.addEventListener('click', () => {
     modal.classList.add('hidden');
@@ -74,7 +74,7 @@ let inputTags = document.getElementById("createTags");
 let inputDescription = document.getElementById("createDescription");
 
 let msg = document.getElementById("msg");
-let cardContainer = document.getElementById("card-container");
+let cardContainer = document.getElementById("cardContainer");
 
 
 form.addEventListener("submit", (e) => {
@@ -99,9 +99,9 @@ let formValidation = () => {
 let data = {};
 
 let acceptData = () => {
-    data["text"] = inputTitle.value;
-    data["time"] = inputTime.value;
-    data["url"] = inputMedia.value;
+    data["title"] = inputTitle.value;
+    data["endsAt"] = inputTime.value;
+    data["media"] = inputMedia.value;
     data["tags"] = inputTags.value;
     data["description"] = inputDescription.value;
     console.log(data);
@@ -109,8 +109,19 @@ let acceptData = () => {
     createPost();
 };
 
-// send acceptData to API using POST method
+// POST object send
+fetch(createUrl, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+        "Content-type": "application/json charset=UTF-8"
+    }
+})
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .then(acceptData)
 
+// create post
 const createPost = () => {
     cardContainer.innerHTML += `
 <div class="w-5/6 lg:w-1/2 mx-auto rounded">
@@ -118,15 +129,15 @@ const createPost = () => {
         <div class="appearance-none border rounded w-full py-2 px-3">
             <div class="w-full flex justify-between py-2 border-b">
             <!-- Listing Title -->
-                <h2 class="text-2xl font-bold py-2">${data.text}</h2>
+                <h2 class="text-2xl font-bold py-2">${data.title}</h2>
                 <!-- Listing Bids -->
                 <p class="font-bold py-4">
-                    <button id="cardAmountBids" class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-2 rounded-full">${data.time}</button>
+                    <button id="cardAmountBids" class="bg-yellow-500 hover:bg-yellow-400 text-white font-bold px-2 rounded-full">${data.endsAt}</button>
                 </p>
             </div>
             <!-- Listing Image -->
             <img id="cardMedia"
-            src="${data.url}"
+            src="${data.media}"
             alt="listing-media-image" class="w-full text-center py-4 px-1">
             <!-- Listing Description -->
             <p id="cardDescription" class="py-2 border-t">${data.description}</p>
@@ -149,5 +160,6 @@ const createPost = () => {
     </div>
 </div>
   `;
-    //   input.value = "";
+//    inputTitle.value = "";
 };
+

@@ -9,7 +9,7 @@ export const API_BASE_URL = 'https://api.noroff.dev/api/v1/auction';
 export const listingsUrl = `${API_BASE_URL}/listings`;
 export const loginUrl = `${API_BASE_URL}/auth/login`;
 export const registerUrl = `${API_BASE_URL}/auth/register`;
-
+export const createUrl = `${API_BASE_URL}/listings`
 
 // PROFILE
 export const profileUsername = document.getElementById("profileUsername");
