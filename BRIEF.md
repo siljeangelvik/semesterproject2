@@ -89,3 +89,40 @@ All final changes must be merged into the default branch `main` or `master`.
 Other branches will not be checked.
 
 ~~Ensure that the `readme.md` file describes your project thoroughly, including how to setup and run the project locally and any special instructions for testers.~~
+
+
+## Notes
+
+> #### A user with a `stud.noroff.no` email may register  
+> Successful ✅
+
+> #### A registered user may login   
+> Successful ✅
+
+> #### A registered user may logout  
+> Successful ✅
+
+> #### A registered user may update their avatar  
+> Successful ✅
+
+> #### A registered user may view their total credit  
+> Successful ✅
+
+> #### A registered user may create a `Listing` with a title, deadline date, media gallery and description  
+
+> #### A registered user may add a `Bid` to another user’s `Listing`  
+
+> #### A registered user may view `Bids` made on a `Listing`  
+
+> #### A registered user may use credit to make a `Bid` on another user’s `Listing`  
+
+> #### An unregistered user may search through `Listings`  
+
+---
+
+Listings: filter 
+> show 10 posts at a time
+> show listings with most `bids`
+> show top 10 listings that `endsAt`
+> show top 10 **recent** listings that was `created`
+> 

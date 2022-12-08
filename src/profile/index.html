@@ -22,11 +22,13 @@
                 <div class="items-center invisible md:visible">
                     <a href="../index.html"
                        class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Listings</a>
-                    <a href="../login/index.html" class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign
+                    <a href="../login/index.html"
+                       class="visible text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign
                         In</a>
-                    <a href="../register/index.html" class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign
+                    <a href="../register/index.html"
+                       class="visible text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign
                         Up</a>
-                    <a href="./index.html"
+                    <a href="../profile/index.html"
                        class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Account</a>
                 </div>
             </div>
@@ -38,8 +40,9 @@
 
         <!-- Heading -->
         <div class="mt-12 text-center">
-            <h1 class="text-2xl">Asta Auction Application</h1>
-            <h2 id="welcomeContainer" class="text-xl invisible">Hello, <span id="welcomeUser" class="font-bold"></span>!</h2>
+            <h1 class="text-2xl">Profile Account</h1>
+            <h2 id="welcomeContainer" class="text-xl invisible"><span id="welcomeUser"
+                                                                      class="welcomeUser font-bold"></span></h2>
         </div>
 
         <!-- Search -->
@@ -55,21 +58,64 @@
             </div>
         </div>
 
-        <!-- Content Cards Container -->
+        <!-- CONTENT -->
         <div class="w-full bg-grey-lightest">
             <div class="container mx-auto py-8">
                 <div class="appearance-none border rounded w-full py-2 px-3 bg-white py-8">
-                    <!-- profileAvatar -->
                     <div class="w-5/6 lg:w-1/2 mx-auto">
-                        <div class="profile-pic">
-                            <label class="-label" for="file">
-                                <span class="glyphicon glyphicon-camera"></span>
-                                <span>Change Image</span>
-                            </label>
-                            <input id="file" type="file" onchange="loadFile();" class="profile-pic-input"/>
-                            <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg"
-                                 id="profileAvatar" width="200" alt="profile-avatar" class="profile-avatar"/>
+                        <div class="w-full mb-4 text-center flex flex-col justify-center">
+                            <div id="avatarContainer" class="justify-center">
+                                <div class="profile-pic openAvatarChange">
+                                    <label class="-label" for="profileUpdateAvatar">
+                                        <span class="glyphicon glyphicon-camera block text-grey-darker text-sm font-bold mb-2">Change Image</span>
+                                    </label>
+                                    <input id="profileUpdateAvatar" type="url" placeholder="Change avatar"
+                                           class="profile-pic-input appearance-none border rounded w-full py-2 px-3 text-grey-darker"/>
+                                    <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg"
+                                         id="profileAvatar" width="150" alt="profile-avatar" class="profile-avatar"/>
+                                </div>
+                            </div>
+
+                            <!-- Hidden Update Avatar Box -->
+                            <div class="container mx-auto py-8 changeAvatarBox hidden">
+                                <div class="appearance-none border shadow rounded w-full py-2 px-3 bg-grey-lightest py-8">
+                                    <div class="w-5/6 lg:w-1/2 mx-auto">
+                                        <div class="">
+                                            <p class="font-bold w-full text-left">Update profile avatar using external
+                                                URL:</p>
+                                            <div class="error text-left text-red-600 py-2"></div>
+                                            <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                                                   id="profileAvatarInput"
+                                                   type="url"
+                                                   pattern="/^(https?:\/\/)?[0-9a-zA-Z]+\.[-_0-9a-zA-Z]+\.[0-9a-zA-Z]+$/gi"
+                                                   placeholder="Https://example.com/photo_something.jpg">
+                                            <div class="flex justify-items-start gap-4 w-full pt-3">
+                                                <button id="updateAvatarButton" type="button"
+                                                        class="rounded py-2 px-2 text-gray-900 font-bold uppercase bg-violet-400 mt-2">
+                                                    Update avatar
+                                                </button>
+                                                <button id="avatarUpdateCloseButton" type="button"
+                                                        class="rounded py-2 px-4 text-gray-900 font-bold uppercase bg-gray-300 mt-2">
+                                                    Close
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- current avatar -->
+                            <div>
+                                <p class="w-full text-center flex flex-col pt-4 font-bold">
+                                    Current avatar URL:
+                                    <span class="avatarCurrent text-center profile-avatar block font-medium text-grey-darker text-sm mb-2 text-center pt-2 pb-4"></span>
+                                </p>
+                            </div>
+
+
                         </div>
+
                     </div>
 
                     <!-- profileCredits -->
@@ -89,21 +135,43 @@
                         <span class="font-bold">Email: </span>
                         <span id="profileEmail"></span>
                     </div>
+                    <div class="error"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Posts -->
+        <!-- Cards Container -->
         <div class="w-full bg-grey-lightest">
-            <div class="container mx-auto py-8">
-                <div class="appearance-none w-full py-2 px-3">
-                    <!-- Posts Heading -->
-                    <div class="w-5/6 lg:w-1/2 mx-auto flex justify-between">
-                        <h3 class="w-full text-left text-xl font-bold text-left">Your posts here</h3>
+            <div class="container mx-auto py-2">
+                <div id="profileCardContainer" class="container mx-auto py-2">
+                </div>
+                <!-- Loader -->
+                <div id="loader" class="flex justify-center items-center">
+                    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                        <span class="visually-hidden font-bold">(</span>
                     </div>
-                    <!-- Posts -->
-                    <div class="w-5/6 lg:w-1/2 mx-auto flex justify-between">
-                        <div id="profileCards"></div>
+                </div>
+            </div>
+
+
+            <!-- Button Load More -->
+            <div class="w-full bg-grey-lightest">
+                <div class="container mx-auto py-4">
+                    <div class="w-5/6 lg:w-1/2 mx-auto rounded">
+                        <div class="flex items-center justify-between mt-8">
+                            <!-- amount of listings -->
+                            <span class="text-sm">.
+            <span id="card-count" class=" text-md font-bold"></span>
+            <span id="card-total" class=" text-md font-bold"></span>
+                    </span>
+                            <!-- button load more -->
+                            <button id="load-more"
+                                    class="bg-yellow-500 hover:bg-yellow-600 border px-3 py-1 mt-4 rounded-full font-bold text-white">
+                                Load more
+                            </button>
+                            <!-- back top -->
+                            <a href="/" class="text-xs">Back to top</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -133,7 +201,8 @@
     </span>
         </button>
 
-        <a href="./index.html" id="profilePageButton" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
+        <a href="../profile/index.html" id="profilePageButton"
+           class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
     <span class="material-symbols-outlined">
       person
     </span>
@@ -160,8 +229,8 @@
 
 <script type="module" src="../main.js"></script>
 <script type="module" src="./profile.js"></script>
-<script type="module" src="../create.js"></script>
 <script type="module" src="../logout.js"></script>
 
+<!--<script type="module" src="../listings.js"></script>-->
 </body>
 </html>

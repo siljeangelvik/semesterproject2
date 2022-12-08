@@ -1,8 +1,7 @@
-/* @formatter:on */
-import {listingsUrl} from "./main";
+/* @formatter:off */
+import {API_BASE_URL, loadMoreButton } from "./main";
 
-const cardContainer = document.getElementById("cardContainer");
-const loadMoreButton = document.getElementById("load-more");
+export const listingsUrl = `${API_BASE_URL}/listings`;
 
 // gets data from API and sets the content of #result div
 fetch(listingsUrl)
@@ -19,7 +18,7 @@ fetch(listingsUrl)
 function listOutArray(listings) {
     console.log(listings);
     listings.forEach((listing) => {
-        cardContainer.innerHTML += `
+        document.getElementById("cardContainer").innerHTML += `
     <div class="card-item w-5/6 lg:w-1/2 mx-auto rounded">
         <div class="mb-4 bg-white text-grey-darker">
             <div class="appearance-none border rounded w-full py-2 px-3">
@@ -58,7 +57,7 @@ function listOutArray(listings) {
 
 // listing out chunks of 10 items from array
 function listOutArrayChunk(listings) {
-    listings = cardContainer.children;
+    listings = document.getElementById("cardContainer").children;
     console.log('LISTINGS:\n\nALL POSTS = ' + listings.length);
     // console.log(listings);
     // This is the number of posts you want displayed

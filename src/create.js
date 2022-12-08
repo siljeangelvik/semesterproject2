@@ -1,8 +1,10 @@
-import {createUrl} from "./main";
+/* formatter:off */
+import { API_LISTINGS_URL } from "./main";
 
-// menu create listing -
 const modal = document.getElementById("modal");
 const modalButton = document.getElementById("modalButton");
+
+// menu: add listing - input fields
 modal.innerHTML = `
   <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
     <div class="fixed inset-0 transition-opacity">
@@ -52,6 +54,8 @@ modal.innerHTML = `
   </div>
 `;
 
+
+// if user is not logged in, modal hidden
 modalButton.addEventListener('click', () => {
     if (!localStorage.getItem("accessToken")) {
         window.alert("You need to be logged in to add a listing");
@@ -61,65 +65,83 @@ modalButton.addEventListener('click', () => {
     console.log('Modal Opened');
 })
 
-let modalExit = document.getElementById("modalExit");
-modalExit.addEventListener('click', () => {
+// button close modal, if modal is open
+document.getElementById("modalExit").addEventListener('click', () => {
     modal.classList.add('hidden');
 })
 
+
 let form = document.getElementById("form");
-let inputTitle = document.getElementById("createTitle");
-let inputTime = document.getElementById("createTime");
+//let inputTime = document.getElementById("createTime");
 let inputMedia = document.getElementById("createMedia");
 let inputTags = document.getElementById("createTags");
 let inputDescription = document.getElementById("createDescription");
-
-let msg = document.getElementById("msg");
+//let msg = document.getElementById("msg");
 let cardContainer = document.getElementById("cardContainer");
+let inputTitle = document.getElementById("createTitle");
+
+let listingItem = {
+    "title": inputTitle.value,
+    "avatar": inputMedia.value,
+    "tags": inputTags.value,
+    "description": inputDescription.value
+};
 
 
+// function post new listing to api
+function setListing(newListing) {
+    localStorage.setItem("avatar", newListing)
+    console.log("NEW PIC")
+    console.log(newListing);
+}
+
+
+// function if avatar-input-value is empty, display error message // valid input-value: runs updateAvatarAPI function
 form.addEventListener("submit", (e) => {
+
     e.preventDefault();
-    console.log("button clicked");
+    console.log(listingItem);
 
-    formValidation();
-});
-
-let formValidation = () => {
-    if (inputTitle.value === "") {
-        msg.innerHTML = "Post cannot be blank";
-        console.log("failure");
-    } else {
-        console.log("success");
-        msg.innerHTML = "";
-        modal.classList.add('hidden');
-        acceptData();
-    }
-};
-
-let data = {};
-
-let acceptData = () => {
-    data["title"] = inputTitle.value;
-    data["endsAt"] = inputTime.value;
-    data["media"] = inputMedia.value;
-    data["tags"] = inputTags.value;
-    data["description"] = inputDescription.value;
-    console.log(data);
-
-    createPost();
-};
-
-// POST object send
-fetch(createUrl, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-        "Content-type": "application/json charset=UTF-8"
-    }
+    createListingAPI(API_LISTINGS_URL, listingItem);
+//    window.location.reload();
+    console.log("LISTING");
+    console.log(listingItem);
 })
-    .then(response => response.json())
-    .then(json => console.log(json))
-    .then(acceptData)
+
+
+
+// gets data from API and sets the content of #result div
+async function createListingAPI(API_LISTINGS_URL, listing) {
+    try {
+        const postData = {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                "content-Type": "application/json",
+            },
+            body: JSON.stringify({listing}),
+        };
+
+        const response = await fetch(API_LISTINGS_URL, postData);
+        console.log(response);
+        if (!response.ok) {
+            console.log(json.errors[0].message);
+            returnMessage.innerHTML = `${json.errors[0].message}`;
+            throw new Error();
+        }
+        const json = await response.json();
+        console.log(json);
+
+        console.log("OK");
+        console.log(response.status);
+
+        setListing(json.listing);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
 
 // create post
 const createPost = () => {
@@ -160,6 +182,4 @@ const createPost = () => {
     </div>
 </div>
   `;
-//    inputTitle.value = "";
 };
-

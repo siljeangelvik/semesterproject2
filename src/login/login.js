@@ -1,5 +1,7 @@
 /* @formatter:off */
-import { loginUrl } from "../main";
+import {API_BASE_URL } from "../main";
+export const loginUrl = `${API_BASE_URL}/auth/login`;
+
 const returnMessage = document.querySelector(".error");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
@@ -69,6 +71,8 @@ async function loginUser(loginUrl, userData) {
         localStorage.setItem("email", json.email);
         localStorage.setItem("credits", json.credits);
         localStorage.setItem("accessToken", json.accessToken);
+        localStorage.setItem("avatar", json.avatar);
+
         window.location = '../index.html';
 
     } catch (error) {
