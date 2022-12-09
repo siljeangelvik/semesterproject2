@@ -148,36 +148,28 @@
     </div>
 
     <!-- Bottom Navbar Mobile -->
-    <nav class="fixed bottom-0 inset-x-0 bg-red-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
-
-        <a href="./index.html"
-           class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-300">
+    <nav class="fixed bottom-0 inset-x-0 bg-violet-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
+        <a href="./index.html" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-300">
     <span class="material-symbols-outlined">
       home
     </span>
         </a>
-
-        <a id="focusButton" href="../index.html/#backToTop"
-           class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-300">
-        <span class="material-symbols-outlined">
+        <button id="focusButton" class="searchFocusButton w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
+     <span class="material-symbols-outlined">
       search
     </span>
-        </a>
-
-        <button id="modalButton" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
+        </button>
+        <button id="modalButton" data-bs-toggle="modal" data-bs-target="modal" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
     <span class="material-symbols-outlined">
       add_circle
     </span>
         </button>
-
-        <a href="../profile/index.html" id="profilePageButton" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
-    <span class="material-symbols-outlined">
+        <button id="profilePageButton" type="button" class="loggedIn profilePageButton w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-150 ease-in-out">
+      <span class="material-symbols-outlined">
       person
     </span>
-        </a>
-
-        <button id="logoutButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                class="loggedIn w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-150 ease-in-out">
+        </button>
+        <button id="logoutButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="loggedIn logoutButton w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-150 ease-in-out">
     <span class="material-symbols-outlined">
       logout
     </span>

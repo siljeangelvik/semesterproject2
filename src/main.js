@@ -48,9 +48,9 @@ if (localStorage.getItem("accessToken")) {
 // menu profile button - if you're not logged in, write alert and redirect to log in
 const profilePageButton = document.getElementById("profilePageButton");
 profilePageButton.addEventListener('click', () => {
-    if (!localStorage.getItem("accessToken")) {
-        window.alert("You need to be logged in to view your profile page");
-        window.location = '../login/index.html';
+    if (localStorage.getItem("accessToken")) {
+        window.location = '../profile/index.html';
     }
-    window.location = '../profile/index.html';
+    window.alert("You need to be logged in to view your profile page");
+    window.location = '../login/index.html';
 })

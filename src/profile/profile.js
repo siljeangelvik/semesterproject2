@@ -3,27 +3,32 @@ import {API_BASE_URL } from "../main";
 let updateAvatarUrl = `${API_BASE_URL}/profiles/${localStorage.getItem("name")}/media`;
 
 const returnMessage = document.querySelector(".error");
-let avatarInput = document.getElementById("profileAvatarInput").value;
+let avatarInput = document.getElementById("profileAvatarInput");
 let avatarImage = ``;
 
 // function update avatar endpoint to a new avatar
-function updateAvatar(newAvatar) {
-    localStorage.setItem("avatar", newAvatar)
-    console.log("NEW PIC")
-    console.log(newAvatar);
+async function updateAvatar() {
+    document.getElementById("profileAvatar").src = localStorage.getItem('avatar');
+    document.querySelector('.avatarCurrent').innerHTML = localStorage.getItem('avatar');
+
+    console.log('test');
 }
 
 // function if avatar-input-value is empty, display error message // valid input-value: runs updateAvatarAPI function
-document.getElementById("updateAvatarButton").addEventListener('click', () => {
-    if (!avatarInput) {
+document.getElementById("updateAvatarButton").addEventListener('click', async() => {
+    if (!avatarInput.value) {
         returnMessage.innerHTML = "You need to enter a valid URL";
-        avatarInput.clear;
+        console.log("test");
+        avatarInput.value = '';
+        return;
     }
-    returnMessage.remove();
-    avatarImage = avatarInput;
 
-    updateAvatarAPI(updateAvatarUrl, avatarImage);
-   // window.location.reload();
+    // returnMessage.remove();
+    avatarImage = avatarInput.value;
+
+   await updateAvatarAPI(updateAvatarUrl, avatarImage);
+   document.querySelector(".changeAvatarBox").classList.add('hidden');
+    // window.location.reload();
     console.log("AVATAR IMG");
     console.log(avatarImage);
 })
@@ -49,11 +54,13 @@ async function updateAvatarAPI(updateAvatarUrl, avatar) {
             returnMessage.innerHTML = `${json.errors[0].message}`;
             throw new Error();
         }
-
         console.log("OK");
         console.log(response.status);
+        await localStorage.setItem("avatar", json.avatar)
 
-        updateAvatar(json.avatar);
+        await updateAvatar(avatarImage);
+
+        ;
     } catch (error) {
         console.log(error);
     }

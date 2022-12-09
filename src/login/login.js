@@ -71,7 +71,6 @@ async function loginUser(loginUrl, userData) {
         localStorage.setItem("email", json.email);
         localStorage.setItem("credits", json.credits);
         localStorage.setItem("accessToken", json.accessToken);
-        localStorage.setItem("avatar", json.avatar);
 
         window.location = '../index.html';
 

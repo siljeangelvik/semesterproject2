@@ -1,6 +1,6 @@
 // logout function to multiple elements
-[...document.querySelectorAll('.logoutButton')].forEach(function(item) {
-    item.addEventListener('click', function() {
+[...document.querySelectorAll('.logoutButton')].forEach(function (item) {
+    item.addEventListener('click', function () {
         console.log(item.innerHTML);
         if (localStorage.getItem("accessToken")) {
             console.log("You're logged in");
@@ -9,23 +9,24 @@
             localStorage.removeItem("name");
             localStorage.removeItem("email");
             localStorage.removeItem("credits");
+            localStorage.removeItem("avatar");
 
             // window.location.reload();
-            window.location = '../index.html';
-        } else {
-            console.log("TEST");
-            window.location = '../login/index.html';
+            window.location.href = '/index.html';
         }
+        console.log("TEST");
+        window.location.href = '../login/index.html';
     });
 });
 
 // hide elements when logged out
-[...document.querySelectorAll('.logoutHidden')].forEach(function(item) {
-        console.log(item.innerHTML);
-        if (!localStorage.getItem("accessToken")) {
-            document.querySelectorAll('.logoutHidden').style.display = 'none';
-        }
+[...document.querySelectorAll('.logoutHidden')].forEach(function (item) {
+    console.log(item.innerHTML);
+    if (!localStorage.getItem("accessToken")) {
+        document.querySelectorAll('.logoutHidden').style.display = 'none';
+    }
 });
+
 
 // logout button function
 /*

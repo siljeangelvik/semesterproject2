@@ -6,7 +6,6 @@ let returnMessage = document.querySelector(".error");
 const username = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-const avatar = document.getElementById("avatar");
 const registerButton = document.getElementById("registerButton");
 
 const isValidUserName = username => {
@@ -22,20 +21,16 @@ const isValidPassword = password => {
     return passwordRegex.test(String(password));
 };
 
-
-
 // validate input and create object from input value
 function register() {
     let validUsername = username.value.trim();
     let validEmail = email.value.trim();
     let validPassword = password.value.trim();
-    let validAvatar = avatar.value.trim();
 
     const registerDetails = {
         "name": validUsername,
         "email": validEmail,
         "password": validPassword,
-        "avatar": validAvatar
 
     }
 
@@ -54,10 +49,7 @@ function register() {
         returnMessage.innerHTML = `Invalid password`;
         return false;
     }
-    if (!isValidAvatar(validAvatar)) {
-        console.log("invalid url");
-        returnMessage.innerHTML = `Invalid URL`;
-    }
+
     if (isValidUserName(validUsername) && isValidEmail(validEmail) && isValidPassword(validPassword)) {
         console.log("User registered: " + registerDetails);
         registerUser(registerUrl, registerDetails);

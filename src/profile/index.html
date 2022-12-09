@@ -28,6 +28,9 @@
                     <a href="../register/index.html"
                        class="visible text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign
                         Up</a>
+                    <a href="../register/index.html"
+                       class="logoutButton visible text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Log
+                        Out</a>
                     <a href="../profile/index.html"
                        class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Account</a>
                 </div>
@@ -35,7 +38,7 @@
         </div>
     </div>
 
-    <!-- Content -->
+    <!-- CONTENT -->
     <div class="w-full bg-grey-lightest" style="padding-top: 2rem;">
 
         <!-- Heading -->
@@ -59,7 +62,7 @@
         </div>
 
         <!-- CONTENT -->
-        <div class="w-full bg-grey-lightest">
+        <div class="w-full">
             <div class="container mx-auto py-8">
                 <div class="appearance-none border rounded w-full py-2 px-3 bg-white py-8">
                     <div class="w-5/6 lg:w-1/2 mx-auto">
@@ -78,12 +81,14 @@
 
                             <!-- Hidden Update Avatar Box -->
                             <div class="container mx-auto py-8 changeAvatarBox hidden">
-                                <div class="appearance-none border shadow rounded w-full py-2 px-3 bg-grey-lightest py-8">
+                                <div class="appearance-none border shadow rounded w-full py-2 px-3 bg-gray-50 py-8">
                                     <div class="w-5/6 lg:w-1/2 mx-auto">
-                                        <div class="">
-                                            <p class="font-bold w-full text-left">Update profile avatar using external
-                                                URL:</p>
+                                        <div class="w-full">
                                             <div class="error text-left text-red-600 py-2"></div>
+                                            <label class="-label" for="profileAvatarInput">
+                                                <span class="glyphicon glyphicon-camera block text-grey-darker font-bold w-full text-left text-sm font-bold mb-2">Update profile avatar using external
+                                                URL:</span>
+                                            </label>
                                             <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
                                                    id="profileAvatarInput"
                                                    type="url"
@@ -135,7 +140,6 @@
                         <span class="font-bold">Email: </span>
                         <span id="profileEmail"></span>
                     </div>
-                    <div class="error"></div>
                 </div>
             </div>
         </div>
@@ -180,36 +184,27 @@
 
     <!-- Bottom Navbar Mobile -->
     <nav class="fixed bottom-0 inset-x-0 bg-violet-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
-
-        <a href="./index.html"
-           class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-300">
+        <a href="./index.html" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-300">
     <span class="material-symbols-outlined">
       home
     </span>
         </a>
-
-        <a id="focusButton" href="../index.html/#backToTop"
-           class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-300">
-        <span class="material-symbols-outlined">
+        <button id="focusButton" class="searchFocusButton w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
+     <span class="material-symbols-outlined">
       search
     </span>
-        </a>
-
-        <button id="modalButton" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
+        </button>
+        <button id="modalButton" data-bs-toggle="modal" data-bs-target="modal" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
     <span class="material-symbols-outlined">
       add_circle
     </span>
         </button>
-
-        <a href="../profile/index.html" id="profilePageButton"
-           class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
-    <span class="material-symbols-outlined">
+        <button id="profilePageButton" type="button" class="loggedIn profilePageButton w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-150 ease-in-out">
+      <span class="material-symbols-outlined">
       person
     </span>
-        </a>
-
-        <button id="logoutButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                class="loggedIn w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-150 ease-in-out">
+        </button>
+        <button id="logoutButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="loggedIn logoutButton w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-150 ease-in-out">
     <span class="material-symbols-outlined">
       logout
     </span>
