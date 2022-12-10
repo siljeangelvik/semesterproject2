@@ -16,7 +16,6 @@ export default defineConfig({
                 register: resolve(root, 'register', 'index.html'),
                 login: resolve(root, 'login', 'index.html'),
                 profile: resolve(root, 'profile', 'index.html'),
-                listings: resolve(root, 'listings', 'index.html'),
                 ganttchart: resolve(root, 'ganttchart', 'index.html')
             }
         }
