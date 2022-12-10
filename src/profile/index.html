@@ -12,7 +12,7 @@
 <body>
 
 <!-- Top Nav -->
-<div id="backToTop" class="absolute top-0 inset-x-0 w-full shadow z-1 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700">
+<div class="absolute top-0 inset-x-0 w-full shadow z-1 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700">
     <div class="container mx-auto">
         <div class="w-full flex justify-between items-center py-2 px-4">
             <!-- Brand -->
@@ -37,7 +37,7 @@
 <div class="container my-12 mx-auto px-4 md:px-12">
     <div class="-mx-1 lg:-mx-4">
         <h1 class="text-2xl text-center">Profile Account</h1>
-        <h2 id="welcomeUserContainer" class="logoutHidden text-xl text-center"><span id="welcomeUser" class="welcomeUser font-bold"></span></h2>
+        <h2 class="logoutHidden welcomeUserContainer text-xl text-center"><span class="welcomeUser font-bold"></span></h2>
     </div>
 </div>
 
@@ -136,7 +136,7 @@
     <div class="-mx-1 lg:-mx-4">
         <div class="flex flex-nowrap gap-6">
             <!-- Filler -->
-            <button id="" class="flex-shrink w-1/4"></button>
+            <button class="flex-shrink w-1/4"></button>
             <!-- Load More Button -->
             <button id="load-more" type="button"
                     class="flex-1 w-2/4 text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
@@ -272,7 +272,6 @@
 
 <script type="module" src="../main.js"></script>
 <script type="module" src="../js/welcome-user.js"></script>
-<script type="module" src="../listings/fetch-listings.js"></script>
 <script type="module" src="../listings/listings-loadmore.js"></script>
 <script type="module" src="../js/modal.js"></script>
 <script type="module" src="../js/logout.js"></script>
