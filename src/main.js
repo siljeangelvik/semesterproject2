@@ -32,10 +32,6 @@ if (localStorage.getItem("accessToken")) {
     document.getElementById("welcomeContainer").classList.remove("invisible");
 }
 
-// if user is not logged in
-if (!localStorage.getItem("accessToken")) {
-    [...document.querySelectorAll('.welcomeUser')].classList.remove("hidden");
-}
 
 // menu profile button - if you're not logged in, write alert and redirect to log in
 const profilePageButton = document.getElementById("profilePageButton");

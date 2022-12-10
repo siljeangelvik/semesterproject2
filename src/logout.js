@@ -23,7 +23,7 @@
 [...document.querySelectorAll('.logoutHidden')].forEach(function (item) {
     console.log(item.innerHTML);
     if (!localStorage.getItem("accessToken")) {
-        document.querySelectorAll('.logoutHidden').style.display = 'none';
+       item.style.display = "none";
     }
 });
 
