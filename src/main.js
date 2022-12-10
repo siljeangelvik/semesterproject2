@@ -11,7 +11,6 @@ export const API_LISTINGS_URL = `${API_BASE_URL}/listings`;
 //export const singleUrl = `${API_BASE_URL}/listings/`;
 //export const deleteUrl = `${API_BASE_URL}/listings/{}`;
 
-
 // BUTTONS
 export const loadMoreButton = document.getElementById("load-more");
 
