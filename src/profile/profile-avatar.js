@@ -9,7 +9,7 @@ let avatarImage = ``;
 // function update avatar endpoint to a new avatar
 async function updateAvatar() {
     document.getElementById("profileAvatar").src = localStorage.getItem('avatar');
-    document.querySelector('.avatarCurrent').innerHTML = localStorage.getItem('avatar');
+    document.querySelector('.avatarCurrentURl').innerHTML = localStorage.getItem('avatar');
 
     console.log('test');
 }
@@ -57,21 +57,12 @@ async function updateAvatarAPI(updateAvatarUrl, avatar) {
         console.log("OK");
         console.log(response.status);
         await localStorage.setItem("avatar", json.avatar)
-
+        localStorage.getItem("avatar");
         await updateAvatar(avatarImage);
-
-        ;
     } catch (error) {
         console.log(error);
     }
 }
-
-// display user details saved in local storage
-document.getElementById("profileUsername").innerHTML = localStorage.getItem('name');
-document.getElementById("profileEmail").innerHTML = localStorage.getItem('email');
-document.getElementById("profileCredits").innerHTML = localStorage.getItem('credits');
-document.getElementById("profileAvatar").src = localStorage.getItem('avatar');
-document.querySelector('.avatarCurrent').innerHTML = localStorage.getItem('avatar');
 
 // toggle box classList 'hidden'
 document.querySelector('.openAvatarChange').addEventListener('click', () => {

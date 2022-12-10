@@ -109,6 +109,7 @@ Other branches will not be checked.
 > Successful ✅
 
 > #### A registered user may create a `Listing` with a title, deadline date, media gallery and description  
+> I think it works?
 
 > #### A registered user may add a `Bid` to another user’s `Listing`  
 
@@ -120,9 +121,3 @@ Other branches will not be checked.
 
 ---
 
-Listings: filter 
-> show 10 posts at a time
-> show listings with most `bids`
-> show top 10 listings that `endsAt`
-> show top 10 **recent** listings that was `created`
-> 
