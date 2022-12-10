@@ -13,26 +13,24 @@
 <div class="font-sans antialiased bg-grey-lightest">
 
     <!-- Top Nav -->
-    <div class="absolute top-0 inset-x-0 w-full shadow z-1 bg-violet-400">
+    <div class="absolute top-0 inset-x-0 w-full shadow z-1 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700">
         <div class="container mx-auto">
-            <div class="w-full flex justify-between items-center py-4 px-8">
+            <div class="w-full flex justify-between items-center py-2 px-4">
                 <!-- Brand -->
-                <div class="text-center font-bold"><a href="../index.html">Asta</a></div>
+                <div class="text-white text-center font-bold"><a href="/">Asta</a></div>
                 <!-- Navigation -->
                 <div class="items-center invisible md:visible">
-                    <a href="../index.html"
-                       class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Listings</a>
-                    <a href="../login/index.html"
-                       class="visible text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign
-                        In</a>
-                    <a href="../register/index.html"
-                       class="visible text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign
-                        Up</a>
-                    <a href="../register/index.html"
-                       class="logoutButton visible text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Log
-                        Out</a>
+                    <a href="/" class="text-white hover:text-white no-underline mx-2 px-2">Listings</a>
+                    <span class="inline-block md:py-4">
+                        <a href="../login/index.html" id="loginPageButton"
+                           class="loginHidden hidden text-white hover:text-white no-underline mx-2 px-2 ">Sign In</a>
+                        <a href="../register/index.html" id="registerPageButton"
+                           class="loginHidden hidden text-white hover:text-white no-underline mx-2 px-2 ">Sign Up</a>
+                        <a href="/" id="logoutButtonTop" type="button"
+                           class="logoutButton logoutHidden hidden text-white hover:text-white no-underline mx-2 px-2">Logout</a>
+                  </span>
                     <a href="../profile/index.html"
-                       class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Account</a>
+                       class="profilePageButton logoutHidden hidden text-white hover:text-white no-underline mx-2 px-2 ">Account</a>
                 </div>
             </div>
         </div>
@@ -184,38 +182,43 @@
         </div>
     </div>
 
-    <!-- Bottom Navbar Mobile -->
-    <nav class="fixed bottom-0 inset-x-0 bg-violet-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
-        <a href="./index.html" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-300">
-    <span class="material-symbols-outlined">
+<!-- Bottom Navbar Mobile -->
+<nav class="fixed bottom-0 inset-x-0 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
+    <a href="/"
+       class="w-full block py-5 px-3 text-center transition duration-300">
+    <span class="material-symbols-outlined text-white">
       home
     </span>
-        </a>
-        <button id="focusButton" class="searchFocusButton w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
-     <span class="material-symbols-outlined">
+    </a>
+    <button id="focusButton"
+            class="searchFocusButton w-full block py-5 px-3 text-center">
+     <span class="material-symbols-outlined text-white">
       search
     </span>
-        </button>
-        <button id="modalButton" data-bs-toggle="modal" data-bs-target="modal" class="w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black">
-    <span class="material-symbols-outlined">
+    </button>
+    <button id="modalOpenButton" data-bs-toggle="modal" data-bs-target="modal"
+            class="w-full block py-5 px-3 text-center">
+    <span class="material-symbols-outlined text-white">
       add_circle
     </span>
-        </button>
-        <button id="profilePageButton" type="button" class="loggedIn profilePageButton w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-150 ease-in-out">
-      <span class="material-symbols-outlined">
+    </button>
+    <button id="profilePageButton" type="button"
+            class="profilePageButton w-full block py-5 px-3 text-center transition duration-150 ease-in-out">
+      <span class="material-symbols-outlined text-white">
       person
     </span>
-        </button>
-        <button id="logoutButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="loggedIn logoutButton w-full block py-5 px-3 text-center hover:bg-yellow-600 hover:text-black transition duration-150 ease-in-out">
-    <span class="material-symbols-outlined">
+    </button>
+    <button id="logoutButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            class="loggedIn logoutButton w-full block py-5 px-3 text-center transition duration-150 ease-in-out">
+    <span class="material-symbols-outlined text-white">
       logout
     </span>
-        </button>
-    </nav>
+    </button>
+</nav>
 
-    <!-- MODAL -->
+<!-- MODAL -->
     <div id="modal" class="fixed z-10 overflow-y-auto top-0 w-full left-0 bg-grey-lightest bg-orange-400 hidden"></div>
-</div>
+
 <!-- Footer -->
 <footer class="invisible lg:visible w-full bg-grey-lighter py-8">
     <div class="container mx-auto text-center px-8">
@@ -225,6 +228,8 @@
 </footer>
 
 <script type="module" src="../main.js"></script>
+<script type="module" src="../create/modal.js"></script>
+<script type="module" src="../create/create-listing.js"></script>
 <script type="module" src="profile-avatar.js"></script>
 <script type="module" src="../logout.js"></script>
 
