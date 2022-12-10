@@ -18,7 +18,7 @@ export default fetch(API_LISTINGS_URL)
             throw new Error(`${json.errors[0].message}`);
         }
     }).then(dataList => {
-    dataList.length = 2;
+    dataList.length = 9;
     console.log(dataList);
 
     // use the forEach() method to loop through the list of data items

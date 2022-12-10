@@ -2,8 +2,8 @@
 import {API_LISTINGS_URL} from "./listings-main";
 import {containerLoader, dataElement} from "./fetch-listings";
 
-let offset = 10; // offset for the API request
-const limit = 10; // number of items to get for each button click
+let offset = 9; // offset for the API request
+const limit = 9; // number of items to get for each button click
 
 export const loadMoreButton = document.getElementById("load-more");
 // event listener to the load-more button
@@ -22,12 +22,12 @@ loadMoreButton.addEventListener("click", () => {
                 throw new Error(`${json.errors[0].message}`);
             }
         }).then(dataList => {
-            dataList.length = 10;
+            dataList.length = 9;
         // forEach() method to loop through the list of data items
         dataList.forEach(dataItem => {
             // element to hold the data items
             dataElement.innerHTML += `
-<!-- DEMO: CARD ITEM -->
+   <!-- DEMO: CARD ITEM -->
    <div class="flex flex-nowrap my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
       <article class="overflow-hidden rounded-lg shadow-lg">
          <!-- Card Bids & EndsAt Container -->
