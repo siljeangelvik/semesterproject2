@@ -22,9 +22,7 @@
 // hide elements when logged out
 [...document.querySelectorAll('.logoutHidden')].forEach(function (item) {
     if (!localStorage.getItem("accessToken")) {
-        item.classList.add("hidden");
+        item.style.display = "hidden";
     }
-    document.getElementById("welcomeUserContainer").style.display = "block";
-    document.getElementById("welcomeUser").innerHTML = localStorage.getItem("name");
 });
 

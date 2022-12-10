@@ -86,4 +86,6 @@ loginButton.addEventListener("click", function(e){
     login();
 });
 
-
+if (localStorage.getItem("accessToken")) {
+    document.getElementById("welcomeUser").innerHTML = localStorage.getItem("name");
+}
