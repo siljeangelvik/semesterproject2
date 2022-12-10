@@ -146,3 +146,18 @@ Medium: [node.js](https://medium.com/@sarthakmittal1461/to-build-login-sign-up-a
 sort by:   
 recent =         "created": "2022-11-29T13:30:58.651Z"
 highest bids =         "amount": 50,
+
+
+---
+
+#### CARDS SECTION ID'S:
+For listing out the cards: `# cardsContainer` - the box for all the listings   
+For placing a bid: `# cardBidButton` - onclick either placing a bid or change window location    
+For viewing listing details: `# cardViewDetailsButton` - onclick either opens modal or change window location   
+Toggle hidden/display: `# cardBidsAmount` - 
+
+
+
+
+
+

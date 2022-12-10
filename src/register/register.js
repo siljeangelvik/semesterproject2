@@ -1,5 +1,6 @@
 /* @formatter:off */
-import { registerUrl } from "../main";
+import {API_BASE_URL } from "../main";
+export const registerUrl = `${API_BASE_URL}/auth/register`;
 
 let returnMessage = document.querySelector(".error");
 const username = document.getElementById("username");
@@ -20,15 +21,17 @@ const isValidPassword = password => {
     return passwordRegex.test(String(password));
 };
 
+// validate input and create object from input value
 function register() {
     let validUsername = username.value.trim();
     let validEmail = email.value.trim();
     let validPassword = password.value.trim();
 
     const registerDetails = {
-        "username": validUsername,
+        "name": validUsername,
         "email": validEmail,
-        "password": validPassword
+        "password": validPassword,
+
     }
 
     if (!isValidUserName(validUsername)) {
@@ -46,19 +49,14 @@ function register() {
         returnMessage.innerHTML = `Invalid password`;
         return false;
     }
+
     if (isValidUserName(validUsername) && isValidEmail(validEmail) && isValidPassword(validPassword)) {
         console.log("User registered: " + registerDetails);
         registerUser(registerUrl, registerDetails);
-        window.alert("You successfully registered a new account!");
-        // window.location="../login/index.html";
     }
 }
 
-registerButton.addEventListener("click", function(e){
-    e.preventDefault();
-    register();
-});
-
+// send input values using POST method and redirect to login page
 async function registerUser(registerUrl, userData) {
     console.log(userData);
     try {
@@ -73,19 +71,23 @@ async function registerUser(registerUrl, userData) {
         console.log(response);
         const json = await response.json();
         console.log(json);
-        if (response.status === 200) {
-            // localStorage.setItem('credits', json.credits);
-            localStorage.setItem('accessToken', json.getToken());
-            window.location = '../login/index.html';
-            window.alert('You successfully registered a new user');
+        if (!response.ok) {
+            console.log(json.errors[0].message);
+            returnMessage.innerHTML = `${json.errors[0].message}`;
+            throw new Error();
         }
-        if (response.status === 404 || response.status === 403) {
-            returnMessage.innerHTML = '404 or 403, User Exist?!';
-            setTimeout(window.location = "../login/index.html", 7000);
-        } else {
-            returnMessage.innerHTML = "Something is wrong";
-        }
+
+        window.alert("You successfully registered a new account!");
+        window.location = '../login/index.html';
+
+
     } catch (error) {
         console.log(error);
     }
 }
+
+// loginButton onclick = run register validation function
+registerButton.addEventListener("click", function(e){
+    e.preventDefault();
+    register();
+});

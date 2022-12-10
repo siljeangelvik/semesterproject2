@@ -1,116 +1,203 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="icon" type="image/svg+xml" href="/assets/vite.svg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Sign in to Vite App</title>
-    <!-- Google Material Icons -->
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TEST</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
 </head>
 <body>
-<div class="font-sans antialiased bg-grey-lightest">
-
-    <!-- Top Nav -->
-    <div class="absolute top-0 inset-x-0 w-full shadow z-1 bg-blue-400">
-        <div class="container mx-auto">
-            <div class="w-full flex justify-between items-center py-4 px-8">
-                <!-- Brand -->
-                <div class="text-center font-bold"><a href="../index.html">Asta</a></div>
-                <!-- Navigation -->
-                <div class="items-center invisible md:visible">
-                    <a href="../index.html" class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Listings</a>
-                    <a href="../login/index.html" class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign In</a>
-                    <a href="../register/index.html" class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Sign Up</a>
-                    <a href="../profile/index.html" class="text-gray-800 hover:text-black no-underline mx-2 px-2 py-2">Account</a>
-                </div>
+<!-- Top Nav -->
+<div class="absolute top-0 inset-x-0 w-full shadow z-1 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700">
+    <div class="container mx-auto">
+        <div class="w-full flex justify-between items-center py-2 px-4">
+            <!-- Brand -->
+            <div class="text-white text-center font-bold"><a href="/">Asta</a></div>
+            <!-- Navigation -->
+            <div class="items-center invisible md:visible">
+                <a href="/" class="text-white hover:text-white no-underline mx-2 px-2">Listings</a>
+                <span class="loginHidden inline-block md:py-4">
+                    <a href="../login/index.html" id="loginPageButton" class="text-white hover:text-white no-underline mx-2 px-2 ">Sign In</a>
+                    <a href="../register/index.html" id="registerPageButton" class="text-white hover:text-white no-underline mx-2 px-2 ">Sign Up</a>
+                </span>
+                <span class="logoutHidden inline-block md:py-4">
+                    <a href="../profile/index.html" class="logoutHidden text-white hover:text-white no-underline mx-2 px-2 ">Account</a>
+                    <a href="/" id="logoutButtonTop" type="button" class="logoutButton logoutHidden text-white hover:text-white no-underline mx-2 px-2">Logout</a>
+               </span>
             </div>
         </div>
     </div>
-
-    <!-- Content -->
-    <div class="w-full bg-grey-lightest" style="padding-top: 4rem;">
-        <div class="container mx-auto py-8">
-            <div class="w-5/6 lg:w-1/2 mx-auto bg-white rounded shadow">
-                <div class="py-4 px-8 text-black text-xl border-b border-grey-lighter">Sign in to your account</div>
-                <form id="loginForm" class="py-4 px-8">
-                    <div class="mb-4">
-                        <label class="block text-grey-darker text-sm font-bold mb-2" for="email">Email Address</label>
-                        <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email"
-                               type="email" placeholder="Your email address">
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-grey-darker text-sm font-bold mb-2" for="password">Password</label>
-                        <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="password"
-                               type="password" placeholder="Your secure password">
-                    </div>
-                    <div class="error text-red-600 font-bold"></div>
-
-                    <!-- BUTTON SUBMIT -->
-                    <div class="flex items-center justify-between mt-8">
-                        <button id="loginButton"
-                                class="bg-blue-400 hover:bg-blue-dark text-white font-bold py-2 px-4 rounded-full"
-                                type="submit">
-                            Sign In
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <div class="text-center my-4">
-                <p class="text-grey-dark mb-2 text-sm">I don't have an account. <a href="../register/index.html" class="font-bold">Sign up</a></p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bottom Navbar Mobile -->
-    <nav class="fixed bottom-0 inset-x-0 bg-blue-400 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
-
-        <a href="../index.html"
-           class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black transition duration-300">
-    <span class="material-symbols-outlined">
-      home
-    </span>
-        </a>
-
-        <a id="focusButton" href="../index.html#backToTop"
-           class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black transition duration-300">
-        <span class="material-symbols-outlined">
-      search
-    </span>
-        </a>
-
-        <button id="modalButton" class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black">
-    <span class="material-symbols-outlined">
-      add_circle
-    </span>
-        </button>
-
-        <button class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black">
-    <span class="material-symbols-outlined">
-      person
-    </span>
-        </button>
-
-        <button id="logoutButton" class="w-full block py-5 px-3 text-center hover:bg-blue-500 hover:text-black">
-    <span class="material-symbols-outlined">
-      logout
-    </span>
-        </button>
-    </nav>
-
-    <!-- MODAL -->
-    <div id="modal" class="fixed z-10 overflow-y-auto top-0 w-full left-0 bg-grey-lightest bg-orange-400 hidden"></div>
-
-    <!-- Footer -->
-    <footer class="invisible lg:visible w-full bg-grey-lighter py-8">
-        <div class="container mx-auto text-center px-8">
-            <p class="text-grey-dark mb-2 text-sm">This is a product of <span
-                    class="font-bold">Angelvik</span></p>
-        </div>
-    </footer>
 </div>
 
+<!-- Heading -->
+<div class="container my-12 mx-auto px-4 md:px-12">
+    <div class="-mx-1 lg:-mx-4">
+        <h1 class="text-2xl text-center">Asta Auction Application</h1>
+        <h2 class="text-xl text-center welcomeUserContainer">Hello, <span id="welcomeUser" class="welcomeUser font-bold"></span>!</h2>
+    </div>
+</div>
+
+<!-- Search -->
+<div id="backToTop" class="container my-12 mx-auto px-4 md:px-12">
+    <div class="-mx-1 lg:-mx-4">
+        <label class="block text-grey-darker text-sm font-bold mb-2" for="myTextField"></label>
+        <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="myTextField"
+               type="search" placeholder="Search for items">
+    </div>
+</div>
+
+<!-- Buttons Filter -->
+<div class="container my-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-nowrap justify-center md:justify-start gap-2 -mx-1 lg:-mx-4">
+        <!-- new listings / created -->
+        <button id="recent" type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 transition">
+            New
+        </button>
+        <!-- popular / most bids -->
+        <button id="popular" type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 transition">
+                Popular
+            </button>
+        <!-- deadline / endsAt -->
+        <button id="deadline" type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 transition">
+            Hurry!
+        </button>
+        <!-- newly edited / updated? -->
+        <button id="updated" type="button" class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 transition">
+            Updated
+        </button>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container my-12 mx-auto px-4 md:px-12">
+    <!-- Container Cards -->
+    <div id="cardContainer" class="flex flex-wrap items-stretch items-end -mx-1 lg:-mx-4"></div>
+    <!-- Container Loader -->
+    <div id="loader" class="flex justify-center items-center">
+        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+            <span class="visually-hidden font-bold">(</span>
+        </div>
+    </div>
+    <!-- Container Load More -->
+    <div class="container mx-auto py-4">
+        <div class="w-5/6 lg:w-1/2 mx-auto rounded">
+            <div class="flex items-center justify-between mt-8">
+                <!-- filler  -->
+                <button class="invisible bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 border px-3 py-1 mt-4 rounded-full font-bold text-white">
+                    .
+                </button>
+                <!-- button load more -->
+                <button id="load-more" class="py-2 px-4 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 text-white rounded-full hover:bg-red-400 mr-2">
+                    Load more
+                </button>
+                <!-- button back to top -->
+                <button id="backToTopButton" class="py-2 px-4 text-purple-800 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 text-white rounded-full mr-2">
+                    Back to top
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bottom Navbar Mobile -->
+<nav class="fixed bottom-0 inset-x-0 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
+    <a href="/"
+       class="w-full block py-5 px-3 text-center transition duration-300">
+    <span class="material-symbols-outlined text-white">
+      home
+    </span>
+    </a>
+    <button id="focusButton"
+            class="searchFocusButton w-full block py-5 px-3 text-center">
+     <span class="material-symbols-outlined text-white">
+      search
+    </span>
+    </button>
+    <button id="modalOpenButton" data-bs-toggle="modal" data-bs-target="modal"
+            class="w-full block py-5 px-3 text-center">
+    <span class="material-symbols-outlined text-white">
+      add_circle
+    </span>
+    </button>
+    <button id="profilePageButton" type="button"
+            class="profilePageButton w-full block py-5 px-3 text-center transition duration-150 ease-in-out">
+      <span class="material-symbols-outlined text-white">
+      person
+    </span>
+    </button>
+    <button id="logoutButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            class="loggedIn logoutButton w-full block py-5 px-3 text-center transition duration-150 ease-in-out">
+    <span class="material-symbols-outlined text-white">
+      logout
+    </span>
+    </button>
+</nav>
+
+<!-- Modal -->
+<div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <div class="fixed inset-0 transition-opacity">
+        <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+    </div>
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+    <form id="form" class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" aria-labelledby="modal-headline">
+
+        <div class="bg-orange-400 py-4 px-8 text-black text-xl border-b border-grey-lighter">Create a listing</div>
+
+        <div class="bg-white px-2 pt-5 pb-2 sm:p-6 sm:pb-4">
+            <div class="mb-4 flex justify-between gap-2">
+
+                <div class="mb-4 w-full">
+                    <label class="block text-grey-darker text-sm font-bold mb-2" for="createTitle">Title</label>
+                    <input id="createTitle" type="text" placeholder="Title" required class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" />
+                </div>
+
+                <div class="mb-4">
+                    <label class="block text-grey-darker text-sm font-bold mb-2" for="createTime">Time</label>
+                    <input id="createTime" type="time" required min="00.00" max="23.59" class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="time" />
+                </div>
+            </div>
+
+
+            <div class="mb-4">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="createMedia">Media</label>
+                <input id="createMedia" type="url" alt="" placeholder="https://cdn.pixabay.com/photo/2022/11/28/20/52/bird-7623166_1280.jpg" pattern="https://.*" size="30" class="profile-pic-input appearance-none border rounded w-full py-2 px-3 text-grey-darker"/>
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="createDescription">Description</label>
+                <input id="createDescription" type="text" class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Description" />
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-grey-darker text-sm font-bold mb-2" for="createTags">Tags</label>
+                <input id="createTags" type="text" autocomplete="off" class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" placeholder="Tags" />
+            </div>
+            <div id="msg" class="text-red-600"></div>
+        </div>
+        <div class="bg-gray-200 px-4 py-3 text-right">
+            <button id="modalExit" type="button" class="py-2 px-4 bg-orange-400 text-white rounded hover:bg-red-400 mr-2"><i class="fas fa-times"></i> Cancel</button>
+            <button id="modalCreate" type="submit" class="py-2 px-4 bg-orange-400 text-white rounded hover:bg-emerald-500 mr-2"><i class="fas fa-plus"></i> Create</button>
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer class="invisible lg:visible w-full bg-grey-lighter py-8">
+    <div class="container mx-auto text-center px-8">
+        <p class="text-grey-dark mb-2 text-sm">This is a product of <span
+                class="font-bold">Angelvik</span></p>
+    </div>
+</footer>
+
 <script type="module" src="../main.js"></script>
-<script type="module" src="./test.js"></script>
+<script type="module" src="../js/welcome-user.js"></script>
+<script type="module" src="../listings/fetch-listings.js"></script>
+<script type="module" src="../js/modal.js"></script>
+<script type="module" src="../profile/profile-button.js"></script>
+<script type="module" src="../listings/listings-loadmore.js"></script>
+<script type="module" src="../listings/listing-countdown.js"></script>
+<script type="module" src="../js/logout.js"></script>
 </body>
 </html>
