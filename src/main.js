@@ -27,6 +27,14 @@ document.getElementById("focusButton").addEventListener("click", () => {
     console.log(`ITEMS: ${item.innerHTML}\n\nITEMS ID: ${item.id}`);
 });
 
+// hide elements when logged in
+[...document.querySelectorAll('.loginHidden')].forEach(function (item) {
+    console.log(item.innerHTML);
+    if (localStorage.getItem("accessToken")) {
+        item.style.display = "none";
+    }
+});
+
 // if user is logged in
 if (localStorage.getItem("accessToken")) {
     document.getElementById("welcomeContainer").classList.remove("invisible");
