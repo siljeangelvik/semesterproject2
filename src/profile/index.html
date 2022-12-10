@@ -74,7 +74,7 @@
                                     </label>
                                     <input id="profileUpdateAvatar" type="url" placeholder="Change avatar"
                                            class="profile-pic-input appearance-none border rounded w-full py-2 px-3 text-grey-darker"/>
-                                    <img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg"
+                                    <img src=""
                                          id="profileAvatar" width="150" alt="profile-avatar" class="profile-avatar"/>
                                 </div>
                             </div>
@@ -144,19 +144,21 @@
             </div>
         </div>
 
-        <!-- Cards Container -->
-        <div class="w-full bg-grey-lightest">
-            <div class="container mx-auto py-2">
-                <div id="profileCardContainer" class="container mx-auto py-2">
-                </div>
-                <!-- Loader -->
-                <div id="loader" class="flex justify-center items-center">
-                    <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-                        <span class="visually-hidden font-bold">(</span>
-                    </div>
+        <!-- ====== Cards Section Start -->
+        <section class="bg-[#F3F4F6] pt-20 pb-10 lg:pt-[120px] lg:pb-20">
+            <div class="container mx-auto">
+                <!-- Cards Container -->
+                <div id="cardContainer" class="mx-4 flex flex-wrap">
+
                 </div>
             </div>
-
+            <!-- Loader -->
+            <div id="loader" class="flex justify-center items-center">
+                <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                    <span class="visually-hidden font-bold">(</span>
+                </div>
+            </div>
+        </section>
 
             <!-- Button Load More -->
             <div class="w-full bg-grey-lightest">
@@ -223,7 +225,7 @@
 </footer>
 
 <script type="module" src="../main.js"></script>
-<script type="module" src="./profile.js"></script>
+<script type="module" src="profile-avatar.js"></script>
 <script type="module" src="../logout.js"></script>
 
 <!--<script type="module" src="../listings.js"></script>-->

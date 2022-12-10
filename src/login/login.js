@@ -1,5 +1,6 @@
 /* @formatter:off */
 import {API_BASE_URL } from "../main";
+
 export const loginUrl = `${API_BASE_URL}/auth/login`;
 
 const returnMessage = document.querySelector(".error");
@@ -71,8 +72,7 @@ async function loginUser(loginUrl, userData) {
         localStorage.setItem("email", json.email);
         localStorage.setItem("credits", json.credits);
         localStorage.setItem("accessToken", json.accessToken);
-
-        window.location = '../index.html';
+       window.location = '../index.html';
 
     } catch (error) {
         console.log(error);
@@ -84,3 +84,5 @@ loginButton.addEventListener("click", function(e){
     e.preventDefault();
     login();
 });
+
+

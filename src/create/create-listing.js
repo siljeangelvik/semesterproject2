@@ -1,5 +1,5 @@
 import {API_LISTINGS_URL} from "../main";
-import {listingsContainer, listingsUrl} from "../listings";
+import {listingsContainer} from "../listings";
 const returnMessage = document.querySelector(".error");
 export const title = document.getElementById("createTitle");
 export const description = document.getElementById("createDescription");
