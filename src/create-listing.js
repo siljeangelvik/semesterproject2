@@ -2,14 +2,14 @@ import {API_LISTINGS_URL} from "./main";
 
 let title = document.getElementById('createTitle').value;
 let media = document.getElementById('createMedia').value;
-let endsAt = document.getElementById('createDeadline').value;
+// let endsAt = document.getElementById('createDeadline').value;
 let description = document.getElementById('createDescription').value;
 let tags = document.getElementById('createTags').value;
 
 // Create a new Listing object with the input values
 let listing = {
     title: title,
-    endsAt: endsAt,
+  //  endsAt: endsAt,
     media: media,
     description: description,
     tags: tags

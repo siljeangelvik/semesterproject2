@@ -35,19 +35,26 @@ document.getElementById("focusButton").addEventListener("click", () => {
     }
 });
 
-// if user is logged in
-if (localStorage.getItem("accessToken")) {
-    document.getElementById("welcomeContainer").classList.remove("invisible");
-}
+
 
 
 // menu profile button - if you're not logged in, write alert and redirect to log in
 const profilePageButton = document.getElementById("profilePageButton");
 profilePageButton.addEventListener('click', () => {
-    if (localStorage.getItem("accessToken")) {
-        window.location = '../profile/index.html';
+    if (!localStorage.getItem("accessToken")) {
+        window.alert("You need to be logged in to view your profile page");
+        window.location = '../login/index.html';
     }
-    window.alert("You need to be logged in to view your profile page");
-    window.location = '../login/index.html';
+    window.location = '../profile/index.html';
 });
+
+// Open Modal
+document.getElementById("modalOpenButton").addEventListener('click', () => {
+    document.getElementById("modal").classList.remove("hidden");
+})
+
+// Close Modal
+document.getElementById("modalCloseButton").addEventListener('click', () => {
+    document.getElementById("modal").classList.add("hidden");
+})
 
