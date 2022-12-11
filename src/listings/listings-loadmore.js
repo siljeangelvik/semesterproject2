@@ -1,5 +1,5 @@
 /* formatter:off */
-import {API_LISTINGS_URL} from "./listings-main";
+import {API_LISTINGS_URL} from "../main";
 import {containerLoader, dataElement} from "./fetch-listings";
 
 let offset = 9; // offset for the API request

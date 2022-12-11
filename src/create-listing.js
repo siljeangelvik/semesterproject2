@@ -7,12 +7,12 @@ let description = document.getElementById('createDescription').value;
 let tags = document.getElementById('createTags').value;
 
 // Create a new Listing object with the input values
-let listing = {
-    title: title,
+let createdListing = {
+    "title": title,
   //  endsAt: endsAt,
-    media: media,
-    description: description,
-    tags: tags
+    "media": media,
+    "description": description,
+    "tags": tags
 };
 
 // Send the Listing object to the API using the POST method
@@ -22,7 +22,7 @@ fetch(API_LISTINGS_URL, {
         Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify(listing)
+    body: JSON.stringify(createdListing)
 }).then(response => response.json())
     .then(data => console.log(data))
     .catch(error => {

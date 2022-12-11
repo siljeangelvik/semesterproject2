@@ -1,4 +1,4 @@
-import {API_LISTINGS_URL} from "./listings-main";
+import {API_LISTINGS_URL} from "../main";
 
 let title = document.getElementById('createTitle').value;
 let media = document.getElementById('createMedia').value;

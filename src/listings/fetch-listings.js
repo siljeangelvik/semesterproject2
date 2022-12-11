@@ -1,5 +1,5 @@
 /* formatter:off */
-import {API_LISTINGS_URL} from "./listings-main";
+import {API_LISTINGS_URL} from "../main";
 
 export const containerLoader = document.getElementById("loader");
 export const dataElement = document.getElementById("cardContainer");

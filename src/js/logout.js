@@ -4,7 +4,7 @@
         console.log(item.innerHTML);
         if (localStorage.getItem("accessToken")) {
             console.log("You're logged in");
-            window.alert("Are you sure you want to logout?");
+            window.alert("Are you sure you want to logout?"); // need to make a modal popup
             localStorage.removeItem("accessToken");
             localStorage.removeItem("name");
             localStorage.removeItem("email");
@@ -18,11 +18,3 @@
         window.location.href = '../login/index.html';
     });
 });
-
-// hide elements when logged out
-[...document.querySelectorAll('.logoutHidden')].forEach(function (item) {
-    if (!localStorage.getItem("accessToken")) {
-        item.style.display = "hidden";
-    }
-});
-

@@ -1,10 +1,10 @@
-import {API_LISTINGS_URL} from "./listings-main";
+//import {API_LISTINGS_URL} from "../main";
 
 // Define the API response with the date and time to countdown to
-// const apiResponse = {endsAt: endsAt};
+ const apiResponse = {endsAt: endsAt};
 
 // Parse the date and time string from the API response using the Date object
-const endDate = new Date(API_LISTINGS_URL.endsAt);
+const endDate = new Date(apiResponse.endsAt);
 
 // Create a timer using the setInterval() function
 const timer = setInterval(() => {

@@ -1,6 +1,6 @@
 /* @formatter:off */
-import {API_BASE_URL } from "../main";
-export const registerUrl = `${API_BASE_URL}/auth/register`;
+import {API_BASE_URL} from "../main";
+export const API_REGISTER_URL = `${API_BASE_URL}/auth/register`;
 
 let returnMessage = document.querySelector(".error");
 const username = document.getElementById("username");
@@ -31,7 +31,6 @@ function register() {
         "name": validUsername,
         "email": validEmail,
         "password": validPassword,
-
     }
 
     if (!isValidUserName(validUsername)) {
@@ -52,12 +51,12 @@ function register() {
 
     if (isValidUserName(validUsername) && isValidEmail(validEmail) && isValidPassword(validPassword)) {
         console.log("User registered: " + registerDetails);
-        registerUser(registerUrl, registerDetails);
+        registerUser(API_REGISTER_URL, registerDetails);
     }
 }
 
 // send input values using POST method and redirect to login page
-async function registerUser(registerUrl, userData) {
+async function registerUser(API_REGISTER_URL, userData) {
     console.log(userData);
     try {
         const postData = {
@@ -67,7 +66,7 @@ async function registerUser(registerUrl, userData) {
             },
             body: JSON.stringify(userData),
         };
-        const response = await fetch(registerUrl, postData);
+        const response = await fetch(API_REGISTER_URL, postData);
         console.log(response);
         const json = await response.json();
         console.log(json);
@@ -79,7 +78,6 @@ async function registerUser(registerUrl, userData) {
 
         window.alert("You successfully registered a new account!");
         window.location = '../login/index.html';
-
 
     } catch (error) {
         console.log(error);

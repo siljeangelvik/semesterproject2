@@ -1,4 +1,3 @@
-// menu: add listing - input fields
 
 // Open Modal
 document.getElementById("modalOpenButton").addEventListener('click', () => {
