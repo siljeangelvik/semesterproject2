@@ -4,7 +4,7 @@ semesterproject2
 
 ### Resources  
 **Gantt Chart:** [Timing](https://silje-semesterproject2.netlify.app/ganttchart/index.html)    
-**Figma:** [Prototype](https://www.figma.com/file/Ulp9wwN9k2owtTji6ksOHh/Semester-Project-2?node-id=0%3A1&t=3VUv4I30clEazuf8-1)        
+**Figma:** [Prototype](https://www.figma.com/proto/Ulp9wwN9k2owtTji6ksOHh/Semester-Project-2?node-id=1%3A3&starting-point-node-id=1%3A3)        
 **Figma:** Style Guide  
 **Kanban Board:** [Trello](https://trello.com/b/BqgXk4Ij/semester-project-2)    
 **Repository:** [GitHub](https://github.com/siljeangelvik/semesterproject2)  

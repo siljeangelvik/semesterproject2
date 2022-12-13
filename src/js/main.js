@@ -1,34 +1,38 @@
-/* formatter:off */
+/* @formatter:off */
 import '../css/input.css';
 import '../css/styles.scss';
 import '../ganttchart/ganttchart.css';
+import 'tw-elements';
 
-/* formatter:off */
+/* @formatter:off */
+// desktop nav inner html
 document.getElementById("desktop-nav").innerHTML = `
 <div class="fixed top-0 inset-x-0 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 flex justify-between text-sm text-gray-700">
      <div class="container mx-auto px-6">
         <div class="w-full flex justify-between items-center">
             <!-- Brand -->
-            <div class="text-white text-center font-bold"><a href="/public">Asta</a></div>
+            <div class="text-white text-center font-bold"><a href="/">Asta</a></div>
             <!-- Navigation -->
             <div class="items-center invisible md:visible">
-                <a href="/public" class="text-white hover:text-white no-underline mx-2 px-2">Listings</a>
+                <a href="/" class="text-white hover:text-white no-underline mx-2 px-2">Listings</a>
                 <span class="loginHidden inline-block md:py-4">
-                    <a href="../login/index.html" id="loginPageButton" class="text-white hover:text-white no-underline mx-2 px-2 ">Sign In</a>
-                    <a href="../register/index.html" id="registerPageButton" class="text-white hover:text-white no-underline mx-2 px-2 ">Sign Up</a>
+                    <a href="../login/index.html" id="loginPageButton" class="loginHidden text-white hover:text-white no-underline mx-2 px-2 ">Sign In</a>
+                    <a href="../register/index.html" id="registerPageButton" class="loginHidden text-white hover:text-white no-underline mx-2 px-2 ">Sign Up</a>
                 </span>
                 <span class="logoutHidden inline-block md:py-4">
-                    <a href="../profile/index.html" class="profilePageButton text-white hover:text-white no-underline mx-2 px-2 ">Account</a>
-                    <a href="/public" id="logoutButtonTop" type="button" class="logoutButton logoutHidden text-white hover:text-white no-underline mx-2 px-2">Logout</a>
+                    <a href="../profile/index.html" class="logoutHidden profilePageButton text-white hover:text-white no-underline mx-2 px-2 ">Account</a>
+                    <button type="button" class="logoutButton text-white hover:text-white no-underline mx-2 px-2 font-bold">Logout</button>
                </span>
             </div>
         </div>
      </div>
   </div>
 `;
+
+// mobile nav inner html
 document.getElementById("mobile-nav").innerHTML = `
 <nav class="fixed bottom-0 inset-x-0 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 flex justify-between text-sm text-gray-700 uppercase font-mono visible lg:invisible">
-  <a href="/public"
+    <a href="/"
        class="w-full block py-5 px-3 text-center transition duration-300">
     <span class="material-symbols-outlined text-white">
       home
@@ -40,7 +44,7 @@ document.getElementById("mobile-nav").innerHTML = `
       search
     </span>
     </button>
-    <button id="modalOpenButton" data-bs-toggle="modal" data-bs-target="modal"
+    <button id="modal-button" onclick="document.getElementById('modal').classList.remove('hidden')" data-bs-toggle="modal" data-bs-target="modal"
             class="w-full block py-5 px-3 text-center">
     <span class="material-symbols-outlined text-white">
       add_circle
@@ -59,6 +63,8 @@ document.getElementById("mobile-nav").innerHTML = `
     </button>
 </nav>
 `;
+
+// footer inner html
 document.getElementById("footer").innerHTML = `
 <footer class="invisible lg:visible w-full bg-grey-lighter py-8">
     <div class="container mx-auto text-center px-8">
@@ -67,6 +73,7 @@ document.getElementById("footer").innerHTML = `
     </div>
 </footer>
 `;
+
 
 
 // navigate to listings page and focus search field
@@ -85,3 +92,24 @@ document.getElementById("focusButton").addEventListener("click", () => {
     }
 });
 
+
+/* @formatter:off */
+export const className = "profilePageButton";
+export const profilePageButtonElement = document.querySelectorAll(`.${className}`);
+
+// forEach() method to add an event listener to each element
+profilePageButtonElement.forEach(element => {
+    element.addEventListener("click", (event) => {
+        // if the user is logged in
+        if (!localStorage.getItem("accessToken")) {
+            // if the user is not logged in, prevent the default anchor link behavior and redirect to the login page
+            event.preventDefault();
+
+            window.location.href = "../login/index.html";
+
+        } else {
+            // if the user is logged in, allow the default anchor link behavior to occur
+            return true;
+        }
+    });
+});
