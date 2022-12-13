@@ -6,8 +6,13 @@ module.exports = {
         "./src/*.{html,css,scss,js,jsx,ts,tsx}",
         './node_modules/tw-elements/dist/js/**/*.js'],
 
+
     theme: {
-        extend: {},
+        extend: {
+            maxWidth: {
+                'readable': '70ch',
+            },
+        },
     },
     plugins: [
         require('tw-elements/dist/plugin')

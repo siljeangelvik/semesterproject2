@@ -30,6 +30,7 @@ export default fetch(`${API_LISTINGS_URL}?_seller=true&_bids=true&sort=endsAt&so
     .finally(() => containerLoader.remove());
 
 
+
 function loadListings(listingsArray) {
     for (i; i < limit; i++) {
         // image, description, tags handler (??)
@@ -38,9 +39,9 @@ function loadListings(listingsArray) {
    <div class="flex flex-nowrap my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
       <article class="overflow-hidden rounded-lg shadow-lg">
          <!-- Card Bids & EndsAt Container -->
-         <div class="max-h-96">
+         <div class="card-media-container max-h-96">
             <!-- Card Media -->
-            <img src="${listingsArray[i].media}" alt="${listingsArray[i].title}" class="h-52 max-h-56 w-full object-cover"/>
+            <img src="${listingsArray[i].media}" alt="${listingsArray[i].title}" onerror="this.src='https://cdn.pixabay.com/photo/2018/11/13/21/43/avatar-3814049_960_720.png';" class="card-media h-52 max-h-56 w-full object-cover"/>
         </div>
          <div class="p-8 text-left sm:p-9 md:p-7 xl:p-9">
              <svg class="w-5 h-5 inline-block align-middle" fill="#6b21a8" stroke="currentColor"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"       d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
@@ -52,29 +53,30 @@ function loadListings(listingsArray) {
          <!-- Card Content Container -->
          <div class="flex flex-col px-8 pb-8 text-left sm:px-9 md:px-7 xl:px-9">
              <!-- Card Title -->
-             <h4 class="h-16 mb-2">
-                 <a href="javascript:void(0)" class="h-full mb-4 text-dark hover:text-primary block text-xl">
+             <h4 class="my-4 h-8">
+                 <a href="javascript:void(0)" class="h-full text-dark hover:text-primary block text-xl">
                      ${listingsArray[i].title}
                  </a>
              </h4>
+            
              <!-- Card Description -->
-             <p class="h-16 mb-2 text-body-color text-base leading-relaxed"> 
-                <span class="h-full self-center">${listingsArray[i].description}</span>
-             </p>
+             <button type="button" 
+                     
+                     class="my-4 h-6 text-left text-body-color text-base leading-relaxed truncate"> 
+                <span class="h-full">${listingsArray[i].description}</span>
+             </button>
+             
              <!-- Card Tags -->
-             <p class="h-12 text-body-color text-xs leading-relaxed font-mono">
-                <span class="h-full self-center">${listingsArray[i].tags}</span>
+             <p class="h-12 text-body-color text-xs leading-relaxed font-mono font-bold">
+                Tags: &nbsp; <span class="self-start font-medium">${listingsArray[i].tags}</span>&nbsp;
              </p>
+            
              <!-- Card Buttons Container -->
-             <div class="flex flex-nowrap gap-3">
-                 <!-- Card Place Bid Button -->
-                 <button id="cardPlaceBidButton" type="button" class="flex-grow self-center text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-                     Place Bid
-                 </button>
+             <div class="h-8 flex flex-nowrap gap-3">               
                  <!-- Card View Details Button -->
-                 <button id="cardViewDetailsButton" onclick="window.location.href='../details/index.html?id=${listingsArray[i].id}'" type="button" class="flex-shrink self-center text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-2 mb-2 rounded-full text-sm px-2 py-2 text-center mb-2 transition">
+                 <a id="viewDetailsButton" href="../details/index.html?id=${listingsArray[i].id}" class="viewDetailsButton flex-shrink self-center text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-2 mb-2 rounded-full text-sm px-2 py-2 text-center mb-2 transition">
                      View Details
-                 </button>
+                 </a>
              </div>
          </div>
      </article>
@@ -82,18 +84,38 @@ function loadListings(listingsArray) {
 `;
     }
     limit += 9;
+
+    /*
+    if (!localStorage.getItem("accessToken")) {
+        document.querySelector('.viewDetailsButton').addEventListener('onclick', function () {
+            window.location.href = `../index.html`;
+        })
+    }
+    */
 }
 
-//export const cardPlaceBidButton = document.querySelector('#cardPlaceBidButton');
-const cardViewDetailsButton = document.querySelector('#cardViewDetailsButton');
 
-// Button View Details
-cardViewDetailsButton.addEventListener('click', () => {
-    if (!localStorage.getItem("accessToken")) {
-        window.location.href = '/';
+
+
+// button back to top
+document.getElementById("toTopButton").addEventListener('click', ()=> {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+});
+
+
+
+/*
+// view details page button
+let viewDetailButtons = document.querySelectorAll("button[class='viewDetailsButton']");
+console.log(typeof  viewDetailButtons + viewDetailButtons.value);
+viewDetailButtons.addEventListener('click', function () {
+    console.log("BUTTON CLICKED");
+    if (!localStorage.getItem("accessToken")){
         console.log("You're not logged in");
-        window.alert("You need to log in to view this post");
     }
-    //const item = data.find((listing) => listing.id === listingId);
-    console.log("Button Click Worked");
-})
+    console.log("You are logged in");
+    // onclick="window.location.href = \`../details/index.html?id=${listingsArray[i].id}\`;"
+    window.location.href = `../details/index.html?id=${listingsArray[i].id}`;
+});
+ */

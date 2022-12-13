@@ -4,9 +4,10 @@ import {API_LISTINGS_URL} from "../main";
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const listingId = params.get("id");
+export const API_LISTINGS_ID_URL = `${API_LISTINGS_URL}/${listingId}?_seller=true&_bids=true`
 const postDetailsContainer = document.querySelector('#cardContainer');
 
-fetch(`${API_LISTINGS_URL}/${listingId}?_seller=true&_bids=true`)
+fetch(API_LISTINGS_ID_URL)
     .then((response) => response.json())
     .then((data) => {
         console.log(data);
@@ -19,22 +20,22 @@ fetch(`${API_LISTINGS_URL}/${listingId}?_seller=true&_bids=true`)
     .finally(() => {
         document.querySelector(".loader").remove();
         document.querySelector(".back").innerHTML =
-            `<a href="/">
-                <span class="material-symbols-outlined">
-                    arrow_back_ios
+            `<a href="/" class="">
+                <span class="material-symbols-outlined text-sm">
+                    arrow_back_ios <span class="h-full self-start">Back</span>
                 </span>
             </a>`;
     })
 
 
+/* @formatter:off */
 function listingDetails(item) {
 
     document.title = `Listing title: ${item.title}`;
 
     postDetailsContainer.innerHTML = `
-        
-        
-  <div class="container mt-12 mx-auto px-4 md:px-12">
+                
+  <div class="container mt-4 mx-auto px-4 md:px-12">
     <div class="-mx-1 lg:-mx-4">        
         <!-- CAROUSEL -->
         <div id="carouselExampleIndicators" class="carousel slide relative" data-bs-ride="carousel">
@@ -58,67 +59,67 @@ function listingDetails(item) {
             <span class="visually-hidden">Next</span>
         </button>
         </div>
-   </div>
- </div>  
-   
+    </div>
     
-    
-    <!-- CONTENT -->
-     <div class="container mt-12 mx-auto px-4 md:px-12">
-        <div class="-mx-1 lg:-mx-4">
+
+    <div class="-mx-1 lg:-mx-4">
         
-            <!-- Title -->
-            <h1 class="text-2xl font-bold">${item.title}</h1>
+        <!-- Title -->
+        <h1 class="text-2xl font-bold">${item.title}</h1>
+        
+        <!-- Seller Container -->
+        <div class="container flex flex-nowrap w-full my-10">
+            <div class="rounded-full w-16 h-16">
+                <img src="${item.seller.avatar}" alt="Avatar: ${item.seller.name}" class="rounded-full w-12 h-12 object-center object-cover">
+            </div>            
             
-            <div class="container flex flex-nowrap w-full">
-                <div class="">
-                    <img src="${item.seller.avatar}" alt="Avatar: ${item.seller.name}" class="rounded-full w-16">
-                </div>
-                
-                
-                <div class="mx-3">
-                    <p class="font-bold">Seller:</p>
-                    <p>${item.seller.name}</p>
-                </div>
+            <div class="flex flex-col mx-3">
+                <div class="flex flex-wrap"><p class="font-bold">Seller: &nbsp; </p> <p> ${item.seller.name}</p></div>
+                <!-- Wins Amount -->
+                <div class="flex flex-wrap"><p class="font-bold">Wins: &nbsp; </p> <p> ${item.seller["wins"].length}</p></div>             
+               
             </div>
-            
-            <!-- Bids & EndsAt Container -->
-             <div class="p-8 text-left sm:p-9 md:p-7 xl:p-9">
-                <svg class="w-5 h-5 inline-block align-middle" fill="#6b21a8" stroke="currentColor"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"       d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-                <!-- Bids Amount -->
-                <span id="cardBidsAmount" class="text-body-color text-sm leading-relaxed font-light">&nbsp; ${item["_count"].bids} Bids  &nbsp;&nbsp; |  &nbsp;&nbsp;&nbsp; </span>
-                <!-- EndsAt -->
-                <span class="text-body-color text-sm leading-relaxed font-bold">Ends at:<span id="cardCounter" class="font-light"> ${item.endsAt}</span></span>
-            </div>
-         
-         
-            <div class="container">   
-                <!-- Bids Amount -->
-                <p class="font-bold">Bids:</p>
-                <p>${item["_count"].bids}</p>
-            
-                    
-                <!-- Description -->
-                <p class="font-bold">Description:</p>
-                <p>${item.description}</p>
-                
-                <!-- EndsAt -->
-                <p class="font-bold">Ends at:</p>
-                <p>${item.endsAt}</p>
-                
-                
-                
-                <!-- Place Bid Button -->
-                <button id="cardPlaceBidButton" type="button" class="flex-grow self-center text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-                   Place Bid
-                </button>
-                
-                
-            </div>
-            
-            
         </div>
-     </div>
+    </div>        
+         
+    
+    <div class="-mx-1 lg:-mx-4 my-12">     
+        <div class="container">
+            <!-- Bids Amount -->
+            <div class="flex flex-wrap">
+                <svg class="w-5 h-5 inline-block align-middle" fill="#6b21a8" stroke="currentColor"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"       d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>   
+                &nbsp;<p class="font-bold">Bids: &nbsp; </p><p> ${item["_count"].bids}</p>
+            </div>
+            
+            <!-- Description -->
+            <div class="flex flex-wrap h-24 my-4"><p class="font-bold">Description: &nbsp; </p><p> ${item.description}</p></div>
+            
+            
+            <div class="container flex flex-col my-8 gap-4">
+            
+                <!-- Deadline -->
+                <div class="flex flex-wrap"><p class="font-bold">Ends at: &nbsp; </p><p>${item.endsAt}</p></div>
+                            
+                <!-- Created -->
+                <div class="flex flex-wrap"><p class="font-bold">Created at: &nbsp; </p><p> ${item.created}</p></div>
+                           
+                <!-- Updated -->
+                <div class="flex flex-wrap"><p class="font-bold">Last edited: &nbsp; </p><p> ${item.updated}</p></div>
+            </div>
+            
+ 
+            
+            <!-- Place Bid Button -->
+            <button id="cardPlaceBidButton" type="button" class="flex-grow self-center text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
+               Place Bid
+            </button>
+            <!-- Card Place Bid Button -->
+            <button id="cardPlaceBidButton" type="button" class="flex-grow self-center text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
+                     Place Bid
+            </button>         
+        </div>
+    </div>                          
+  </div>
 `;
 
     console.log(item.media);

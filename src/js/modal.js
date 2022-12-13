@@ -1,3 +1,4 @@
+/* @formatter:off */
 // modal form listing inner html
 document.getElementById("modal").innerHTML = `
     <div class="fixed z-10 overflow-auto top-0 w-full left-0">

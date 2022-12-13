@@ -18,22 +18,9 @@
 
 <!-- content -->
 <div class="container my-12 mx-auto px-4 md:px-12">
-    <!-- Details Heading -->
-    <div class="container mt-12 mx-auto px-4 md:px-12">
-        <div class="-mx-1 lg:-mx-4">
-            <h1 id="detailsTitle"></h1>
-            <!--  <h1 class="text-2xl text-center">Asta Auction Application</h1> -->
-            <!-- <h2 class="text-xl text-center">Hello, <span class="font-bold"></span>!</h2> -->
-        </div>
-    </div>
-
-
-
-
-    <!-- CONTENT -->
-    <div class="container my-12 mx-auto md:px-12">
+    <div class="-mx-1 lg:-mx-4">
         <!-- Back Button -->
-        <div class="back"></div>
+        <div class="back h-12 grid grid-cols-2 gap-3 content-start"></div>
         <!-- Container Details -->
         <div id="cardContainer" class="flex flex-wrap items-stretch items-end -mx-1 lg:-mx-4"></div>
         <!-- Container Loader Icon -->
@@ -44,6 +31,7 @@
         </div>
     </div>
 </div>
+
 
 
 
@@ -123,13 +111,16 @@
         </div>
     </div>
 </div>
+<div id="logout-modal" class="hidden"></div>
 <div id="footer"></div>
-
 
 
 <script type="module" src="../js/main.js"></script>
 <script type="module" src="./details.js"></script>
+<script type="module" src="../js/modal.js"></script>
+<script type="module" src="../js/logout.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+
 </body>
 </html>
 

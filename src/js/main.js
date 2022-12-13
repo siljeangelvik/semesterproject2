@@ -7,11 +7,11 @@ import 'tw-elements';
 /* @formatter:off */
 // desktop nav inner html
 document.getElementById("desktop-nav").innerHTML = `
-<div class="fixed top-0 inset-x-0 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 flex justify-between text-sm text-gray-700">
+<div class="fixed z-40 top-0 inset-x-0 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 flex justify-between text-sm text-gray-700">
      <div class="container mx-auto px-6">
-        <div class="w-full flex justify-between items-center">
+        <div class="w-full h-12 flex justify-between items-center">
             <!-- Brand -->
-            <div class="text-white text-center font-bold"><a href="/">Asta</a></div>
+            <div class="items-center text-white text-center font-bold"><a href="/">Asta</a></div>
             <!-- Navigation -->
             <div class="items-center invisible md:visible">
                 <a href="/" class="text-white hover:text-white no-underline mx-2 px-2">Listings</a>
