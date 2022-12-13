@@ -107,16 +107,16 @@ function listingDetails(item) {
                 <div class="flex flex-wrap"><p class="font-bold">Last edited: &nbsp; </p><p> ${item.updated}</p></div>
             </div>
             
- 
-            
-            <!-- Place Bid Button -->
-            <button id="cardPlaceBidButton" type="button" class="flex-grow self-center text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-               Place Bid
-            </button>
-            <!-- Card Place Bid Button -->
-            <button id="cardPlaceBidButton" type="button" class="flex-grow self-center text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-                     Place Bid
-            </button>         
+            <div class="container flex flex-nowrap my-8">
+                <!-- Card View Details Button -->
+                <a id="viewDetailsButton" href="../index.html" class="flex-shrink self-center text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-2 mb-2 rounded-full text-sm px-2 py-2 text-center mb-2 transition">
+                    Back to all listings
+                </a>
+                <!-- Place Bid Button -->
+                <button id="cardPlaceBidButton" type="button" class="w-2/4 text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
+                   Place Bid
+                </button>
+            </div>    
         </div>
     </div>                          
   </div>
