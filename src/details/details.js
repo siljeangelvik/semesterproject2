@@ -1,5 +1,6 @@
 /* @formatter:off */
 import {API_LISTINGS_URL} from "../main";
+import {setupCounter} from "../counter";
 
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
@@ -36,7 +37,7 @@ function listingDetails(item) {
     postDetailsContainer.innerHTML = `
                 
   <div class="container mt-4 mx-auto px-4 md:px-12">
-    <div class="-mx-1 lg:-mx-4">        
+    <div class="-mx-1 lg:-mx-4 border rounded-l shadow">        
         <!-- CAROUSEL -->
         <div id="carouselExampleIndicators" class="carousel slide relative" data-bs-ride="carousel">
         <!-- carousel wrapper -->
@@ -59,81 +60,112 @@ function listingDetails(item) {
             <span class="visually-hidden">Next</span>
         </button>
         </div>
-    </div>
+    </div>          
     
-
-    <div class="-mx-1 lg:-mx-4">
-        
-        <!-- Title -->
-        <h1 class="text-2xl font-bold">${item.title}</h1>
-        
-        <!-- Seller Container -->
-        <div class="container flex flex-nowrap w-full my-10">
-            <div class="rounded-full w-16 h-16">
-                <img src="${item.seller.avatar}" alt="Avatar: ${item.seller.name}" class="rounded-full w-12 h-12 object-center object-cover">
-            </div>            
+    <!-- Seller Container -->
+    <div class="container flex flex-nowrap items-center w-full border-t border-b-0 border w-full rounded">
+         <div class="flex flex-col mx-3 mt-3 rounded-full w-16 h-16">
+             <img src="${item.seller.avatar}" alt="${item.seller.name}" class="rounded-full border w-12 h-12 object-center object-cover">
+         </div>                       
+         <div class="flex flex-col mx-3 ">
+             <div class="flex flex-wrap"><p class="font-bold">Seller: &nbsp; </p> <p> ${item.seller.name}</p></div>
+             <!-- Wins Amount -->
+             <div class="flex flex-wrap"><p class="font-bold">Wins: &nbsp; </p> <p> ${item.seller["wins"].length}</p></div>                            
+         </div>
+     </div>
+          
+    <!-- Button TABS -->
+    <ul class="nav nav-tabs nav-justified flex flex-col mb-10 md:flex-row flex-wrap list-none border-b-0 pl-0 border" id="tabs-tabJustify" role="tablist">
+        <li class="nav-item flex-grow text-center" role="presentation">
+            <a href="#tabs-homeJustify" class="font-bold nav-link w-full block text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-purple-800 hover:bg-gray-100 focus:border-transparent active" id="tabs-home-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-homeJustify" role="tab" aria-controls="tabs-homeJustify" aria-selected="true">
+                Home
+            </a>
+        </li>
+        <li class="nav-item flex-grow text-center" role="presentation">
+            <a href="#tabs-bidsJustify" class="font-bold nav-link w-full block text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-purple-800 hover:bg-gray-100 focus:border-transparent" id="tabs-bids-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-bidsJustify" role="tab" aria-controls="tabs-bidsJustify" aria-selected="false">
+                Bids: <span>${item["_count"].bids}</span>   
+            </a>            
+        </li>
+        <li class="nav-item flex-grow text-center" role="presentation">
+            <a href="#tabs-winsJustify" class="font-bold nav-link w-full block text-xs leading-tight uppercase border-x-0 border-t-0 border-b-2 border-transparent px-6 py-3 my-2 hover:border-purple-800 hover:bg-gray-100 focus:border-transparent" id="tabs-wins-tabJustify" data-bs-toggle="pill" data-bs-target="#tabs-winsJustify" role="tab" aria-controls="tabs-winsJustify" aria-selected="false">
+                Wins: <span>${item.seller["wins"].length}</span> 
+            </a>
             
-            <div class="flex flex-col mx-3">
-                <div class="flex flex-wrap"><p class="font-bold">Seller: &nbsp; </p> <p> ${item.seller.name}</p></div>
-                <!-- Wins Amount -->
-                <div class="flex flex-wrap"><p class="font-bold">Wins: &nbsp; </p> <p> ${item.seller["wins"].length}</p></div>             
-               
-            </div>
-        </div>
-    </div>        
-         
+        </li>
+    </ul>
     
-    <div class="-mx-1 lg:-mx-4 my-12">     
-        <div class="container">
-            <!-- Bids Amount -->
-            <div class="flex flex-wrap">
-                <svg class="w-5 h-5 inline-block align-middle" fill="#6b21a8" stroke="currentColor"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"       d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>   
-                &nbsp;<p class="font-bold">Bids: &nbsp; </p><p> ${item["_count"].bids}</p>
-            </div>
-            
+    
+    <div class="tab-content h-72 max-h-80 mx-2 lg:-mx-4" id="tabs-tabContentJustify">
+        <!-- TAB 1: Content -->
+        <div class="tab-pane fade show active" id="tabs-homeJustify" role="tabpanel" aria-labelledby="tabs-home-tabJustify">
+                             
+            <!-- Heading Title -->
+            <h1 class="text-2xl font-bold">${item.title}</h1> 
+           
             <!-- Description -->
-            <div class="flex flex-wrap h-24 my-4"><p class="font-bold">Description: &nbsp; </p><p> ${item.description}</p></div>
+            <div class="flex flex-col mb-4"> <p class="font-bold">Description: &nbsp;</p> <p> ${item.description}</p> </div>
+            <!-- Tags -->
+            <div class="flex flex-col my-8"> <p class="font-bold">Tags: &nbsp;</p> <p class="font-mono"> ${item.tags}</p> </div>
             
             
-            <div class="container flex flex-col my-8 gap-4">
-            
-                <!-- Deadline -->
-                <div class="flex flex-wrap"><p class="font-bold">Ends at: &nbsp; </p><p>${item.endsAt}</p></div>
-                            
+            <div class="flex flex-wrap">
+                <!-- EndsAt -->
+                <div class="flex flex-col mb-4 text-sm"> <p class="font-bold">Deadline: &nbsp;</p> <p> ${item.endsAt}</p> </div>
                 <!-- Created -->
-                <div class="flex flex-wrap"><p class="font-bold">Created at: &nbsp; </p><p> ${item.created}</p></div>
-                           
-                <!-- Updated -->
-                <div class="flex flex-wrap"><p class="font-bold">Last edited: &nbsp; </p><p> ${item.updated}</p></div>
+                <div class="flex flex-col mb-4 text-sm"> <p class="font-bold">Listing created: &nbsp;</p> <p> ${item.created}</p> </div>
+                <!-- Edited -->
+                <div class="flex flex-col mb-4 text-sm"> <p class="font-bold">Last edited: &nbsp;</p> <p> ${item.updated}</p> </div>
             </div>
-            
-            <div class="container flex flex-nowrap my-8">
-                <!-- Card View Details Button -->
-                <a id="viewDetailsButton" href="../index.html" class="flex-shrink self-center text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-2 mb-2 rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-                    Back to all listings
-                </a>
-                <!-- Place Bid Button -->
-                <button id="cardPlaceBidButton" type="button" class="w-2/4 text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-                   Place Bid
-                </button>
-            </div>    
         </div>
-    </div>                          
+        
+        <!-- TAB 2: Content -->
+        <div class="tab-pane fade mb-24" id="tabs-bidsJustify" role="tabpanel" aria-labelledby="tabs-bids-tabJustify">                                          
+            <!-- Heading -->
+            <h2 class="font-bold text-xl text-center my-8">Bids information</h2>            
+                    
+            <!-- Buttons Container -->
+            <div class="container relative flex flex-nowrap justify-center lg:justify-between pb-8 mb-8">
+                <!-- Card View Details Button -->
+                    <a href="../index.html" class="flex-shrink self-center text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-2 mb-2 rounded-full text-sm px-2 py-2 text-center mb-2 transition">
+                        Back to all listings
+                    </a>
+                <!-- Place Bid Button -->
+                <button id="cardPlaceBidButton" onclick="setupCounter(bids + 1)" type="button" class="w-2/4 text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
+                    Place Bid
+                </button>
+            </div> 
+            
+            <!-- Bids Content from forEach -->                                  
+            <div class="bids-container flex flex-col mx-3"></div>
+        </div> 
+          
+        <!-- TAB 3: Content -->        
+        <div class="tab-pane fade" id="tabs-winsJustify" role="tabpanel" aria-labelledby="tabs-wins-tabJustify">
+          
+            <!-- Heading -->
+            <h2 class="font-bold text-xl">Wins</h2>
+            <p>${item.wins}</p> 
+          
+        </div>
+    
+                       
   </div>
+</div>
 `;
 
     console.log(item.media);
 
-    mediaCarouselFunction(item.media, item.title);
+    mediaCarouselFunction(item.media, item.title, item.bids);
 
 }
 
 
 /* @formatter:on */
 
-function mediaCarouselFunction(media, title) {
+function mediaCarouselFunction(media, title, bids) {
     // console.log(media.length);
-    let carouselItem = document.querySelector('.carousel-inner');
+    console.log(bids);
+    let carouselWrapper = document.querySelector('.carousel-inner');
 
     for (let i = 0; i < media.length; i++) {
         let imageWrapper = document.createElement("div");
@@ -143,12 +175,31 @@ function mediaCarouselFunction(media, title) {
             imageWrapper.classList.add("active");
         }
 
-        imageWrapper.innerHTML = `<img src="${media[i]}" class="block w-full h-52 max-h-56 object-cover" alt="${title}">`;
+        imageWrapper.innerHTML = `<img src="${media[i]}" class="block w-full h-60 max-h-64 object-cover shadow-xl" alt="${title}">`;
 
-        carouselItem.appendChild(imageWrapper);
+        carouselWrapper.appendChild(imageWrapper);
         console.log(imageWrapper);
     }
+
+
+    let bidsWrapper = document.querySelector('.bids-container');
+    bids.forEach((bid) => {
+        console.log(bid);
+         bidsWrapper.innerHTML += `
+         <div class="flex flex-nowrap my-8">
+             <div class="flex flex-col">
+                <p>Amount: &nbsp; ${bid.amount}</p>
+                <p>Bidder: &nbsp; ${bid.bidderName}</p>
+                <p>Created: &nbsp; ${bid.created}</p>
+            </div>
+         </div>          
+         `;
+
+       // console.log(bids.filter(bid))
+    })
+
 }
+
 
 
 // localhost:5173/details/index.html?id=d6e947a0-98c3-4e33-9de8-ded798fd02ee

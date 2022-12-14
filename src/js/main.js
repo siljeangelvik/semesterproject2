@@ -4,7 +4,6 @@ import '../css/styles.scss';
 import '../ganttchart/ganttchart.css';
 import 'tw-elements';
 
-/* @formatter:off */
 // desktop nav inner html
 document.getElementById("desktop-nav").innerHTML = `
 <div class="fixed z-40 top-0 inset-x-0 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 flex justify-between text-sm text-gray-700">

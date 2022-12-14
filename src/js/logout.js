@@ -27,7 +27,7 @@ function userLogout() {
                                 class="py-2 px-4 text-purple-800 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 text-white rounded-full mr-2">
                             <i class="fas fa-times"></i> Cancel
                         </button>
-                        <button id="modalLogoutButton" type="submit"
+                        <button id="modalLogoutButton" type="button"
                                 class="py-2 px-4 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white rounded-full hover:bg-emerald-500 mr-2">
                             <i class="fas fa-plus"></i> Logout
                         </button>
@@ -51,7 +51,7 @@ function userLogout() {
             localStorage.removeItem("avatar");
 
             // window.location.reload();
-            window.location.href = '../index.html';
+            window.location.href = '/';
         }
     });
 
