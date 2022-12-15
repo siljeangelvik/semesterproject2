@@ -29,7 +29,11 @@ async function fetchProfileAccount(API_PROFILE_URL) {
         console.log(response.status);
 
         localStorage.setItem("credits", json.credits);
+        localStorage.setItem("wins", json.wins);
+
         document.getElementById("profileCredits").innerHTML = localStorage.getItem('credits');
+        document.getElementById("profileWins").innerHTML = localStorage.getItem("wins").length;
+        console.log(localStorage.getItem("wins").length);
 
         console.log(localStorage.getItem("credits"));
 

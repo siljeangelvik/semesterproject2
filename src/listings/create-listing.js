@@ -1,82 +1,90 @@
-
-
-
 /* @formatter:off */
-// import '../js/modal';
-// import {API_LISTINGS_URL} from "../main";
-/*
+
+import {addListingButton,returnMessage} from "../js/main";
+import {API_LISTINGS_URL} from "../main";
+
+
 let title = document.getElementById("createTitle");
-let endsAt = document.getElementById("createDeadline");
-// let media = document.querySelector('input[type="url"][multiple]');
+let endsAt = document.getElementById("createEndsAt");
 let media = document.getElementById("createMedia");
 let description = document.getElementById("createDescription");
 let tags = document.getElementById("createTags");
-// let errorElement = document.querySelectorAll('.error');
- //const formData = new FormData();
-
-let validTitle = title.value.trim();
-let validDeadline = endsAt.value.trim();
-let validPhotos = media.value.trim();
-let validDescription = description.value.trim();
-let validTags = tags.value.trim();
 
 
-// the object that will be sent to api
-formData = {
-    "title": validTitle,
-    "endsAt": validDeadline,
-    "media": validPhotos,
-    "description": validDescription,
-    "tags": validTags
+async function createListing() {
+    let validTitle = title.value.trim();
+
+    let validEndsAt = endsAt.value.trim();
+    console.log(validEndsAt);
+    validEndsAt = new Date(validEndsAt);
+    let validMedia = media.value.trim();
+    let validDescription = description.value.trim();
+    let validTags = [tags.value.trim()];
+    console.log(validTags);
+    // the object that will be sent to api
+    let createData = {
+        "title": validTitle,
+        "endsAt": validEndsAt,
+        "media": validMedia,
+        "description": validDescription,
+        "tags": validTags
+    }
+
+    console.log(createData);
+
+    if (!validTitle || !validEndsAt) {
+        returnMessage.innerHTML = `${json.errors[0].message}`;
+    }
+    if (/([a-z\-_0-9\/:.]*\.(jpg|jpeg|png|gif))/i.test(validMedia)) {
+        returnMessage.innerHTML = `${json.errors[0].message}`;
+    }
+
+    console.log("THE OBJECT I'M GOING TO SEND: ", createData);
+    await apiCreateListing(API_LISTINGS_URL, createData);
+
 }
 
-console.log("THE OBJECT I'M GOING TO SEND: ", formData);
 
 
+async function apiCreateListing(API_LISTINGS_URL, newListing) {
+    console.log(newListing);
+    try {
+        const options = {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                "content-Type": "application/json",
+            },
+            body: JSON.stringify(newListing),
+        };
 
-const form = document.getElementById('formCreateListing');
-console.log(form);
-console.log("THIS IS THE FORM ^");
-
-
-const inputs = form.querySelectorAll('input');
-
-
-form.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-
-    for (const input of inputs) {
-        // Check the value of each input field
-        if (!input.value) {
-            // If the input field is empty, create a new error message
-            const errorMessage = document.createElement('div');
-            errorMessage.classList.add('error', 'text-red-600');
-            errorMessage.textContent = `${input.name} is required!`;
-
-            // Insert the error message after the input field
-            input.insertAdjacentElement('afterend', errorMessage);
+        const response = await fetch(API_LISTINGS_URL, options);
+        console.log(`response = ${response}`);
+        const json = await response.json();
+        console.log(json);
+        if (!response.ok) {
+            console.log(json.errors[0].message);
+            throw new Error();
         }
+        console.log("OK");
+        console.log(response.status);
+
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 1500);
+
+    } catch (error) {
+        console.log(error);
     }
-});
-
-
-// Use fetch to send the form data to the API
-fetch(API_LISTINGS_URL, {
-    method: "POST",
-    body: JSON.stringify({formData}),
-}).then((response) => response.json())
-    .then((result) => {
-        console.log('Success:', result);
-        console.log(result.errors[0].message);
-    }).catch((error) => {
-        console.error('Error:', error);
-        console.log(errors[0].message);
-    });
+}
 
 
 
-
+addListingButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    createListing();
+})
 
 
 

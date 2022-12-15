@@ -162,7 +162,7 @@ document.getElementById("create-modal").innerHTML = `
                                    for="createMedia">Media</label>
                             <input id="createMedia" type="url" alt=""
                                    placeholder="https://example.com/photo_something.jpg"
-                                   pattern="/([a-z\\-_0-9\\/\\:\\.]*\\.(jpg|jpeg|png|gif))/i" size="30"
+                                   size="30"
                                    class="profile-pic-input appearance-none border rounded w-full py-2 px-3 text-grey-darker"/>
                         </div>
                         
@@ -192,7 +192,7 @@ document.getElementById("create-modal").innerHTML = `
                             <i class="fas fa-times"></i> Cancel
                         </button>
                         <button id="modalCreateButton" type="submit"
-                                class="py-2 px-4 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white rounded-full hover:bg-emerald-500 mr-2">
+                                class="modalCreateButton py-2 px-4 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white rounded-full hover:bg-emerald-500 mr-2">
                             <i class="fas fa-plus"></i> Create
                         </button>
                     </div>
@@ -205,6 +205,8 @@ document.getElementById("create-modal").innerHTML = `
 
 /* @formatter:off */
 // Element with class "openCreateModal" will not be displayed for logged-out users
+export const returnMessage = document.querySelector('.error');
+export const addListingButton = document.querySelector(".modalCreateButton");
 export const modalCreateListingButton = "openCreateModal";
 export const modalCreateButton = document.querySelectorAll(`.${modalCreateListingButton}`);
 modalCreateButton.forEach(element => {
@@ -218,10 +220,6 @@ modalCreateButton.forEach(element => {
             window.alert("You need to be logged in to view your profile.");
             window.location.href = "../login/index.html";
 
-        } else {
-            // if the user is logged in, allow the default anchor link behavior to occur
-
-            return true;
         }
     });
 });

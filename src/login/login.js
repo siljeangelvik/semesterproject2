@@ -6,7 +6,7 @@ export const loginUrl = `${API_BASE_URL}/auth/login`;
 export const returnMessage = document.querySelector(".error");
 export const email = document.getElementById("email");
 export const password = document.getElementById("password");
-export const loginButton = document.getElementById("loginButton");
+const loginButton = document.querySelector("#loginButton");
 
 const isValidEmail = email => {
     const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
