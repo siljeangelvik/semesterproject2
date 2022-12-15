@@ -1,7 +1,7 @@
 /* @formatter:off */
 import '../css/input.css';
 import '../css/styles.scss';
-import '../ganttchart/ganttchart.css';
+import '../css/gantt.css';
 import 'tw-elements';
 
 // desktop nav inner html
