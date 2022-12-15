@@ -10,9 +10,7 @@ let i = 0;
 
 export default fetch(API_LISTING_PARAM_URL)
     .then(response => {
-        // if the request is successful, the API will return a list of data items
         if (response.ok) {
-            // use the json() method of the Response object to parse the data
             return response.json();
         } else {
             // if the request fails, throw an error

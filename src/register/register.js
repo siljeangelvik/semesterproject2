@@ -76,13 +76,7 @@ async function registerUser(API_REGISTER_URL, userData) {
             throw new Error();
         }
 
-
-/*
-        window.alert(`
-        You successfully registered a new account!\n
-        We are escorting you to the login page,
-        so that you can get to use your new account immediately! 
-        `); */
+        // Modal Successful User Register
         document.getElementById("register-success").innerHTML = `
         <div class="fixed z-10 overflow-auto top-0 w-full left-0">
         <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
@@ -125,7 +119,6 @@ async function registerUser(API_REGISTER_URL, userData) {
     </div>
 `;
 
-
         // When user has successfully registered, redirect to login-page
         setTimeout(() => {
             window.location.href = "../login/index.html";
@@ -136,7 +129,7 @@ async function registerUser(API_REGISTER_URL, userData) {
     }
 }
 
-// loginButton onclick = run register validation function
+// register button onclick = run register validation function
 registerButton.addEventListener("click", function(e){
     e.preventDefault();
 

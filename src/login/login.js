@@ -4,8 +4,9 @@ import {API_BASE_URL } from "../main";
 export const loginUrl = `${API_BASE_URL}/auth/login`;
 
 export const returnMessage = document.querySelector(".error");
-export const email = document.getElementById("email");
-export const password = document.getElementById("password");
+const email = document.getElementById("email");
+const password = document.getElementById("password");
+export const loginButton = document.getElementById("loginButton");
 
 const isValidEmail = email => {
     const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
@@ -80,11 +81,8 @@ async function loginUser(loginUrl, userData) {
     }
 }
 
-
 // loginButton onclick = run login validation function
-const loginButton = document.querySelector("#loginButton");
 loginButton.addEventListener("click", function(e){
     e.preventDefault();
     login();
 });
-
