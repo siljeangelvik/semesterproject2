@@ -32,12 +32,15 @@ async function fetchProfileAccount(API_PROFILE_URL) {
 
         localStorage.setItem("credits", json.credits);
         localStorage.setItem("wins", json.wins);
+        localStorage.setItem("listings", json.listings);
 
         document.getElementById("profileCredits").innerHTML = localStorage.getItem('credits');
         document.getElementById("profileWins").innerHTML = localStorage.getItem("wins").length;
-        console.log(localStorage.getItem("wins").length);
 
-        console.log(localStorage.getItem("credits"));
+
+        document.getElementById("profileListingsAmount").innerHTML = `${json["_count"].listings}`;
+        // document.getElementById("profileListings").innerHTML = localStorage.getItem('listings');
+
 
     } catch (error) {
         console.log(error);
