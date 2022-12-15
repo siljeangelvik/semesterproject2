@@ -294,17 +294,12 @@ async function API_PLACE_BID(API_PLACE_BID_URL, amount) {
         // console.log(json);
         if (!response.ok) {
             console.log(json.errors[0].message);
-          //  returnMessage.innerHTML = `${json.errors[0].message}`;
             throw new Error();
         }
         console.log("OK");
         console.log(response.status);
 
-        //localStorage.setItem("amount", json.amount);
-
-
-
-        console.log(json.amount);
+        localStorage.setItem("credits", json.credits);
 
     } catch (error) {
         console.log(error);
