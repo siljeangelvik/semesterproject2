@@ -1,11 +1,9 @@
-/* @formatter:off */
 import {API_LISTINGS_URL} from "../main";
 
-
 const postDetailsContainer = document.querySelector('#cardContainer');
- const queryString = document.location.search;
- const params = new URLSearchParams(queryString);
- const listingId = params.get("id");
+const queryString = document.location.search;
+const params = new URLSearchParams(queryString);
+const listingId = params.get("id");
 export const API_LISTING_URL = `${API_LISTINGS_URL}/${listingId}?_seller=true&_bids=true`;
 export const API_PLACE_BID_URL = `${API_LISTINGS_URL}/${listingId}/bids`;
 console.log(JSON.stringify(API_PLACE_BID_URL));
@@ -30,16 +28,13 @@ fetch(API_LISTING_URL)
     })
 
 
-
-
 /* @formatter:off */
 function listingDetails(item) {
 
     document.title = `Listing title: ${item.title}`;
     console.log(item.bids.amount)
 
-    postDetailsContainer.innerHTML = `
-                
+    postDetailsContainer.innerHTML = `           
   <div class="container mt-4 mx-auto px-4 md:px-12">
     <div class="-mx-1 lg:-mx-4 border rounded-l shadow">        
         <!-- CAROUSEL -->
@@ -204,6 +199,7 @@ function listingDetails(item) {
 
     mediaCarouselFunction(item.media, item.title, item.bids, item.bids.amount);
 }
+
 
 
 function eventAdder() {

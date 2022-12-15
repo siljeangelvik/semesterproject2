@@ -1,5 +1,3 @@
-/* RESET RULES
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
 :root {
     --white: #fff;
     --divider: lightgrey;
@@ -25,8 +23,7 @@ body {
 
 .dates { display: flex; padding: 0; margin: 0; width: 100%;}
 .dates p { font-weight: bold; font-size: 13px; padding: 5px 0; margin: 0; width: 14.28%; text-align: center; }
-/* CHART-VALUES
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
 .chart-wrapper .chart-values {
     position: relative;
     display: flex;
@@ -47,8 +44,7 @@ body {
 }
 
 
-/* CHART-BARS
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* CHART-BARS */
 .chart-wrapper .chart-bars li {
     position: relative;
     color: var(--white);
@@ -68,7 +64,6 @@ body {
 }
 
 
-/* FOOTER
-–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* FOOTER */
 .page-footer { font-size: 0.85rem; padding: 10px; text-align: right; color: var(--black); }
 .page-footer span { color: #e31b23; }

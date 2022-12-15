@@ -203,7 +203,7 @@ document.getElementById("create-modal").innerHTML = `
 `;
 
 
-/* @formatter:off */
+
 // Element with class "openCreateModal" will not be displayed for logged-out users
 export const returnMessage = document.querySelector('.error');
 export const addListingButton = document.querySelector(".modalCreateButton");

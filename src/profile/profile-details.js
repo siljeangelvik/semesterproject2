@@ -2,6 +2,8 @@ import {API_BASE_URL} from "../main";
 
 export const API_PROFILE_URL = `${API_BASE_URL}/profiles/${localStorage.getItem("name")}`;
 
+document.title = localStorage.getItem('name');
+
 document.getElementById("profileUsername").innerHTML = localStorage.getItem('name');
 document.getElementById("profileEmail").innerHTML = localStorage.getItem('email');
 document.getElementById("profileAvatar").src = localStorage.getItem('avatar');

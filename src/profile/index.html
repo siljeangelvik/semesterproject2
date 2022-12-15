@@ -2,8 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <link rel="icon" type="image/svg+xml" href="/assets/vite.svg"/>
+    <link rel="icon" type="image/svg+xml" href="../../public/assets/vite.svg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description"
+          content="This is your profile account.
+          Here you can view your account details,
+          as well as update your profile avatar.">
     <title>Your Account</title>
     <!-- Google Material Icons -->
     <link rel="stylesheet"
@@ -104,51 +108,6 @@
     </div>
 </div>
 
-<!-- Content Listings Container -->
-<div class="container my-12 mx-auto px-4 md:px-12">
-    <!-- Heading Your Listings -->
-    <div class="-mx-1 lg:-mx-4">
-        <div class="container mt-12 mx-auto px-4 md:px-12">
-            <h1 class="text-xl font-bold text-left">Your listings: </h1>
-        </div>
-    </div>
-    <!-- Listings -->
-    <div class="-mx-1 lg:-mx-4">
-        <div class="container my-12 mx-auto md:px-12">
-            <!-- Container Cards -->
-            <div id="cardContainer" class="flex flex-wrap items-stretch items-end -mx-1 lg:-mx-4"></div>
-            <!-- Container Loader Icon -->
-            <div id="loader" class="flex justify-center items-center">
-                <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-                    <span class="visually-hidden font-bold">(</span>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Container Load More & Back to Top -->
-    <div class="-mx-1 lg:-mx-4">
-        <div class="container my-12 mx-auto px-4 md:px-12">
-            <div class="-mx-1 lg:-mx-4">
-                <div class="flex flex-nowrap gap-6">
-                    <!-- Filler -->
-                    <button id="" class="flex-shrink w-1/4"></button>
-                    <!-- Card Place Bid Button -->
-                    <button id="load-more" type="button"
-                            class="flex-1 w-2/4 text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-                        Load more
-                    </button>
-                    <!-- Card View Details Button -->
-                    <button id="toTopButton" title="Go to top"
-                            class="toTopButton flex-shrink w-1/4 text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-2 mb-2 rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-                        Go to Top
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- modal create listing -->
 <div id="create-modal" class="create-modal hidden"></div>
 
@@ -164,7 +123,7 @@
 
 <script type="module" src="../js/main.js"></script>
 <script type="module" src="../js/logout.js"></script>
-<script type="module" src="../listings/fetch-listings.js"></script>
+<script type="module" src="../js/fetch-listings.js"></script>
 <script type="module" src="./profile-avatar.js"></script>
 <script type="module" src="./profile-details.js"></script>
 

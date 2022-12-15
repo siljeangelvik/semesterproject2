@@ -16,12 +16,12 @@ export default fetch(API_LISTING_PARAM_URL)
             return response.json();
         } else {
             // if the request fails, throw an error
-            console.log(json.errors[0].message);
+           // console.log(json.errors[0].message);
             returnMessage.innerHTML = `${json.errors[0].message}`;
             throw new Error(`${json.errors[0].message}`);
         }
     }).then(dataList => {
-        console.log(dataList);
+       // console.log(dataList);
         loadListings(dataList);
         document.getElementById("load-more").addEventListener('click', () => {
             loadListings(dataList);
