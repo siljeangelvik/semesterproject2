@@ -1,5 +1,4 @@
 
-
 // display user details saved in local storage
 document.getElementById("profileUsername").innerHTML = localStorage.getItem('name');
 document.getElementById("profileEmail").innerHTML = localStorage.getItem('email');

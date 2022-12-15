@@ -1,18 +1,19 @@
 /* @formatter:off */
 import {API_LISTINGS_URL} from "../main";
-import {setupCounter} from "../counter";
 
-const queryString = document.location.search;
-const params = new URLSearchParams(queryString);
-const listingId = params.get("id");
-export const API_LISTINGS_ID_URL = `${API_LISTINGS_URL}/${listingId}?_seller=true&_bids=true`
+
 const postDetailsContainer = document.querySelector('#cardContainer');
+ const queryString = document.location.search;
+ const params = new URLSearchParams(queryString);
+ const listingId = params.get("id");
+export const API_LISTING_URL = `${API_LISTINGS_URL}/${listingId}?_seller=true&_bids=true`;
+export const API_PLACE_BID_URL = `${API_LISTINGS_URL}/${listingId}/bids`;
+console.log(JSON.stringify(API_PLACE_BID_URL));
 
-fetch(API_LISTINGS_ID_URL)
+fetch(API_LISTING_URL)
     .then((response) => response.json())
     .then((data) => {
         console.log(data);
-        //const id = data.find((listing) => listing.id === listingId);
         listingDetails(data);
     }).catch(error => {
     postDetailsContainer.innerHTML = "I'm sorry, we couldn't get what you're looking for.";
@@ -29,10 +30,13 @@ fetch(API_LISTINGS_ID_URL)
     })
 
 
+
+
 /* @formatter:off */
 function listingDetails(item) {
 
     document.title = `Listing title: ${item.title}`;
+    console.log(item.bids.amount)
 
     postDetailsContainer.innerHTML = `
                 
@@ -124,13 +128,9 @@ function listingDetails(item) {
             <h2 class="font-bold text-xl text-center my-8">Bids information</h2>            
                     
             <!-- Buttons Container -->
-            <div class="container relative flex flex-nowrap justify-center lg:justify-between pb-8 mb-8">
-                <!-- Card View Details Button -->
-                    <a href="../index.html" class="flex-shrink self-center text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-2 mb-2 rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-                        Back to all listings
-                    </a>
+            <div class="container flex justify-center items-center pb-8 mb-8">  
                 <!-- Place Bid Button -->
-                <button id="cardPlaceBidButton" onclick="setupCounter(bids + 1)" type="button" class="w-2/4 text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
+                <button id="cardPlaceBidButton" onclick="document.getElementById('place-bid-modal').classList.remove('hidden')" type="button" class="cardPlaceBidButton w-2/4 text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
                     Place Bid
                 </button>
             </div> 
@@ -146,21 +146,74 @@ function listingDetails(item) {
             <h2 class="font-bold text-xl">Wins</h2>
             <p>${item.wins}</p> 
           
-        </div>
-    
-                       
+        </div>                   
   </div>
 </div>
 `;
 
     console.log(item.media);
 
-    mediaCarouselFunction(item.media, item.title, item.bids);
+    // "Place Bid Button" opens the "Place Bid Modal"
+    document.querySelector('.cardPlaceBidButton').addEventListener('click', () => {
+        document.querySelector('#place-bid-modal').innerHTML = `
+    <div class="fixed z-10 overflow-auto top-0 w-full left-0">
+        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity">
+                <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+                <span class="absolute sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                <form id="formTest"
+                      class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                      aria-labelledby="modal-headline">
+                    <div class=" bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 py-4 px-8 text-white text-xl border-b border-grey-lighter">
+                        Place a bid on: <span class="font-bold">${item.title}</span>
+                    </div>
+                  
+                  <!-- Place Bid Modal Content -->
+                    <div class="bg-white px-2 pt-5 pb-2 sm:p-6 sm:pb-4">                                                  
+                        <div class="mb-4">
+                            <label class="block text-grey-darker text-sm font-bold mb-2" for="amount">
+                                Choose the amount you want to bid:
+                            </label>
+                            <input id="amount" class="${item.bids.amount} appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+                               type="number" placeholder="42" required>
+                        <div>
+                    </div>
 
+                    <!-- Cancel & Place Bid Container -->
+                    <div class="px-4 py-3 text-right">
+                        <button type="button" 
+                                onclick="document.getElementById('place-bid-modal').classList.add('hidden')"
+                                class="py-2 px-4 text-purple-800 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 text-white rounded-full mr-2">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button id="inModalPlaceBidButton"
+                                type="submit"  
+                                
+                                class="inModalPlaceBidButton py-2 px-4 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white rounded-full hover:bg-emerald-500 mr-2">
+                            <i class="fas fa-plus"></i> Place bid
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+`;
+
+        eventAdder();
+    });
+
+    mediaCarouselFunction(item.media, item.title, item.bids, item.bids.amount);
 }
 
 
-/* @formatter:on */
+function eventAdder() {
+    const buttonSendBid = document.querySelector('#formTest');
+    buttonSendBid.addEventListener('submit', (e) => {
+        e.preventDefault();
+        console.log(e);
+        placeBidFunction(e);
+    });
+}
 
 function mediaCarouselFunction(media, title, bids) {
     // console.log(media.length);
@@ -175,17 +228,17 @@ function mediaCarouselFunction(media, title, bids) {
             imageWrapper.classList.add("active");
         }
 
+
         imageWrapper.innerHTML = `<img src="${media[i]}" class="block w-full h-60 max-h-64 object-cover shadow-xl" alt="${title}">`;
 
         carouselWrapper.appendChild(imageWrapper);
         console.log(imageWrapper);
     }
 
-
     let bidsWrapper = document.querySelector('.bids-container');
     bids.forEach((bid) => {
         console.log(bid);
-         bidsWrapper.innerHTML += `
+        bidsWrapper.innerHTML += `
          <div class="flex flex-nowrap my-8">
              <div class="flex flex-col">
                 <p>Amount: &nbsp; ${bid.amount}</p>
@@ -194,104 +247,68 @@ function mediaCarouselFunction(media, title, bids) {
             </div>
          </div>          
          `;
-
-       // console.log(bids.filter(bid))
     })
+
 
 }
 
 
+function placeBidFunction(event) {
+    let userBid = event.target.elements.amount.value
+    console.log(userBid);
 
-// localhost:5173/details/index.html?id=d6e947a0-98c3-4e33-9de8-ded798fd02ee
+    userBid = parseInt(userBid);
+    let amountObj = {
+        "amount": userBid
+    }
+    console.log(amountObj);
+
+    if (!userBid) {
+        console.log("You need to enter a valid amount.");
+    }
+
+    if (userBid) {
+        console.log("Amount has been set");
+        console.log(API_PLACE_BID_URL);
+        API_PLACE_BID(API_PLACE_BID_URL, amountObj);
+    }
+
+}
 
 
-// localhost:5173/details/index.html?id=d6e947a0-98c3-4e33-9de8-ded798fd02ee
+async function API_PLACE_BID(API_PLACE_BID_URL, amount) {
+    console.log(amount);
+    try {
+        const options = {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+                "content-Type": "application/json",
+            },
+            body: JSON.stringify(amount),
+        };
 
-// DETAILS ITEM
-/*
-<!-- DETAILS ITEM -->
-   <div class="flex flex-nowrap justify-center my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-5/6">
-      <article class="overflow-hidden w-5/6 rounded-lg shadow-lg">
-            <!-- Title -->
-           <h1 class="text-2xl text-center">${item.title}</h1>
+        const response = await fetch(API_PLACE_BID_URL, options);
+        // console.log(`response = ${response}`);
+        const json = await response.json();
+        // console.log(json);
+        if (!response.ok) {
+            console.log(json.errors[0].message);
+          //  returnMessage.innerHTML = `${json.errors[0].message}`;
+            throw new Error();
+        }
+        console.log("OK");
+        console.log(response.status);
 
-
-            <!-- Carousel Wrapper -->
-            <div id="carouselExampleSlidesOnly" class="carousel slide relative" data-bs-ride="carousel">
-                <div class="carousel-inner relative w-full overflow-hidden">
-
-                </div>
-            </div>
-
-
-
-         <!-- Card Content Container -->
-         <div class="flex flex-col px-8 pb-8 text-left sm:px-9 md:px-7 xl:px-9">
-             <!-- Card Title -->
-             <h4 class="h-16 mb-2">
-                 <a href="javascript:void(0)" class="h-full mb-4 text-dark hover:text-primary block text-xl">
-                     ${item.title}
-                 </a>
-             </h4>
-
-             <!-- Card Place Bid Button -->
-             <button id="cardPlaceBidButton" type="button" class="flex-grow self-center text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-                Place Bid
-             </button>
-
-            <!-- Details Seller -->
-             <div class="flex flex-nowrap gap-4">
-                <img src="${item.seller.avatar}" alt="${item.seller.name}" class="rounded-full w-14">
-                <div>
-                    <h5>Seller</h5>
-                    <h5 class="">${item.seller.name}</h5>
-                </div>
-            </div>
-
-             <!-- Details Description -->
-             <p class="h-16 mb-2 text-body-color text-base leading-relaxed">
-                <span class="h-full self-center">${item.description}</span>
-             </p>
-
-             <!-- Details Tags -->
-             <p class="h-12 text-body-color text-xs leading-relaxed font-mono">
-                <span class="h-full self-center">Tags: </span>
-                <span class="h-full self-center">${item.tags}</span>
-             </p>
-
-             <!-- Details Created -->
-             <p class="text-body-color text-xs leading-relaxed font-mono">
-                <span class="h-full self-center">Created: </span>
-                <span class="h-full self-center">${item.created}</span>
-             </p>
-
-            <!-- Bids Amount + EndsAt -->
-            <div class="p-8 text-left sm:p-9 md:p-7 xl:p-9">
-             <svg class="w-5 h-5 inline-block align-middle" fill="#6b21a8" stroke="currentColor"  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"       d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
-             <!-- Card Bids Amount -->
-             <span id="cardBidsAmount" class="text-body-color text-sm leading-relaxed font-light">&nbsp; ${item["_count"].bids} Bids  &nbsp;&nbsp; |  &nbsp;&nbsp;&nbsp; </span>
-             <!-- Card EndsAt -->
-             <span class="text-body-color text-sm leading-relaxed font-bold">Ends at:<span id="cardCounter" class="font-light"> ${item.endsAt}</span></span>
-         </div>
-
-             <!-- Card Buttons Container -->
-             <div class="flex flex-nowrap gap-3">
-
-                 <!-- Card View Details Button -->
-                 <button id="cardViewDetailsButton" onclick="window.location.href='../details/index.html?id=${item.id}'" type="button" class="flex-shrink self-center text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-2 mb-2 rounded-full text-sm px-2 py-2 text-center mb-2 transition">
-                     View Details
-                 </button>
-             </div>
-         </div>
-     </article>
-  </div>
- */
+        //localStorage.setItem("amount", json.amount);
 
 
 
+        console.log(json.amount);
 
-
-
-
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 

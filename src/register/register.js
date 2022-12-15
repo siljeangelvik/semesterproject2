@@ -2,11 +2,11 @@
 import {API_BASE_URL} from "../main";
 export const API_REGISTER_URL = `${API_BASE_URL}/auth/register`;
 
-let returnMessage = document.querySelector(".error");
+export const returnMessage = document.querySelector(".error");
 const username = document.getElementById("username");
 const email = document.getElementById("email");
 const password = document.getElementById("password");
-const registerButton = document.getElementById("registerButton");
+export const registerButton = document.getElementById("registerButton");
 
 const isValidUserName = username => {
     let usernameRegex = /^[a-z0-9_æøå]{2,25}$/i;
@@ -61,6 +61,7 @@ async function registerUser(API_REGISTER_URL, userData) {
         const postData = {
             method: "POST",
             headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                 "content-Type": "application/json",
             },
             body: JSON.stringify(userData),
@@ -76,16 +77,14 @@ async function registerUser(API_REGISTER_URL, userData) {
         }
 
 
+/*
         window.alert(`
         You successfully registered a new account!\n
         We are escorting you to the login page,
         so that you can get to use your new account immediately! 
-        `);
-        window.location = '../login/index.html';
-
-        /*
-        document.getElementById("logout-modal").innerHTML = `
-    <div class="fixed z-10 overflow-auto top-0 w-full left-0">
+        `); */
+        document.getElementById("register-success").innerHTML = `
+        <div class="fixed z-10 overflow-auto top-0 w-full left-0">
         <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 transition-opacity">
                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
@@ -100,18 +99,24 @@ async function registerUser(API_REGISTER_URL, userData) {
 
                     <div class="bg-white px-2 pt-5 pb-2 sm:p-6 sm:pb-4">                                         
                         <div class="mb-4">
-                            <p>Successfully created a new account!</p>                        
+                            <p>You successfully registered a new account!</p>
+                            <p>We are redirecting you to the login page,</p> 
+                            <p>so that you can get to use your new account immediately!</p>                       
                         </div>
                     </div>
                     
                     <div class="bg-gray-200 px-4 py-3 text-right">
-                        <button id="modalCloseButton" type="button" onclick="document.getElementById('logout-modal').classList.add('hidden')"
-                                class="py-2 px-4 text-purple-800 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 text-white rounded-full mr-2">
+                        <button id="registerSuccessCancel" 
+                                type="button" 
+                                onclick="document.getElementById('register-success').classList.add('hidden')"
+                                class="registerSuccessCancel py-2 px-4 text-purple-800 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 text-white rounded-full mr-2">
                             <i class="fas fa-times"></i> Cancel
                         </button>
-                        <button id="modalLogoutButton" type="submit"
-                                class="py-2 px-4 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white rounded-full hover:bg-emerald-500 mr-2">
-                            <i class="fas fa-plus"></i> Sign in with your new account
+                        <button id="registerSuccessLogin" 
+                                type="button"
+                                onclick="window.location.href = '../login/index.html"
+                                class="registerSuccessLogin py-2 px-4 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white rounded-full hover:bg-emerald-500 mr-2">
+                            <i class="fas fa-plus"></i> Sign in with my new account
                         </button>
                     </div>
                 </form>
@@ -119,7 +124,12 @@ async function registerUser(API_REGISTER_URL, userData) {
         </div>
     </div>
 `;
-        */
+
+
+        // When user has successfully registered, redirect to login-page
+        setTimeout(() => {
+            window.location.href = "../login/index.html";
+        }, 7000);
 
     } catch (error) {
         console.log(error);
@@ -129,6 +139,7 @@ async function registerUser(API_REGISTER_URL, userData) {
 // loginButton onclick = run register validation function
 registerButton.addEventListener("click", function(e){
     e.preventDefault();
+
     register();
 });
 

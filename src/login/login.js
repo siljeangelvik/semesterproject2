@@ -3,9 +3,9 @@ import {API_BASE_URL } from "../main";
 
 export const loginUrl = `${API_BASE_URL}/auth/login`;
 
-const returnMessage = document.querySelector(".error");
-const email = document.getElementById("email");
-const password = document.getElementById("password");
+export const returnMessage = document.querySelector(".error");
+export const email = document.getElementById("email");
+export const password = document.getElementById("password");
 export const loginButton = document.getElementById("loginButton");
 
 const isValidEmail = email => {
@@ -49,15 +49,16 @@ function login() {
 async function loginUser(loginUrl, userData) {
     console.log('USERDATA:' +  userData);
     try {
-        const postData = {
+        const options = {
             method: "POST",
             headers: {
+                Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                 "content-Type": "application/json",
             },
             body: JSON.stringify(userData),
         };
 
-        const response = await fetch(loginUrl, postData);
+        const response = await fetch(loginUrl, options);
         // console.log(`response = ${response}`);
         const json = await response.json();
         // console.log(json);

@@ -1,4 +1,4 @@
-/* formatter:off */
+/* @formatter:off */
 import {API_BASE_URL } from "../main";
 let updateAvatarUrl = `${API_BASE_URL}/profiles/${localStorage.getItem("name")}/media`;
 
@@ -32,6 +32,7 @@ document.getElementById("updateAvatarButton").addEventListener('click', async() 
     console.log("AVATAR IMG");
     console.log(avatarImage);
 })
+
 
 // gets data from API and sets the content of #result div
 async function updateAvatarAPI(updateAvatarUrl, avatar) {

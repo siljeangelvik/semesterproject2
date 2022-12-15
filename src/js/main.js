@@ -14,13 +14,16 @@ document.getElementById("desktop-nav").innerHTML = `
             <!-- Navigation -->
             <div class="items-center invisible md:visible">
                 <a href="/" class="text-white hover:text-white no-underline mx-2 px-2">Listings</a>
-                <span class="loginHidden inline-block md:py-4">
+                <span class="userLoggedOut hidden inline-block md:py-4">
                     <a href="../login/index.html" id="loginPageButton" class="loginHidden text-white hover:text-white no-underline mx-2 px-2 ">Sign In</a>
                     <a href="../register/index.html" id="registerPageButton" class="loginHidden text-white hover:text-white no-underline mx-2 px-2 ">Sign Up</a>
                 </span>
-                <span class="logoutHidden inline-block md:py-4">
+                <span class="userLoggedIn hidden inline-block md:py-4">
                     <a href="../profile/index.html" class="logoutHidden profilePageButton text-white hover:text-white no-underline mx-2 px-2 ">Account</a>
-                    <button type="button" class="logoutButton text-white hover:text-white no-underline mx-2 px-2 font-bold">Logout</button>
+                    <button id="openLogoutModal"
+                            onclick="document.querySelector('.logout-modal').classList.remove('hidden')"
+                            type="button" 
+                            class="openLogoutModal text-white hover:text-white no-underline mx-2 px-2 font-bold">Logout</button>
                </span>
             </div>
         </div>
@@ -43,8 +46,9 @@ document.getElementById("mobile-nav").innerHTML = `
       search
     </span>
     </button>
-    <button id="modal-button" onclick="document.getElementById('modal').classList.remove('hidden')" data-bs-toggle="modal" data-bs-target="modal"
-            class="w-full block py-5 px-3 text-center">
+    <button id="create-modal" onclick="document.getElementById('modal-create').classList.remove('hidden')"
+            data-bs-toggle="create-modal" data-bs-target="create-modal"
+            class="create-modal w-full block py-5 px-3 text-center">
     <span class="material-symbols-outlined text-white">
       add_circle
     </span>
@@ -54,8 +58,10 @@ document.getElementById("mobile-nav").innerHTML = `
       person
     </span>
     </a>
-    <button id="logoutButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            class="loggedIn logoutButton w-full block py-5 px-3 text-center transition duration-150 ease-in-out">
+    <button id="openLogoutModal" 
+            onclick="window.location.href='../login/index.html"
+            data-bs-toggle="logout-modal" data-bs-target="logout-modal"
+            class="openLogoutModal w-full block py-5 px-3 text-center transition duration-150 ease-in-out">
     <span class="material-symbols-outlined text-white">
       logout
     </span>
@@ -73,9 +79,45 @@ document.getElementById("footer").innerHTML = `
 </footer>
 `;
 
+// logout modal content
+document.getElementById("logout-modal").innerHTML = `
+    <div class="fixed z-10 overflow-auto top-15 w-full left-0">
+        <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity">
+                <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+                <span class="absolute sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
+                <form id="form"
+                      class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+                      aria-labelledby="modal-headline">
+                    <div class=" bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 py-4 px-8 text-white text-xl border-b border-grey-lighter">
+                        Log out
+                    </div>
+                    <div class="bg-white px-2 pt-5 pb-2 sm:p-6 sm:pb-4">                                         
+                        <div class="mb-4">
+                            <p>Are you sure you want to log out?</p>                        
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-200 px-4 py-3 text-right">
+                        <button id="modalCloseButton" type="button" onclick="document.getElementById('logout-modal').classList.add('hidden')"
+                                class="py-2 px-4 text-purple-800 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 text-white rounded-full mr-2">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button id="logoutButton" type="button"
+                                class="py-2 px-4 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 text-white rounded-full hover:bg-emerald-500 mr-2">
+                            <i class="fas fa-plus"></i> Logout
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+`;
 
 
-// navigate to listings page and focus search field
+/* @formatter:off */
+
+// Element with ID "focusButton" will take you to listings-page and focus search-input-field
 document.getElementById("focusButton").addEventListener("click", () => {
     window.location.href = "/index.html";
     setTimeout(() => {
@@ -84,26 +126,40 @@ document.getElementById("focusButton").addEventListener("click", () => {
     }, 1000);
 });
 
-// welcome user in heading when logged in
+// Element with class "welcomeUser" will be displayed for logged-in users
 [...document.querySelectorAll('.welcomeUser')].forEach(function (welcome) {
     if (localStorage.getItem("accessToken")) {
         welcome.innerHTML = localStorage.getItem("name");
     }
 });
 
-
-/* @formatter:off */
-export const className = "profilePageButton";
-export const profilePageButtonElement = document.querySelectorAll(`.${className}`);
-
-// forEach() method to add an event listener to each element
-profilePageButtonElement.forEach(element => {
+// Element with class "openLogoutModal" will be displayed if user is logged in
+export const openLogoutModalButton = "openLogoutModal";
+export const openLogoutModal = document.querySelectorAll(`.${openLogoutModalButton}`);
+openLogoutModal.forEach(element => {
     element.addEventListener("click", (event) => {
         // if the user is logged in
+        console.log("You're not logged in");
+        if (localStorage.getItem("accessToken")) {
+            // if the user is not logged in, prevent the default anchor link behavior and redirect to the login page
+            event.preventDefault();
+            document.getElementById('logout-modal').classList.remove('hidden');
+        }
+    });
+});
+
+// GO TO PROFILE PAGE(BUTTON): NOT LOGGED IN
+export const profilePageButton = "profilePageButton";
+export const goToProfilePageButton = document.querySelectorAll(`.${profilePageButton}`);
+goToProfilePageButton.forEach(element => {
+    element.addEventListener("click", (event) => {
+        // if the user is logged in
+        console.log("You are logged in");
+
         if (!localStorage.getItem("accessToken")) {
             // if the user is not logged in, prevent the default anchor link behavior and redirect to the login page
             event.preventDefault();
-
+            window.alert("You need to be logged in to view your profile.");
             window.location.href = "../login/index.html";
 
         } else {
@@ -111,4 +167,33 @@ profilePageButtonElement.forEach(element => {
             return true;
         }
     });
+});
+
+// Elements with class "userLoggedOut" will be displayed for logged-out users
+export const userLoggedOutClass = "userLoggedOut";
+export const userLoggedOut = document.querySelectorAll(`.${userLoggedOutClass}`);
+userLoggedOut.forEach(logoutElement => {
+    // if user logged in
+    if (!localStorage.getItem("accessToken")) {
+        // elements will display for users
+        logoutElement.style.display = 'inline-block';
+    }
+});
+
+// Element with class "userLoggedIn" will be displayed for logged-in users
+export const userLoggedInClass = "userLoggedIn";
+export const userLoggedIn = document.querySelectorAll(`.${userLoggedInClass}`);
+userLoggedIn.forEach(loginElement => {
+    // if user logged in
+    if (localStorage.getItem("accessToken")) {
+        // elements will display for users
+        loginElement.style.display = 'inline-block';
+    }
+});
+
+// Button - back to top
+export const backToTopButton = document.getElementById("toTopButton");
+backToTopButton.addEventListener('click', ()=> {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
 });

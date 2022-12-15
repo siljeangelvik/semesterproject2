@@ -14,14 +14,16 @@
 </head>
 <body>
 
+<!-- desktop menu top -->
 <div id="desktop-nav"></div>
+
 <!-- content -->
 <div class="container my-12 mx-auto px-4 md:px-12">
     <!-- Heading -->
     <div class="container mt-12 mx-auto px-4 md:px-12">
         <div class="-mx-1 lg:-mx-4">
             <h1 class="text-2xl text-center">Asta Auction Application</h1>
-            <h2 class="logoutHidden text-xl text-center">Hello, <span class="welcomeUser font-bold"></span>!</h2>
+            <h2 class="userLoggedIn hidden w-full text-xl text-center">Hello, <span class="welcomeUser font-bold"></span>!</h2>
         </div>
     </div>
 
@@ -29,7 +31,7 @@
     <div class="container my-12 mx-auto px-4 md:px-12">
         <div class="-mx-1 lg:-mx-4">
             <label class="block text-grey-darker text-sm font-bold mb-2" for="myTextField"></label>
-            <input onkeyup="filterItems(arr);" class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="myTextField"
+            <input id="myTextField" class="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
                    type="search" placeholder="Search for listings...">
         </div>
     </div>
@@ -85,7 +87,7 @@
                 </button>
                 <!-- Card View Details Button -->
                 <button id="toTopButton" title="Go to top"
-                        class="flex-shrink w-1/4 text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-2 mb-2 rounded-full text-sm px-2 py-2 text-center mb-2 transition">
+                        class="toTopButton flex-shrink w-1/4 text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-2 mb-2 rounded-full text-sm px-2 py-2 text-center mb-2 transition">
                     Go to Top
                 </button>
             </div>
@@ -93,18 +95,24 @@
     </div>
 </div>
 
+
+
+<!-- modal create listing -->
+<div id="create-modal" class="create-modal hidden"></div>
+
+<!-- mobile nav -->
 <div id="mobile-nav"></div>
-<div id="modal" class="hidden"></div>
-<div id="logout-modal" class="hidden"></div>
-<div id="viewListing-modal" class="hidden"></div>
+
+<!-- modal logout -->
+<div id="logout-modal" class="logout-modal hidden"></div>
+
+<!-- footer -->
 <div id="footer"></div>
 
 
 <script type="module" src="./js/main.js"></script>
-<script type="module" src="./js/modal.js"></script>
 <script type="module" src="./js/logout.js"></script>
 <script type="module" src="./listings/fetch-listings.js"></script>
-<script type="module" src="./listings/create-listing.js"></script>
 
 </body>
 </html>
