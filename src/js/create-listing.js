@@ -1,3 +1,4 @@
+import {array} from "tw-elements/dist/src/js/mdb/util";
 import {addListingButton, returnMessage} from "../js/main";
 import {API_LISTINGS_URL} from "../main";
 
@@ -41,9 +42,9 @@ async function createListing() {
         return;
     }
     if (!isValidMedia(validMedia)) {
-        returnMessage.innerHTML = 'Invalid image URL.';
-        return;
+        returnMessage.innerHTML = "Please provide a valid image URL.";
     }
+
     // console.log(createData);
     apiCreateListing(API_LISTINGS_URL, createData);
 }
@@ -66,7 +67,7 @@ async function apiCreateListing(API_LISTINGS_URL, newListing) {
         const json = await response.json();
         // console.log(json);
         if (!response.ok) {
-            // console.log(json.errors[0].message);
+            console.log(json.errors[0].message);
             returnMessage.innerHTML = `${json.errors[0].message}`;
             throw new Error();
         }
@@ -79,8 +80,7 @@ async function apiCreateListing(API_LISTINGS_URL, newListing) {
         }, 2000);
 
     } catch (error) {
-        returnMessage.innerHTML = `${json.errors[0].message}`;
-        // console.log(error);
+        console.log(error);
     }
 }
 

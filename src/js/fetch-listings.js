@@ -49,8 +49,9 @@ export function loadListings(listingsArray) {
          <div class="flex flex-col px-8 pb-8 text-left sm:px-9 md:px-7 xl:px-9">
              <!-- Card Title -->
              <h3 class="my-4 h-8">
-                 <button type="button"
-                        class="viewDetailsButton h-full text-dark hover:text-primary block text-xl">
+                 <a type="button"
+                    href="../details/index.html?id=${listingsArray[i].id}"
+                    class="viewDetailsButton h-full text-dark hover:text-primary block text-xl">
                      ${listingsArray[i].title}
                  </a>
              </h3>
@@ -68,10 +69,11 @@ export function loadListings(listingsArray) {
              <!-- Card Buttons Container -->
              <div class="h-8 w-full flex flex-nowrap justify-center">               
                  <!-- Card View Details Button -->
-                 <button type="button"
+                 <a type="button"
+                        href="../details/index.html?id=${listingsArray[i].id}"
                         class="viewDetailsButton w-full self-center text-purple-800 text-sm hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-full text-center mr-1 mb-1 rounded-full text-sm px-2 py-2 text-center transition">
                      View Details
-                 </button>
+                 </a>
              </div>
          </div>
      </article>
@@ -83,14 +85,12 @@ export function loadListings(listingsArray) {
         document.querySelectorAll(`.${viewDetailsButton}`).forEach(detailsPageButton => {
             detailsPageButton.addEventListener("click", (event) => {
                 console.log("Details page button");
-                if (localStorage.getItem("accessToken")) {
+                if (!localStorage.getItem("accessToken")) {
                     event.preventDefault();
-                    window.location.href = `../details/index.html?id=${listingsArray[i].id}`;
-                } else if (!localStorage.getItem("accessToken")) {
+                   // window.location.href += `../details/index.html?id=${listingsArray[i].id}`;
                     window.alert("You need to be logged in to access this listing.");
-
                     window.location.href = '../login/index.html';
-                }
+                } else { return true; }
             });
         });
     }
