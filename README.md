@@ -1,7 +1,7 @@
 # Semester Project 2
 
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8351bb72-cb2f-4acd-9641-31a9d3ca7da8/deploy-status)](https://app.netlify.com/sites/semesterproject2/deploys)
+![Main Branch](https://github.com/github/docs/actions/workflows/main.yml/badge.svg?branch=main)  
 
 ### Resource URL
 **Style Guide:** [Figma](https://www.figma.com/file/Ulp9wwN9k2owtTji6ksOHh/Semester-Project-2?node-id=0%3A1&t=IKxYWfv45f12mj2z-1)    

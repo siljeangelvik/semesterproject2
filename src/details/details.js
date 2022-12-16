@@ -297,6 +297,12 @@ async function API_PLACE_BID(API_PLACE_BID_URL, amount) {
 
         localStorage.setItem("credits", json.credits);
 
+        document.querySelector('.place-bid-modal').classList.add('hidden');
+        setTimeout(() => {
+            window.location.reload();
+        }, 1500);
+
+
     } catch (error) {
         console.log(error);
     }
