@@ -1,7 +1,4 @@
-/**
- * @description function for logging user out
- */
-
+// Logout function
 export function userLogout() {
     document.getElementById("logoutButton").addEventListener('click', () => {
         if (localStorage.getItem("accessToken")) {

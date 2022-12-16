@@ -6,7 +6,8 @@ To take the skills learned over the past three semesters and create an auction w
 ## Brief
 An auction site is looking to launch a website where users can add items to be bid on and bid on items other users have put up for auction.
 
-When a new user joins the website, they are given 1000 credits to use on the site. They can get credits by selling items and use credit by buying items.   
+When a new user joins the website, they are given 1000 credits to use on the site.   
+They can get credits by selling items and use credit by buying items.   
 Non-registered users can search through the listings, but only registered users can make bids on listings.
 
 ## Requirements
@@ -42,7 +43,7 @@ The company CTO has set the following technical restrictions:
 
 * ~~Must use an approved `CSS Framework`~~  Tailwind ✅
 * ~~Must be hosted on an approved `Static Host`~~ Netlify ✅
-* Must use an approved `Design Application` Figma
+~~* Must use an approved `Design Application` Figma~~
 * ~~Must use an approved `Planning Application`~~ Trello & Gantt Chart ✅
 
 ### Required links
@@ -50,18 +51,18 @@ The company CTO has set the following technical restrictions:
 The Product Owner has requested links to the following:
 
 * ~~A Gantt chart for project timing~~
-* A design prototype
-* A style guide
+~~* A design prototype~~
+~~* A style guide~~
 * ~~A kanban project board~~
 * ~~A repository link~~
 * ~~A hosted application demo link~~
 
 ## Approved resources
-
 This list covers libraries and services that have been vetted by the company and approved for use.
+
 ### CSS processors
-* ~~SASS/SCSS~~
-* PostCSS ✅
+* SASS/SCSS
+* PostCSS
 
 ### CSS frameworks
 * ~~Bootstrap (>5)~~ 
@@ -74,7 +75,7 @@ This list covers libraries and services that have been vetted by the company and
 
 ### Design applications
 * ~~Adobe XD~~ 
-* Figma 
+* Figma ✅
 * ~~Sketch~~
 
 ### Planning applications
@@ -91,7 +92,7 @@ Other branches will not be checked.
 ~~Ensure that the `readme.md` file describes your project thoroughly, including how to setup and run the project locally and any special instructions for testers.~~
 
 
-## Notes
+## Checklist
 
 > #### A user with a `stud.noroff.no` email may register  
 > Successful ✅
@@ -109,15 +110,19 @@ Other branches will not be checked.
 > Successful ✅
 
 > #### A registered user may create a `Listing` with a title, deadline date, media gallery and description  
-> I think it works?
+> Successful ✅
 
 > #### A registered user may add a `Bid` to another user’s `Listing`  
+> Successful ✅
 
 > #### A registered user may view `Bids` made on a `Listing`  
+> Successful ✅
 
 > #### A registered user may use credit to make a `Bid` on another user’s `Listing`  
+> Successful ✅
 
 > #### An unregistered user may search through `Listings`  
+> Unsuccessful ⛔
 
 ---
 

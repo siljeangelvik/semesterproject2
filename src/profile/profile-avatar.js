@@ -1,5 +1,5 @@
-/* @formatter:off */
-import {API_BASE_URL } from "../main";
+import {API_BASE_URL} from "../main";
+
 let updateAvatarUrl = `${API_BASE_URL}/profiles/${localStorage.getItem("name")}/media`;
 
 const returnMessage = document.querySelector(".error");
@@ -10,27 +10,21 @@ let avatarImage = ``;
 async function updateAvatar() {
     document.getElementById("profileAvatar").src = localStorage.getItem('avatar');
     document.querySelector('.avatarCurrentURl').innerHTML = localStorage.getItem('avatar');
-
-    console.log('test');
 }
 
 // function if avatar-input-value is empty, display error message // valid input-value: runs updateAvatarAPI function
-document.getElementById("updateAvatarButton").addEventListener('click', async() => {
+document.getElementById("updateAvatarButton").addEventListener('click', async () => {
     if (!avatarInput.value) {
         returnMessage.innerHTML = "You need to enter a valid URL";
-        console.log("test");
         avatarInput.value = '';
         return;
     }
 
-    // returnMessage.remove();
     avatarImage = avatarInput.value;
 
-   await updateAvatarAPI(updateAvatarUrl, avatarImage);
-   document.querySelector(".changeAvatarBox").classList.add('hidden');
-    // window.location.reload();
-    console.log("AVATAR IMG");
-    console.log(avatarImage);
+    await updateAvatarAPI(updateAvatarUrl, avatarImage);
+    document.querySelector(".changeAvatarBox").classList.add('hidden');
+    // console.log(avatarImage);
 })
 
 
@@ -47,28 +41,29 @@ async function updateAvatarAPI(updateAvatarUrl, avatar) {
         };
 
         const response = await fetch(updateAvatarUrl, putData);
-        console.log(response);
+        // console.log(response);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if (!response.ok) {
-            console.log(json.errors[0].message);
+            // console.log(json.errors[0].message);
             returnMessage.innerHTML = `${json.errors[0].message}`;
             throw new Error();
         }
-        console.log("OK");
-        console.log(response.status);
+        // console.log(response.status);
         await localStorage.setItem("avatar", json.avatar)
         localStorage.getItem("avatar");
         await updateAvatar(avatarImage);
     } catch (error) {
-        console.log(error);
+        returnMessage.innerHTML = `${json.errors[0].message}`;
+        // console.log(error);
     }
 }
 
-// toggle box classList 'hidden'
+// Element with class "openAvatarChange" display box on click
 document.querySelector('.openAvatarChange').addEventListener('click', () => {
     document.querySelector('.changeAvatarBox').classList.remove('hidden');
 });
+// Element with class "avatarUpdateCloseButton" close box on click
 document.getElementById("avatarUpdateCloseButton").addEventListener('click', () => {
     document.querySelector('.changeAvatarBox').classList.add('hidden');
 })

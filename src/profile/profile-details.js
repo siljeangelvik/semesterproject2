@@ -19,31 +19,26 @@ async function fetchProfileAccount(API_PROFILE_URL) {
             },
         };
         const response = await fetch(API_PROFILE_URL, options);
-        console.log(response);
+        // console.log(response);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if (!response.ok) {
-            console.log(json.errors[0].message);
+            // console.log(json.errors[0].message);
             returnMessage.innerHTML = `${json.errors[0].message}`;
             throw new Error();
         }
-        console.log("OK");
-        console.log(response.status);
+        // console.log(response.status);
 
         localStorage.setItem("credits", json.credits);
         localStorage.setItem("wins", json.wins);
         localStorage.setItem("listings", json.listings);
 
         document.getElementById("profileCredits").innerHTML = localStorage.getItem('credits');
-        document.getElementById("profileWins").innerHTML = localStorage.getItem("wins").length;
-
-
+        document.getElementById("profileWins").innerHTML += `ID of bid won:  ${localStorage.getItem("wins")}`;
         document.getElementById("profileListingsAmount").innerHTML = `${json["_count"].listings}`;
-        // document.getElementById("profileListings").innerHTML = localStorage.getItem('listings');
-
-
     } catch (error) {
-        console.log(error);
+        returnMessage.log(json.errors[0].message);
+        // console.log(error);
     }
 }
 

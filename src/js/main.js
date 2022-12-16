@@ -236,13 +236,11 @@ export const openLogoutModal = "openLogoutModal";
 export const openModalLogout = document.querySelectorAll(`.${openLogoutModal}`);
 openModalLogout.forEach(modalLogout => {
     modalLogout.addEventListener("click", (event) => {
-        console.log("Opened modal for logging out");
-
+       // console.log("Opened modal for logging out");
         if (localStorage.getItem("accessToken")) {
             event.preventDefault();
             document.getElementById('logout-modal').classList.remove('hidden');
         } else if (!localStorage.getItem("accessToken")) {
-            // if the user is logged in
             window.location.href = '../login/index.html';
         }
     });
@@ -277,11 +275,7 @@ export const profilePageButton = "profilePageButton";
 export const goToProfilePageButton = document.querySelectorAll(`.${profilePageButton}`);
 goToProfilePageButton.forEach(profileButton => {
     profileButton.addEventListener("click", (event) => {
-        // if the user is logged in
-        console.log("Opened alert for trying to access profile-page, when not logged in");
-
         if (!localStorage.getItem("accessToken")) {
-            // if the user is not logged in, prevent the default anchor link behavior and redirect to the login page
             event.preventDefault();
             window.alert("You need to be logged in to view your profile.");
             window.location.href = "../login/index.html";
@@ -293,9 +287,7 @@ goToProfilePageButton.forEach(profileButton => {
 export const userLoggedOut = "userLoggedOut";
 export const userLoggedOutDisplay = document.querySelectorAll(`.${userLoggedOut}`);
 userLoggedOutDisplay.forEach(logoutElement => {
-    // if user logged in
     if (!localStorage.getItem("accessToken")) {
-        // elements will display for users
         logoutElement.style.display = 'inline-block';
     }
 });
@@ -304,9 +296,7 @@ userLoggedOutDisplay.forEach(logoutElement => {
 export const userLoggedIn = "userLoggedIn";
 export const userLoggedInDisplay = document.querySelectorAll(`.${userLoggedIn}`);
 userLoggedInDisplay.forEach(loginElement => {
-    // if user logged in
     if (localStorage.getItem("accessToken")) {
-        // elements will display for users
         loginElement.style.display = 'inline-block';
     }
 });

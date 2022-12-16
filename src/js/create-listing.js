@@ -7,15 +7,13 @@ let media = document.getElementById("createMedia");
 let description = document.getElementById("createDescription");
 let tags = document.getElementById("createTags");
 
-//
-
-
+// Media / Image URL validation
 const isValidMedia = media => {
     const mediaRegex = /\.(jpg|jpeg|png|webp|avif|gif)$/;
     return mediaRegex.test(String(media));
 };
 
-
+// Function that creates an object and validate inputs before sending to API
 async function createListing() {
     let validTitle = title.value.trim();
     let validEndsAt = endsAt.value.trim();
@@ -33,8 +31,6 @@ async function createListing() {
         "tags": validTags
     }
 
-    console.log(createData);
-
     // if statements for validating the user created listing
     if (!validTitle) {
         returnMessage.innerHTML = 'Title cannot be empty.';
@@ -48,13 +44,13 @@ async function createListing() {
         returnMessage.innerHTML = 'Invalid image URL.';
         return;
     }
-
+    // console.log(createData);
     apiCreateListing(API_LISTINGS_URL, createData);
 }
 
-
+// Fetching the newly created listing
 async function apiCreateListing(API_LISTINGS_URL, newListing) {
-    console.log(newListing);
+    // console.log(newListing);
     try {
         const options = {
             method: "POST",
@@ -66,23 +62,25 @@ async function apiCreateListing(API_LISTINGS_URL, newListing) {
         };
 
         const response = await fetch(API_LISTINGS_URL, options);
-        console.log(`response = ${response}`);
+        // console.log(`response = ${response}`);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if (!response.ok) {
             // console.log(json.errors[0].message);
             returnMessage.innerHTML = `${json.errors[0].message}`;
             throw new Error();
         }
-        console.log("OK");
-        console.log(response.status);
+        // console.log(response.status);
+
+        document.getElementById('create-modal').classList.add('hidden');
 
         setTimeout(() => {
             window.location.reload();
-        }, 1500);
+        }, 2000);
 
     } catch (error) {
-        console.log(error);
+        returnMessage.innerHTML = `${json.errors[0].message}`;
+        // console.log(error);
     }
 }
 

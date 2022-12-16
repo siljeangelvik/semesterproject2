@@ -7,7 +7,7 @@ export const dataElement = document.getElementById("cardContainer");
 let limit = 9;
 let i = 0;
 
-
+// fetching all listings from API
 export default fetch(API_LISTING_PARAM_URL)
     .then(response => {
         if (response.ok) {
@@ -25,7 +25,7 @@ export default fetch(API_LISTING_PARAM_URL)
     }).catch((error) => dataElement.innerHTML = "Something's wrong!" + error)
     .finally(() => containerLoader.remove());
 
-
+// List out 9 first listings, and list out 9 more listing on button click
 export function loadListings(listingsArray) {
 
     for (i; i < limit; i++) {
@@ -96,6 +96,7 @@ export function loadListings(listingsArray) {
     }
     limit += 9;
 }
+
 
 // Button - back to top
 export const backToTopButton = document.getElementById("toTopButton");

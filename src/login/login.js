@@ -8,6 +8,7 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 export const loginButton = document.getElementById("loginButton");
 
+// Validation for inputs on login page
 const isValidEmail = email => {
     const emailRegex = /^[a-z0-9_æøå]{4,25}@(stud.)?noroff\.no$/i;
     return emailRegex.test(String(email));
@@ -17,7 +18,7 @@ const isValidPassword = password => {
     return passwordRegex.test(String(password));
 };
 
-// validate input and create object from input value
+// Validate and send inputs to API
 function login() {
     let validEmail = email.value.trim();
     let validPassword = password.value.trim();
@@ -28,25 +29,22 @@ function login() {
     }
 
     if (!isValidEmail(validEmail)) {
-        console.log("wrong email");
         returnMessage.innerHTML = `Invalid email`;
         return false;
     }
     if (!isValidPassword(validPassword)) {
-        console.log("wrong pass");
         returnMessage.innerHTML = `Invalid password`;
         return false;
     }
     if (isValidEmail(validEmail) && isValidPassword(validPassword)) {
-        console.log("Successful login");
         loginUser(loginUrl, loginDetails);
         console.log(loginDetails);
     }
 }
 
-// send input values using POST method and save in localStorage
+// Fetch() using POST method
 async function loginUser(loginUrl, userData) {
-    console.log('USERDATA:' +  userData);
+    // console.log(userData);
     try {
         const options = {
             method: "POST",
@@ -66,8 +64,7 @@ async function loginUser(loginUrl, userData) {
             returnMessage.innerHTML = `${json.errors[0].message}`;
             throw new Error();
         }
-        console.log("OK");
-        console.log(response.status);
+        // console.log(response.status);
         localStorage.setItem("name", json.name);
         localStorage.setItem("email", json.email);
         localStorage.setItem("credits", json.credits);
@@ -76,11 +73,12 @@ async function loginUser(loginUrl, userData) {
         window.location = '/';
 
     } catch (error) {
-        console.log(error);
+        returnMessage.innerHTML = `${json.errors[0].message}`;
+        // console.log(error);
     }
 }
 
-// loginButton onclick = run login validation function
+// Login form button
 loginButton.addEventListener("click", function(e){
     e.preventDefault();
     login();

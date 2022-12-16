@@ -8,6 +8,7 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 export const registerButton = document.getElementById("registerButton");
 
+// Validation for inputs on register page
 const isValidUserName = username => {
     let usernameRegex = /^[a-z0-9_æøå]{2,25}$/i;
     return usernameRegex.test(String(username));
@@ -21,7 +22,7 @@ const isValidPassword = password => {
     return passwordRegex.test(String(password));
 };
 
-// validate input and create object from input value
+// Validate and send inputs to API
 function register() {
     let validUsername = username.value.trim();
     let validEmail = email.value.trim();
@@ -34,29 +35,26 @@ function register() {
     }
 
     if (!isValidUserName(validUsername)) {
-        console.log("wrong username");
         returnMessage.innerHTML = `Invalid username`;
         return false;
     }
     if (!isValidEmail(validEmail)) {
-        console.log("wrong email");
         returnMessage.innerHTML = `Invalid email`;
         return false;
     }
     if (!isValidPassword(validPassword)) {
-        console.log("wrong pass");
         returnMessage.innerHTML = `Invalid password`;
         return false;
     }
     if (isValidUserName(validUsername) && isValidEmail(validEmail) && isValidPassword(validPassword)) {
-        console.log("User registered: " + registerDetails);
+        // console.log("User registered: " + registerDetails);
         registerUser(API_REGISTER_URL, registerDetails);
     }
 }
 
-// send input values using POST method and redirect to login page
+// Fetch() using POST method
 async function registerUser(API_REGISTER_URL, userData) {
-    console.log(userData);
+    // console.log(userData);
     try {
         const postData = {
             method: "POST",
@@ -67,11 +65,10 @@ async function registerUser(API_REGISTER_URL, userData) {
             body: JSON.stringify(userData),
         };
         const response = await fetch(API_REGISTER_URL, postData);
-        console.log(response);
+        // console.log(response);
         const json = await response.json();
-        console.log(json);
+        // console.log(json);
         if (!response.ok) {
-            console.log(json.errors[0].message);
             returnMessage.innerHTML = `${json.errors[0].message}`;
             throw new Error();
         }
@@ -125,14 +122,14 @@ async function registerUser(API_REGISTER_URL, userData) {
         }, 7000);
 
     } catch (error) {
-        console.log(error);
+        returnMessage.innerHTML = `${error.errors[0].message}`;
+       // console.log(error);
     }
 }
 
-// register button onclick = run register validation function
+// Register form button
 registerButton.addEventListener("click", function(e){
     e.preventDefault();
-
     register();
 });
 
