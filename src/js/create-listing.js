@@ -1,5 +1,4 @@
-/* @formatter:off */
-import {addListingButton,returnMessage} from "../js/main";
+import {addListingButton, returnMessage} from "../js/main";
 import {API_LISTINGS_URL} from "../main";
 
 let title = document.getElementById("createTitle");
@@ -8,18 +7,24 @@ let media = document.getElementById("createMedia");
 let description = document.getElementById("createDescription");
 let tags = document.getElementById("createTags");
 
+//
+
+
+const isValidMedia = media => {
+    const mediaRegex = /\.(jpg|jpeg|png|webp|avif|gif)$/;
+    return mediaRegex.test(String(media));
+};
+
 
 async function createListing() {
     let validTitle = title.value.trim();
-
     let validEndsAt = endsAt.value.trim();
-    console.log(validEndsAt);
     validEndsAt = new Date(validEndsAt);
-    let validMedia = media.value.trim();
+    let validMedia = [media.value.trim()];
     let validDescription = description.value.trim();
     let validTags = [tags.value.trim()];
-    console.log(validTags);
-    // the object that will be sent to api
+
+    // object to be sent to api
     let createData = {
         "title": validTitle,
         "endsAt": validEndsAt,
@@ -30,18 +35,21 @@ async function createListing() {
 
     console.log(createData);
 
+    // if statements for validating the user created listing
     if (!validTitle) {
         returnMessage.innerHTML = 'Title cannot be empty.';
+        return;
     }
     if (!validEndsAt) {
         returnMessage.innerHTML = 'Deadline needs to be set.';
+        return;
     }
-    if (/([a-z\-_0-9\/:.]*\.(jpg|jpeg|png|gif))/i.test(validMedia)) {
+    if (!isValidMedia(validMedia)) {
         returnMessage.innerHTML = 'Invalid image URL.';
+        return;
     }
 
-    console.log("THE OBJECT I'M GOING TO SEND: ", createData);
-    await apiCreateListing(API_LISTINGS_URL, createData);
+    apiCreateListing(API_LISTINGS_URL, createData);
 }
 
 
@@ -62,13 +70,12 @@ async function apiCreateListing(API_LISTINGS_URL, newListing) {
         const json = await response.json();
         console.log(json);
         if (!response.ok) {
-            console.log(json.errors[0].message);
+            // console.log(json.errors[0].message);
             returnMessage.innerHTML = `${json.errors[0].message}`;
             throw new Error();
         }
         console.log("OK");
         console.log(response.status);
-
 
         setTimeout(() => {
             window.location.reload();

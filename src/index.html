@@ -23,23 +23,37 @@
     <div class="container mt-12 mx-auto px-4 md:px-12">
         <div class="-mx-1 lg:-mx-4">
             <h1 class="text-2xl text-center">Asta Auction Application</h1>
-            <h2 class="userLoggedIn hidden w-full text-xl text-center">Hello, <span class="welcomeUser font-bold"></span>!</h2>
+            <h2 class="userLoggedIn hidden w-full text-xl text-center">Hello, <span
+                    class="welcomeUser font-bold"></span>!</h2>
         </div>
     </div>
 
     <!-- Search -->
     <div class="container my-12 mx-auto px-4 md:px-12">
         <div class="-mx-1 lg:-mx-4 flex ">
-            <label class="block text-grey-darker text-sm font-bold mb-2" for="myTextField"></label>
-            <input id="myTextField" class="appearance-none border rounded w-full py-2 px-3 text-grey-darker"
-                   type="search" placeholder="Search for listings...">
-            <button id="searchButton"
-                    type="submit"
-                    class="flex-1 w-2/4 text-white text-sm bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded text-sm px-3 py-2 text-center mb-2 transition">
-                    Search
-            </button>
+            <form class="w-full">
+                <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="none"
+                             stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input type="search" id="search"
+                           class="searchField block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
+                           placeholder="Search" required>
+                    <button id="searchButton"
+                            type="submit"
+                            class="text-white absolute right-2.5 bottom-2.5 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 font-medium rounded-lg text-sm px-4 py-2">
+                        Search
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
+
 
     <!-- CONTENT -->
     <div class="container my-12 mx-auto md:px-12">
@@ -73,7 +87,6 @@
         </div>
     </div>
 </div>
-
 
 
 <!-- modal create listing -->

@@ -41,7 +41,6 @@ function login() {
         console.log("Successful login");
         loginUser(loginUrl, loginDetails);
         console.log(loginDetails);
-       // window.location = '../index.html';
     }
 }
 
@@ -74,7 +73,7 @@ async function loginUser(loginUrl, userData) {
         localStorage.setItem("credits", json.credits);
         localStorage.setItem("accessToken", json.accessToken);
         localStorage.setItem("avatar", json.avatar);
-        window.location = '../index.html';
+        window.location = '/';
 
     } catch (error) {
         console.log(error);

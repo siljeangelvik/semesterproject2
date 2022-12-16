@@ -17,7 +17,7 @@
     "preview": "npm run build & npm run tailwind:watch & vite preview --port 8080",
     "serve": "vite serve",
     "Serve": "npm run build & npm run tailwind & vite preview",
-    "tailwind": "npx tailwindcss -i src/css/*.{css,scss} -o dist/css/*.{css,scss}",
+    "tailwind": "npx tailwindcss -i src/css/*.{css,scss} -o dist/css/*.{css,scss} --watch",
     "tailwind:watch": "npx tailwindcss -i src/css/input.css -o dist/css/output.css --watch",
     "serve:all": "npm run build & npm run tailwind & npm run dev",
     "clean:build": "vite build src --emptyOutDir"

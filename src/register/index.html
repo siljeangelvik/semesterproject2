@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <link rel="icon" type="image/svg+xml" href="../../public/assets/vite.svg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="description"
           content="Register to Auction App to create a free user.
            Having a user you will be able to put your product up for sale.">
@@ -45,7 +46,7 @@
                 <div class="mb-4">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="avatar">Avatar (Optional)</label>
                     <input class="appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="avatar"
-                           pattern="/([a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i" type="url"
+                           type="url"
                            placeholder="https://example.com/photo_something.jpg">
                 </div>
                 <div class="error text-red-600 font-bold"></div>
@@ -68,6 +69,9 @@
 <div id="register-success"></div>
 <div id="not-registered"></div>
 
+<!-- modal create listing -->
+<div id="create-modal" class="create-modal hidden"></div>
+
 <!-- mobile nav -->
 <div id="mobile-nav"></div>
 
@@ -76,6 +80,7 @@
 
 <!-- footer -->
 <div id="footer"></div>
+
 
 <script type="module" src="./register.js"></script>
 <script type="module" src="../js/main.js"></script>
