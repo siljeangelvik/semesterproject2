@@ -20,7 +20,7 @@ Build project:
 `npm run build`   
 
 Preview website:  
-`npm run dev`  
+`npm run preview`  
 
 ---
 

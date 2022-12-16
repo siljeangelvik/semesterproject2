@@ -1,5 +1,6 @@
 # Delivery: Semester Project 2
 ### Resources URL
+
 **Style Guide:** [Figma](https://www.figma.com/file/Ulp9wwN9k2owtTji6ksOHh/Semester-Project-2?node-id=0%3A1&t=IKxYWfv45f12mj2z-1)    
 **Prototype Design:** [Figma](https://www.figma.com/proto/Ulp9wwN9k2owtTji6ksOHh/Semester-Project-2?node-id=0%3A1&scaling=scale-down&page-id=0%3A1&starting-point-node-id=1%3A3)    
 **Kanban Board:** [Trello](https://trello.com/b/BqgXk4Ij/semester-project-2)  
