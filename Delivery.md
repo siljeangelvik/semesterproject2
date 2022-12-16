@@ -105,9 +105,6 @@ Now, `push` to `remote` repo runs **successfully** ✅
 **GitHub Remote Repo Name:** _semesterproject2_  
 **Local Project Name:** _documents/Repos/School/semester-vite/vite-tailwind_
 
-* Getting error in console saying "loginButton" is `null` -   
-  the error is there because the button is not displayed when user is logged in.
-
 
 * Jeg var litt forsinket med å starte på prosjektet av personlige grunner,  
   og av den grunn er derfor Figma Design / Prototype mindre detaljert.
@@ -129,6 +126,27 @@ Now, `push` to `remote` repo runs **successfully** ✅
   Hadde planlagt å få til mer enn det jeg leverer,  
   men jeg undervurderte størrelsen på oppgaven.  
   Jeg er fornøyd med resultatet.
+
+--- 
+
+## Web App Analysis
+
+**Chrome Lighthouse Check:**  
+Performance, Accessibility, Best Practices, SEO.
+
+Google’s Mobile Friendly Tester – https://www.google.co.uk/webmasters/tools/mobile-friendly/  
+Google Page Speed Insights – https://pagespeed.web.dev/?utm_source=psi&utm_medium=redirect
+
+### **Mobile Result:**  
+
+<img src="public/assets/mobile-lighthouse-check.png" width="750" alt="mobile-lighthouse-check">
+
+
+### **Desktop Result:**  
+
+<img src="public/assets/desktop-lighthouse-check.png" width="750" alt="desktop-lighthouse-check">
+
+
 
 ---
 
